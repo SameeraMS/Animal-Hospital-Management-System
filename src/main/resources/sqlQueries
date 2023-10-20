@@ -1,3 +1,22 @@
-create database childhospital;
+create database animalhospital;
 
-use childhospital;
+use animalhospital;
+
+create table employee(
+        employee_id         varchar(10)         primary key ,
+        employee_name       varchar(100)        not null    ,
+        employee_contact_no varchar(10)         not null    ,
+        employee_email      varchar(50)         not null    ,
+        employee_type       enum ('Doctor','Helper','Cleaner','Cashier')
+);
+
+create table user(
+    user_name           varchar(10)               primary key,
+    password            varchar(10)               not null,
+    employee_id         varchar(10)                       ,
+    constraint foreign key (employee_id ) references employee (employee_id )
+);
+
+insert into employee values ('e001','sameera','779582592','madushansameera499@gmail.com','Cashier');
+
+insert into user values('sameera,'1234',');

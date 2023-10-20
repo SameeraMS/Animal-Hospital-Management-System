@@ -23,7 +23,7 @@ public class DashboardFormController {
     }
 
     public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
-        setform("/view/dashboardform_form.fxml");
+        setform("/view/dashboardcontrols/dashboardform_form.fxml");
     }
 
     public void signoutOnAction(ActionEvent actionEvent) throws IOException {
