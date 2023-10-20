@@ -22,13 +22,4 @@ public class WelcomePageController {
 
     }
 
-    public void signupOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/signup_form.fxml"));
-        Scene scene = new Scene(anchorPane);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(scene);
-        stage.setTitle("Sign up");
-        stage.centerOnScreen();
-
-    }
 }

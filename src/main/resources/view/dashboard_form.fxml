@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="775.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.DashboardFormController">
+<AnchorPane fx:id="mainroot" prefHeight="775.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.DashboardFormController">
    <children>
-      <AnchorPane layoutX="390.0" prefHeight="775.0" prefWidth="910.0" style="-fx-background-color: YELLOW;" />
-      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="50.0" layoutX="11.0" layoutY="207.0" prefHeight="60.0" prefWidth="350.0" text="Pets">
+      <AnchorPane fx:id="subroot" layoutX="390.0" prefHeight="775.0" prefWidth="910.0" style="-fx-background-color: YELLOW;">
+         <children>
+            <Line endX="681.085205078125" layoutX="198.0" layoutY="88.0" startX="-184.88836669921875" />
+            <Label layoutX="291.0" layoutY="27.0" text="Welcome Back !">
+               <font>
+                  <Font name="Arial Bold" size="46.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="20.0" layoutY="107.0" prefHeight="240.0" prefWidth="422.0" style="-fx-background-color: white; -fx-background-radius: 25;" />
+            <AnchorPane layoutX="457.0" layoutY="106.0" prefHeight="240.0" prefWidth="422.0" style="-fx-background-color: white; -fx-background-radius: 25;" />
+            <AnchorPane layoutX="124.0" layoutY="364.0" prefHeight="387.0" prefWidth="632.0" style="-fx-background-color: white; -fx-background-radius: 25;">
+               <children>
+                  <LineChart layoutX="12.0" layoutY="12.0" prefHeight="361.0" prefWidth="605.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="60.0" layoutX="11.0" layoutY="207.0" prefHeight="60.0" prefWidth="350.0" text="Pets">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="42.0" fitWidth="40.0">
+            <ImageView fitHeight="42.0" fitWidth="44.0">
                <image>
                   <Image url="@../asserts/icons/pets.png" />
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="50.0" layoutX="11.0" layoutY="417.0" prefHeight="60.0" prefWidth="350.0" text="Employee">
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="60.0" layoutX="11.0" layoutY="417.0" prefHeight="60.0" prefWidth="350.0" text="Employee">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
@@ -32,33 +58,40 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="50.0" layoutX="11.0" layoutY="277.0" prefHeight="60.0" prefWidth="350.0" text="Medicine">
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="60.0" layoutX="11.0" layoutY="277.0" prefHeight="60.0" prefWidth="350.0" text="Medicine">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="41.0" fitWidth="39.0">
+            <ImageView fitHeight="41.0" fitWidth="45.0">
                <image>
                   <Image url="@../asserts/icons/medicine.png" />
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="50.0" layoutX="11.0" layoutY="557.0" prefHeight="60.0" prefWidth="350.0" text="Settings">
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="60.0" layoutX="11.0" layoutY="557.0" prefHeight="60.0" prefWidth="350.0" text="Settings">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="43.0" fitWidth="48.0">
+            <ImageView fitHeight="43.0" fitWidth="45.0">
                <image>
                   <Image url="@../asserts/icons/settings.png" />
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton alignment="BOTTOM_LEFT" layoutX="11.0" layoutY="627.0" prefHeight="60.0" prefWidth="350.0" text="Sign Out">
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="60.0" layoutX="11.0" layoutY="653.0" onAction="#signoutOnAction" prefHeight="60.0" prefWidth="350.0" text="Sign Out">
          <font>
             <Font name="Arial Bold" size="22.0" />
-         </font></JFXButton>
-      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="50.0" layoutX="11.0" layoutY="487.0" prefHeight="60.0" prefWidth="350.0" text="Billing">
+         </font>
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="47.0">
+               <image>
+                  <Image url="@../asserts/icons/signout.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="60.0" layoutX="11.0" layoutY="487.0" prefHeight="60.0" prefWidth="350.0" text="Billing">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
@@ -69,7 +102,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="50.0" layoutX="11.0" layoutY="347.0" prefHeight="60.0" prefWidth="350.0" text="Details">
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="60.0" layoutX="11.0" layoutY="347.0" prefHeight="60.0" prefWidth="350.0" text="Details">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
@@ -81,12 +114,12 @@
             </ImageView>
          </graphic></JFXButton>
       <Line endX="20.17242431640625" endY="606.1725463867188" layoutX="353.0" layoutY="152.0" startX="20.17242431640625" startY="-129.31417846679688" />
-      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="50.0" layoutX="11.0" layoutY="137.0" prefHeight="60.0" prefWidth="350.0" text="Dashboard">
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="60.0" layoutX="11.0" layoutY="137.0" onAction="#dashboardOnAction" prefHeight="60.0" prefWidth="350.0" text="Dashboard">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="45.0" fitWidth="38.0">
+            <ImageView fitHeight="45.0" fitWidth="45.0">
                <image>
                   <Image url="@../asserts/icons/dashboard.png" />
                </image>
