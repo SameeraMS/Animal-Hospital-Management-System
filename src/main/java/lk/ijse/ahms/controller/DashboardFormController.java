@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -13,6 +14,11 @@ import java.net.URL;
 public class DashboardFormController {
     public AnchorPane mainroot;
     public AnchorPane subroot;
+    public static Label lblname;
+
+    public static void setlabelname(String name){
+        lblname.setText(name);
+    }
 
     private void setform(String form) throws IOException {
         URL resource = getClass().getResource(form);

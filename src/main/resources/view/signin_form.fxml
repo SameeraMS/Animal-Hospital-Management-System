@@ -36,7 +36,7 @@
             <Font name="Arial Black" size="67.0" />
          </font>
       </Label>
-      <TextField layoutX="164.0" layoutY="290.0" prefHeight="54.0" prefWidth="434.0" promptText="Username">
+      <TextField fx:id="txtusername" layoutX="164.0" layoutY="290.0" prefHeight="54.0" prefWidth="434.0" promptText="Username">
          <font>
             <Font size="24.0" />
          </font>
@@ -60,6 +60,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <PasswordField layoutX="164.0" layoutY="407.0" prefHeight="54.0" prefWidth="434.0" />
+      <PasswordField fx:id="txtpassword" layoutX="164.0" layoutY="407.0" prefHeight="54.0" prefWidth="434.0" promptText="Password">
+         <font>
+            <Font size="24.0" />
+         </font></PasswordField>
    </children>
 </AnchorPane>
