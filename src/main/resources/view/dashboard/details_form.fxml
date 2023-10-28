@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="775.0" prefWidth="910.0" style="-fx-background-color: #E4F1FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.DetailsFormController">
+   <children>
+      <TextField layoutX="259.0" layoutY="131.0" prefHeight="50.0" prefWidth="272.0" />
+      <JFXTextArea editable="false" focusColor="BLACK" layoutX="91.0" layoutY="230.0" prefHeight="519.0" prefWidth="724.0" promptText="dwds" style="-fx-background-color: #F1EFEF;" text="Id:&#10;Name :&#10;&#10;&#10;" />
+      <JFXButton layoutX="544.0" layoutY="131.0" prefHeight="50.0" prefWidth="103.0" style="-fx-background-color: yellow; -fx-background-radius: 10;" text="Search">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <Line endX="681.085205078125" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
+      <Label layoutX="55.0" layoutY="44.0" text="Details">
+         <font>
+            <Font name="Arial Bold" size="46.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

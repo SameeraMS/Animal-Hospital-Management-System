@@ -23,7 +23,13 @@ public class SigninFormController {
         String getun = txtusername.getText();
         String getpw = txtpassword.getText();
 
-        try {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("dashboard");
+
+       /* try {
             Connection connection = DbConnection.getInstance().getConnection();
 
             String sql = "SELECT * FROM user WHERE user_name=?";
@@ -39,13 +45,13 @@ public class SigninFormController {
                 String id = resultSet.getString(3);
 
                 if (password.equals(getpw) & name.equals(getun)){
-                    AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
+                    AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
                     Scene scene = new Scene(anchorPane);
                     Stage stage = (Stage) root.getScene().getWindow();
                     stage.setScene(scene);
                     stage.setTitle("dashboard");
 
-                    DashboardFormController.setlabelname(name);
+
 
                 } else {
                     new Alert(Alert.AlertType.INFORMATION, "username or password incorrect..!").show();
@@ -55,7 +61,7 @@ public class SigninFormController {
             }
         } catch (SQLException e){
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+        }*/
 
 
     }
