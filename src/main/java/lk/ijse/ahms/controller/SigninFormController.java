@@ -28,6 +28,8 @@ public class SigninFormController {
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(scene);
         stage.setTitle("dashboard");
+  
+
 
        /* try {
             Connection connection = DbConnection.getInstance().getConnection();

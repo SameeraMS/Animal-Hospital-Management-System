@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainroot" prefHeight="775.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.DashboardControlsController">
+<AnchorPane fx:id="mainroot" prefHeight="775.0" prefWidth="1300.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.DashboardControlsController">
    <children>
       <AnchorPane fx:id="subroot" layoutX="390.0" prefHeight="775.0" prefWidth="910.0" style="-fx-background-color: #E4F1FF;">
          <children>
@@ -80,7 +80,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnsettings" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="643.0" onAction="#settingsOnAction" prefHeight="60.0" prefWidth="350.0" text="Settings">
+      <JFXButton fx:id="btnsettings" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="637.0" onAction="#settingsOnAction" prefHeight="60.0" prefWidth="350.0" text="Settings">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
@@ -91,7 +91,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="12.0" layoutY="705.0" onAction="#signoutOnAction" prefHeight="60.0" prefWidth="350.0" text="Sign Out">
+      <JFXButton fx:id="btnsignout" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="705.0" onAction="#signoutOnAction" onMouseEntered="#signoutOnMouseEnter" onMouseExited="#signoutOnMouseExit" prefHeight="60.0" prefWidth="350.0" text="Sign Out">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
@@ -125,9 +125,9 @@
             </ImageView>
          </graphic></JFXButton>
       <Line endX="20.17242431640625" endY="606.1725463867188" layoutX="353.0" layoutY="152.0" startX="20.17242431640625" startY="-129.31417846679688" />
-      <ImageView fitHeight="94.0" fitWidth="99.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="94.0" fitWidth="103.0" layoutX="19.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../asserts/images/logo.png" />
+            <Image url="@../asserts/images/logo.jpg" />
          </image>
       </ImageView>
       <Label fx:id="lblname" layoutX="133.0" layoutY="42.0" prefHeight="35.0" prefWidth="179.0">

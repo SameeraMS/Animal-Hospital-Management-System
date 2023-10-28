@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -25,6 +26,7 @@ public class DashboardControlsController {
     public JFXButton btnappointment;
     public JFXButton btndetails;
     public JFXButton btnpayment;
+    public JFXButton btnsignout;
 
     public void initialize(){
         setButtonUp();
@@ -46,10 +48,11 @@ public class DashboardControlsController {
         btnsettings.setStyle("-fx-background-color: white;");
         btndashboard.setStyle("-fx-background-color: white;");
         btnEmployee.setStyle("-fx-background-color: white;");
+        btnsignout.setStyle("-fx-background-color: white;");
     }
 
     public void signoutOnAction(ActionEvent actionEvent) throws IOException {
-
+        setButtonUp();
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/signin_form.fxml"));
         Scene scene = new Scene(anchorPane);
         Stage stage = (Stage) mainroot.getScene().getWindow();
@@ -60,43 +63,58 @@ public class DashboardControlsController {
 
     public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
-        btndashboard.setStyle("-fx-background-color: blue;");
+        btndashboard.setStyle("-fx-background-color: #89CFF3;");
         setform("/view/dashboard/dashboard_form.fxml");
     }
 
     public void petsOnAction(ActionEvent actionEvent) throws IOException {
-
         setButtonUp();
+        btnpets.setStyle("-fx-background-color: #89CFF3;");
         setform("/view/dashboard/pets_form.fxml");
     }
 
     public void employeeOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
+        btnEmployee.setStyle("-fx-background-color: #89CFF3;");
         setform("/view/dashboard/employee_form.fxml");
     }
 
     public void medicineOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
+        btnmedicine.setStyle("-fx-background-color: #89CFF3;");
         setform("/view/dashboard/medicine_form.fxml");
     }
 
     public void settingsOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
+        btnsettings.setStyle("-fx-background-color: #89CFF3;");
         setform("/view/dashboard/settings_form.fxml");
     }
 
     public void appointmentOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
+        btnappointment.setStyle("-fx-background-color: #89CFF3;");
         setform("/view/dashboard/appointment_form.fxml");
     }
 
     public void detailsOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
+        btndetails.setStyle("-fx-background-color: #89CFF3;");
         setform("/view/dashboard/details_form.fxml");
     }
 
     public void paymentOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
+        btnpayment.setStyle("-fx-background-color: #89CFF3;");
         setform("/view/dashboard/payment_form.fxml");
+    }
+
+    public void signoutOnMouseEnter(MouseEvent mouseEvent) {
+        setButtonUp();
+        btnsignout.setStyle("-fx-background-color: red;");
+    }
+
+    public void signoutOnMouseExit(MouseEvent mouseEvent) {
+        setButtonUp();
     }
 }
