@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.ahms.controller.dashboard.SettingsFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="775.0" prefWidth="910.0" style="-fx-background-color: #E4F1FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.DetailsFormController">
+   <children>
+      <Line endX="681.085205078125" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
+      <Label layoutX="55.0" layoutY="44.0" text="Settings">
+         <font>
+            <Font name="Arial Bold" size="46.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
