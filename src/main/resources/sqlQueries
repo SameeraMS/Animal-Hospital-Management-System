@@ -13,10 +13,10 @@ create table employee(
 create table user(
     user_name           varchar(10)               primary key,
     password            varchar(10)               not null,
-    employee_id         varchar(10)                       ,
+    employee_id         varchar(10)               unique,
     constraint foreign key (employee_id ) references employee (employee_id )
 );
 
 insert into employee values ('e001','sameera','779582592','madushansameera499@gmail.com','Cashier');
 
-insert into user values('sameera,'1234',');
+insert into user values('sameera,'1234','e001');
