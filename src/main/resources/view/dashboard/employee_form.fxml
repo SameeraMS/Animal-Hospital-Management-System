@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="775.0" prefWidth="960.0" style="-fx-background-color: #E4F1FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.DetailsFormController">
+<AnchorPane prefHeight="775.0" prefWidth="960.0" style="-fx-background-color: #E4F1FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.EmployeeFormController">
    <children>
       <Line endX="681.085205078125" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
       <Label layoutX="55.0" layoutY="44.0" text="Employee">
@@ -21,22 +20,7 @@
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="364.0" layoutY="516.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../asserts/icons/save.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="221.0" layoutY="516.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Update" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="421.0" layoutY="122.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Search" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -51,7 +35,17 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="78.0" layoutY="516.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
+      <TableView layoutX="56.0" layoutY="208.0" prefHeight="489.0" prefWidth="829.0">
+        <columns>
+          <TableColumn editable="false" prefWidth="92.0" text="Id" />
+          <TableColumn editable="false" prefWidth="92.0" text="Name" />
+            <TableColumn editable="false" prefWidth="92.0" text="Type" />
+            <TableColumn editable="false" prefWidth="44.0" />
+            <TableColumn editable="false" prefWidth="44.0" />
+        </columns>
+      </TableView>
+      <JFXTextField layoutX="152.0" layoutY="124.0" prefHeight="47.0" prefWidth="239.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="743.0" layoutY="48.0" onAction="#addEmpOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: green;" text="Add New" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -61,59 +55,25 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/clear.png" />
+                  <Image url="@../../asserts/icons/update.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXTextField layoutX="211.0" layoutY="168.0" prefHeight="35.0" prefWidth="271.0" promptText="Id" />
-      <Label layoutX="83.0" layoutY="182.0" text="Id">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="698.0" layoutY="121.0" onAction="#infoEmpOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: gray;" text="Info" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
-      </Label>
-      <Label layoutX="83.0" layoutY="227.0" text="Name ">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="83.0" layoutY="271.0" text="Address">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="83.0" layoutY="315.0" text="Contact No">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="83.0" layoutY="362.0" text="Email">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="83.0" layoutY="409.0" text="Type">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <JFXTextField layoutX="211.0" layoutY="213.0" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
-      <JFXTextField layoutX="211.0" layoutY="257.0" prefHeight="35.0" prefWidth="271.0" promptText="Address" />
-      <JFXTextField layoutX="211.0" layoutY="301.0" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
-      <JFXTextField layoutX="211.0" layoutY="348.0" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
-      <TableView layoutX="520.0" layoutY="154.0" prefHeight="543.0" prefWidth="365.0">
-        <columns>
-          <TableColumn editable="false" prefWidth="92.0" text="Id" />
-          <TableColumn editable="false" prefWidth="92.0" text="Name" />
-            <TableColumn editable="false" prefWidth="92.0" text="Type" />
-            <TableColumn editable="false" prefWidth="44.0" />
-            <TableColumn editable="false" prefWidth="44.0" />
-        </columns>
-      </TableView>
-      <JFXComboBox layoutX="211.0" layoutY="395.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Type">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXComboBox>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

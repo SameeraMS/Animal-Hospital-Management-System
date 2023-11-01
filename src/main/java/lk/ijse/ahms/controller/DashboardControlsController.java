@@ -110,7 +110,6 @@ public class DashboardControlsController {
     }
 
     public void signoutOnMouseEnter(MouseEvent mouseEvent) {
-        setButtonUp();
         btnsignout.setStyle("-fx-background-color: red;");
     }
 
