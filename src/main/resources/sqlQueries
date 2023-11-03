@@ -39,6 +39,7 @@ create table pets(
     pet_id         varchar(10)      primary key,
     name           varchar(20)      not null,
     age            int(4)           not null,
+    gender         varchar(20)      not null,
     type           varchar(10)      not null,
     pet_owner_id   varchar(10)      not null,
     constraint foreign key (pet_owner_id) references pet_owner (pet_owner_id)
@@ -55,6 +56,8 @@ create table medicine(
     med_id      varchar(10)         primary key,
     name        varchar(20)         not null,
     type        varchar(10)         not null,
+    price       decimal(6,2)        not null,
+    description varchar(50),
     exp_date    date
 );
 
@@ -64,12 +67,15 @@ create table med_sup_details(
     constraint foreign key (sup_id) references suppliers (sup_id)
     on delete cascade on update cascade,
     constraint foreign key (med_id) references medicine (med_id)
-    on delete cascade on update cascade,
+    on delete cascade on update cascade
 );
 
 create table appointment(
     appointment_id      varchar(10)     primary key,
     amount              decimal(6,2)    not null,
+    date                date            not null,
+    time                varchar(20)     not null,
+    description         varchar(50),
     user_id             varchar(10)     not null,
     doc_id              varchar(10)     not null,
     pet_owner_id        varchar(10)     not null,
@@ -78,11 +84,12 @@ create table appointment(
     constraint foreign key (doc_id) references doctor (doc_id)
     on delete cascade on update cascade,
     constraint foreign key (user_id) references user (user_id)
-    on delete cascade on update cascade,
+    on delete cascade on update cascade
 );
 
 create table payment(
     payment_id      varchar(10)     primary key,
+    date            date,
     amount          varchar(10)     not null,
     appointment_id  varchar(10)     not null,
     constraint foreign key (appointment_id) references appointment (appointment_id)
@@ -94,7 +101,7 @@ create table prescription(
     description varchar(100),
     appointment_id varchar(10) not null,
     constraint foreign key (appointment_id) references appointment (appointment_id)
-    on delete cascade on update cascade,
+    on delete cascade on update cascade
 );
 
 create table prescription_details(
@@ -103,5 +110,5 @@ create table prescription_details(
     constraint foreign key (presc_id) references prescription (presc_id)
     on delete cascade on update cascade,
     constraint foreign key (med_id) references medicine (med_id)
-    on delete cascade on update cascade,
+    on delete cascade on update cascade
 );

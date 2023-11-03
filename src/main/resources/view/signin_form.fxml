@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="775.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.SigninFormController">
+<AnchorPane fx:id="root" prefHeight="775.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.SigninFormController">
    <children>
       <ImageView fitHeight="807.0" fitWidth="1326.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -26,7 +26,7 @@
          <effect>
             <InnerShadow>
                <color>
-                  <Color red="0.9078947305679321" green="0.722953200340271" blue="0.722953200340271" />
+                  <Color blue="0.722953200340271" green="0.722953200340271" red="0.9078947305679321" />
                </color>
             </InnerShadow>
          </effect>
