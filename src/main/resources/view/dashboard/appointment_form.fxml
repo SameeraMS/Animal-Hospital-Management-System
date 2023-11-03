@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="775.0" prefWidth="960.0" style="-fx-background-color: #E4F1FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.DetailsFormController">
+<AnchorPane prefHeight="775.0" prefWidth="960.0" style="-fx-background-color: #E4F1FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.AppointmentFormController">
    <children>
       <Line endX="681.085205078125" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
       <Label layoutX="55.0" layoutY="44.0" text="Appointment">
@@ -13,5 +17,27 @@
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
+      <JFXTextField layoutX="113.0" layoutY="123.0" prefHeight="52.0" prefWidth="279.0" />
+      <JFXButton buttonType="RAISED" layoutX="661.0" layoutY="125.0" onAction="#makeApointmentOnAction" style="-fx-background-color: yellow;" text="Make Appointment">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="419.0" layoutY="128.0" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: pink;" text="Search">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
+      <TableView layoutX="46.0" layoutY="224.0" prefHeight="457.0" prefWidth="871.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="672.0" layoutY="700.0" style="-fx-background-color: green;" text="Print Appointment">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

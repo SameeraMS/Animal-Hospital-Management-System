@@ -7,7 +7,7 @@ create table employee(
         employee_name       varchar(100)        not null    ,
         employee_contact_no varchar(10)         not null    ,
         employee_email      varchar(50)         not null    ,
-        employee_type       enum ('Doctor','Helper','Cleaner','Cashier')
+        employee_type       enum ('Admin','Helper','Cleaner')
 );
 
 create table user(
@@ -17,6 +17,74 @@ create table user(
     constraint foreign key (employee_id ) references employee (employee_id )
 );
 
-insert into employee values ('e001','sameera','779582592','madushansameera499@gmail.com','Cashier');
+insert into employee values ('e001','sameera','779582592','madushansameera499@gmail.com','Admin');
 
 insert into user values('sameera,'1234','e001');
+
+create table doctor(
+    doc_id      varchar(10)     primary key,
+    name        varchar(20)     not null,
+    email       varchar(30)     not null,
+    contact_no  int(11)         not null
+);
+
+create table payment(
+    payment_id      varchar(10)     primary key,
+    amount          varchar(10)     not null,
+    appointment_id  varchar(10)     not null,
+    constraint foreign key (appointment_id) references appointment (appointment_id)
+    on delete cascade on update cascade
+);
+
+create table pet_owner(
+    pet_owner_id        varchar(10)     primary key,
+    name                varchar(20)     not null,
+    email               varchar(30)     not null,
+    contact_no          int(11)         not null
+);
+
+create table pets(
+    pet_id         varchar(10)      primary key,
+    name           varchar(20)      not null,
+    age            int(4)           not null,
+    type           varchar(10)      not null,
+    pet_owner_id   varchar(10)      not null,
+    constraint foreign key (pet_owner_id) references pet_owner (pet_owner_id)
+    on delete cascade on update cascade
+);
+
+create table suppliers(
+    sup_id      varchar(10)     primary key,
+    name        varchar(20)     not null,
+    contact_no  int(11)         not null
+);
+
+create table medicine(
+    med_id      varchar(10)         primary key,
+    name        varchar(20)         not null,
+    type        varchar(10)         not null,
+    exp_date    date
+);
+
+create table med_sup_details(
+    sup_id      varchar(10)         not null,
+    med_id      varchar(10)         not null,
+    constraint foreign key (sup_id) references suppliers (sup_id)
+    on delete cascade on update cascade,
+    constraint foreign key (med_id) references medicine (med_id)
+    on delete cascade on update cascade,
+);
+
+create table appointment(
+    appointment_id      varchar(10)     primary key,
+    amount              decimal(6,2)    not null,
+    user_id             varchar(10)     not null,
+    doc_id              varchar(10)     not null,
+    pet_owner_id        varchar(10)     not null,
+    constraint foreign key (pet_owner_id) references pet_owner (pet_owner_id)
+    on delete cascade on update cascade,
+    constraint foreign key (doc_id) references doctor (doc_id)
+    on delete cascade on update cascade,
+    constraint foreign key (user_id) references user (user_id)
+    on delete cascade on update cascade,
+);
