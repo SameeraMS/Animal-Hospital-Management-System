@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="431.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.add.AddEmployeeFormController">
    <children>
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="300.0" layoutY="354.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
@@ -44,7 +43,7 @@
          </graphic>
       </JFXButton>
       <JFXTextField layoutX="147.0" layoutY="23.0" prefHeight="35.0" prefWidth="271.0" promptText="Id" />
-      <Label layoutX="19.0" layoutY="37.0" text="Id">
+      <Label layoutX="19.0" layoutY="37.0" text="Emp Id">
          <font>
             <Font size="20.0" />
          </font>

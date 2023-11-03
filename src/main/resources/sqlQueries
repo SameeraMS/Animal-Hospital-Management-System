@@ -28,14 +28,6 @@ create table doctor(
     contact_no  int(11)         not null
 );
 
-create table payment(
-    payment_id      varchar(10)     primary key,
-    amount          varchar(10)     not null,
-    appointment_id  varchar(10)     not null,
-    constraint foreign key (appointment_id) references appointment (appointment_id)
-    on delete cascade on update cascade
-);
-
 create table pet_owner(
     pet_owner_id        varchar(10)     primary key,
     name                varchar(20)     not null,
@@ -86,5 +78,30 @@ create table appointment(
     constraint foreign key (doc_id) references doctor (doc_id)
     on delete cascade on update cascade,
     constraint foreign key (user_id) references user (user_id)
+    on delete cascade on update cascade,
+);
+
+create table payment(
+    payment_id      varchar(10)     primary key,
+    amount          varchar(10)     not null,
+    appointment_id  varchar(10)     not null,
+    constraint foreign key (appointment_id) references appointment (appointment_id)
+    on delete cascade on update cascade
+);
+
+create table prescription(
+    presc_id varchar(10) primary key,
+    description varchar(100),
+    appointment_id varchar(10) not null,
+    constraint foreign key (appointment_id) references appointment (appointment_id)
+    on delete cascade on update cascade,
+);
+
+create table prescription_details(
+    presc_id varchar(10) not null,
+    med_id varchar(10) not null,
+    constraint foreign key (presc_id) references prescription (presc_id)
+    on delete cascade on update cascade,
+    constraint foreign key (med_id) references medicine (med_id)
     on delete cascade on update cascade,
 );

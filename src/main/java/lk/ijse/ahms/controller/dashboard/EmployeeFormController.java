@@ -30,4 +30,13 @@ public class EmployeeFormController {
         stage.centerOnScreen();
         stage.show();
     }
+
+    public void addDocOnAction(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/add/addDoctor_form.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
 }
