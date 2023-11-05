@@ -57,7 +57,7 @@ public class SigninFormController {
                         stage.setTitle("dashboard");
 
                             Mail mail = new Mail();
-                            mail.setMsg("Welcome - Welcome to the Animal Hospital Management System");
+                            mail.setMsg("Welcome..! \n\n\tYou are successfully logged to the Animal Hospital Management System \n\nThank you..!");
                             mail.setTo(getun);
                             mail.setSubject("Animal Hospital Management System Login");
 
