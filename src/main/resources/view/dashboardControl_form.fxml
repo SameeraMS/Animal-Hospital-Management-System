@@ -41,7 +41,7 @@
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/dashboard.png" />
                </image>
@@ -52,7 +52,7 @@
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/pets.png" />
                </image>
@@ -63,7 +63,7 @@
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/employee.png" />
                </image>
@@ -74,29 +74,29 @@
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/medicine.png" />
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnsettings" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="637.0" onAction="#settingsOnAction" prefHeight="60.0" prefWidth="300.0" text="Settings">
+      <JFXButton fx:id="btnsettings" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="608.0" onAction="#settingsOnAction" prefHeight="60.0" prefWidth="300.0" text="Settings">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/settings.png" />
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnsignout" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="705.0" onAction="#signoutOnAction" onMouseEntered="#signoutOnMouseEnter" onMouseExited="#signoutOnMouseExit" prefHeight="60.0" prefWidth="300.0" text="Sign Out">
+      <JFXButton fx:id="btnsignout" alignment="CENTER" buttonType="RAISED" graphicTextGap="18.0" layoutX="61.0" layoutY="709.0" onAction="#signoutOnAction" onMouseEntered="#signoutOnMouseEnter" onMouseExited="#signoutOnMouseExit" prefHeight="45.0" prefWidth="187.0" text="Sign Out">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/signout.png" />
                </image>
@@ -107,7 +107,7 @@
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/appointment.png" />
                </image>
@@ -118,7 +118,7 @@
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/details.png" />
                </image>
@@ -135,12 +135,12 @@
             <Font name="Arial Black" size="22.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnpayment" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="537.0" onAction="#paymentOnAction" prefHeight="60.0" prefWidth="300.0" text="Payment">
+      <JFXButton fx:id="btnpayment" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="538.0" onAction="#paymentOnAction" prefHeight="60.0" prefWidth="300.0" text="Payment">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../asserts/icons/billing.png" />
                </image>

@@ -12,9 +12,8 @@ public class Launcher extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/welcomePage_form.fxml"));
-
         Scene scene = new Scene(root);
-        stage.setTitle("Children Hospital Management System");
+        stage.setTitle("Animal Hospital Management System");
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();

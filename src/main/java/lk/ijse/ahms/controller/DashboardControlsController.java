@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Statement;
@@ -17,7 +18,7 @@ import java.sql.Statement;
 public class DashboardControlsController {
     public AnchorPane mainroot;
     public AnchorPane subroot;
-    public static Label lblname;
+    public Label lblname;
     public JFXButton btndashboard;
     public JFXButton btnpets;
     public JFXButton btnEmployee;
@@ -27,6 +28,7 @@ public class DashboardControlsController {
     public JFXButton btndetails;
     public JFXButton btnpayment;
     public JFXButton btnsignout;
+
 
     public void initialize(){
         setButtonUp();
@@ -48,7 +50,7 @@ public class DashboardControlsController {
         btnsettings.setStyle("-fx-background-color: white;");
         btndashboard.setStyle("-fx-background-color: white;");
         btnEmployee.setStyle("-fx-background-color: white;");
-        btnsignout.setStyle("-fx-background-color: white;");
+        btnsignout.setStyle("-fx-background-color: #C70039;");
     }
 
     public void signoutOnAction(ActionEvent actionEvent) throws IOException {

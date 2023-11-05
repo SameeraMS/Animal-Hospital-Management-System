@@ -32,7 +32,7 @@ public class EmployeeFormController {
     }
 
     public void addDocOnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/add/addDoctor_form.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/add/addDoc_form.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
