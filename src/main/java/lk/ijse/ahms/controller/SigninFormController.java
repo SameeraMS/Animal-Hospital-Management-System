@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.model.UserModel;
+import lk.ijse.ahms.smtp.Mail;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,14 +29,14 @@ public class SigninFormController {
         String getun = txtusername.getText();
         String getpw = txtpassword.getText();
 
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
-        Scene scene = new Scene(anchorPane);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(scene);
-        stage.setTitle("dashboard");
+//        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
+//        Scene scene = new Scene(anchorPane);
+//        Stage stage = (Stage) root.getScene().getWindow();
+//        stage.setScene(scene);
+//        stage.setTitle("dashboard");
 
 
-      /*   if(getun.isEmpty()) {
+         if(getun.isEmpty()) {
             new Alert(Alert.AlertType.INFORMATION, "username required..!!").show();
         }else if(getpw.isEmpty()) {
             new Alert(Alert.AlertType.INFORMATION, "password required..!!").show();
@@ -55,6 +56,16 @@ public class SigninFormController {
                         stage.setScene(scene);
                         stage.setTitle("dashboard");
 
+                            Mail mail = new Mail();
+                            mail.setMsg("Welcome - Welcome to the Animal Hospital Management System");
+                            mail.setTo(getun);
+                            mail.setSubject("Animal Hospital Management System Login");
+
+                            Thread thread = new Thread(mail);
+                            thread.start();
+
+
+
                          } else {
                             new Alert(Alert.AlertType.INFORMATION, "username or password incorrect..!").show();
                             }
@@ -63,6 +74,6 @@ public class SigninFormController {
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } */
+        }
     }
 }

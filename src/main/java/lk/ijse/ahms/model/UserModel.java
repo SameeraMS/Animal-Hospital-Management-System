@@ -1,6 +1,7 @@
 package lk.ijse.ahms.model;
 
 import lk.ijse.ahms.db.DbConnection;
+import lk.ijse.ahms.smtp.Mail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,5 +20,6 @@ public ResultSet checkCredentials(String username, String password) throws SQLEx
     ResultSet resultSet = pstm.executeQuery();
     return resultSet;
 }
+
 
 }
