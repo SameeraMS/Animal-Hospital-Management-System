@@ -50,8 +50,6 @@ public class Mail implements Runnable{
         mimeMessage.setText(this.msg);
         Transport.send(mimeMessage);
 
-
-
         System.out.println("sent");
     }
 

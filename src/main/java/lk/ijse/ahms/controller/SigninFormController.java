@@ -29,14 +29,14 @@ public class SigninFormController {
         String getun = txtusername.getText();
         String getpw = txtpassword.getText();
 
-//        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
-//        Scene scene = new Scene(anchorPane);
-//        Stage stage = (Stage) root.getScene().getWindow();
-//        stage.setScene(scene);
-//        stage.setTitle("dashboard");
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("dashboard");
 
 
-         if(getun.isEmpty()) {
+     /*    if(getun.isEmpty()) {
             new Alert(Alert.AlertType.INFORMATION, "username required..!!").show();
         }else if(getpw.isEmpty()) {
             new Alert(Alert.AlertType.INFORMATION, "password required..!!").show();
@@ -57,7 +57,7 @@ public class SigninFormController {
                         stage.setTitle("dashboard");
 
                             Mail mail = new Mail();
-                            mail.setMsg("Welcome..! \n\n\tYou are successfully logged to the Animal Hospital Management System \n\nThank you..!");
+                            mail.setMsg("Welcome..! \n\n\tYou are successfully logged in to the Animal Hospital Management System \n\nThank you..!");
                             mail.setTo(getun);
                             mail.setSubject("Animal Hospital Management System Login");
 
@@ -74,6 +74,14 @@ public class SigninFormController {
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        }
+        } */
+    }
+
+    public void passOnAction(ActionEvent actionEvent) throws IOException {
+        signinOnAction(actionEvent);
+    }
+
+    public void usernameOnAction(ActionEvent actionEvent) {
+        txtpassword.requestFocus();
     }
 }

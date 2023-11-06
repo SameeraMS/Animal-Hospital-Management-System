@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="431.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.add.AddEmployeeFormController">
    <children>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="300.0" layoutY="354.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="300.0" layoutY="354.0" onAction="#saveOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -27,7 +27,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="147.0" layoutY="354.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="147.0" layoutY="354.0" onAction="#clearOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -42,7 +42,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXTextField layoutX="147.0" layoutY="23.0" prefHeight="35.0" prefWidth="271.0" promptText="Id" />
+      <JFXTextField fx:id="empId" layoutX="147.0" layoutY="23.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Id" />
       <Label layoutX="19.0" layoutY="37.0" text="Emp Id">
          <font>
             <Font size="20.0" />
@@ -73,11 +73,11 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="147.0" layoutY="68.0" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
-      <JFXTextField layoutX="147.0" layoutY="112.0" prefHeight="35.0" prefWidth="271.0" promptText="Address" />
-      <JFXTextField layoutX="147.0" layoutY="156.0" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
-      <JFXTextField layoutX="147.0" layoutY="203.0" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
-      <JFXComboBox layoutX="147.0" layoutY="250.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Type">
+      <JFXTextField fx:id="empName" layoutX="147.0" layoutY="68.0" onAction="#nameOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
+      <JFXTextField fx:id="empAddress" layoutX="147.0" layoutY="112.0" onAction="#addressOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Address" />
+      <JFXTextField fx:id="empTel" layoutX="147.0" layoutY="156.0" onAction="#telOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
+      <JFXTextField fx:id="empMail" layoutX="147.0" layoutY="203.0" onAction="#mailOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
+      <JFXComboBox fx:id="cmbEmpType" layoutX="147.0" layoutY="250.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Type">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

@@ -3,6 +3,7 @@ package lk.ijse.ahms.dto;
 public class EmployeeDto {
     private String id;
     private String name;
+    private String address;
     private String tel;
     private String email;
     private String type;
@@ -10,12 +11,21 @@ public class EmployeeDto {
     public EmployeeDto() {
     }
 
-    public EmployeeDto(String id, String name, String tel, String email, String type) {
+    public EmployeeDto(String id, String name, String address, String tel, String email, String type) {
         this.id = id;
         this.name = name;
+        this.address = address;
         this.tel = tel;
         this.email = email;
         this.type = type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getId() {
@@ -60,9 +70,10 @@ public class EmployeeDto {
 
     @Override
     public String toString() {
-        return "EmpModel{" +
+        return "EmployeeDto{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
                 ", tel='" + tel + '\'' +
                 ", email='" + email + '\'' +
                 ", type='" + type + '\'' +
