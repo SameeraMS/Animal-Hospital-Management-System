@@ -7,8 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.model.UserModel;
 import lk.ijse.ahms.smtp.Mail;
@@ -83,5 +85,15 @@ public class SigninFormController {
 
     public void usernameOnAction(ActionEvent actionEvent) {
         txtpassword.requestFocus();
+    }
+
+    public void forgotPassOnAction(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/view/forgotpass1_form.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
 }

@@ -52,7 +52,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="468.0" layoutY="473.0" text="Forgot Password..?" textFill="#5568c9">
+      <Label layoutX="468.0" layoutY="473.0" onMouseClicked="#forgotPassOnAction" text="Forgot Password..?" textFill="#5568c9">
          <font>
             <Font size="16.0" />
          </font>
