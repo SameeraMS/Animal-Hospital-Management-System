@@ -11,7 +11,7 @@ public class MedicineDto {
     private String medId;
     private String name;
     private String type;
-    private double price;
+    private String price;
     private String description;
     private String expdate;
 

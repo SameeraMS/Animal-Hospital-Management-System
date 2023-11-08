@@ -56,7 +56,7 @@ public class AddMedicineFormController {
         String id = medId.getText();
         String name = medName.getText();
         String type = cmbType.getSelectionModel().getSelectedItem();
-        Double price = Double.valueOf(medPrice.getText());
+        String price = medPrice.getText();
         String desc = medDesc.getText();
         String expDate = medExpDate.getText();
 

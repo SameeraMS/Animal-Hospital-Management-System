@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.ahms.controller.dashboard.DashboardController;
 
 import java.awt.*;
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class DashboardControlsController {
     public void initialize() throws IOException {
         setButtonUp();
         dash();
+       // DashboardController.lblToChange.setText("Welcome Back..!");
     }
     private void setform(String form) throws IOException {
         URL resource = getClass().getResource(form);
