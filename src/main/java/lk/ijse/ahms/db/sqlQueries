@@ -20,7 +20,7 @@ create table user(
 
 insert into employee values ('e001','sameera','panadura','779582592','madushansameera499@gmail.com','Admin');
 
-insert into user values('sameerams2002@gmail.com','1234','e001');
+insert into user values('madushansameera499@gmail.com','1234','e001');
 
 create table doctor(
     doc_id      varchar(10)     primary key,

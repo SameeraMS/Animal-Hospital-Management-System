@@ -30,8 +30,9 @@ public class DashboardControlsController {
     public JFXButton btnsignout;
 
 
-    public void initialize(){
+    public void initialize() throws IOException {
         setButtonUp();
+        dash();
     }
     private void setform(String form) throws IOException {
         URL resource = getClass().getResource(form);
@@ -66,6 +67,10 @@ public class DashboardControlsController {
     public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
         btndashboard.setStyle("-fx-background-color: #89CFF3;");
+        setform("/view/dashboard/dashboard_form.fxml");
+    }
+
+    public void dash( ) throws IOException {
         setform("/view/dashboard/dashboard_form.fxml");
     }
 

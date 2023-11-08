@@ -107,7 +107,7 @@ public class ForgotPassword2Controller implements Initializable {
         String setOtp=otp1+otp2+otp3+otp4;
         if (lblotp.getText().equalsIgnoreCase(setOtp)){
             lblStatus.setStyle("-fx-text-fill: Green");
-            lblStatus.setText("Currect OTP");
+            lblStatus.setText("Correct OTP");
 
             Parent root = FXMLLoader.load(getClass().getResource("/view/ForgotPassword3.fxml"));
             Scene scene = btn1.getScene();
