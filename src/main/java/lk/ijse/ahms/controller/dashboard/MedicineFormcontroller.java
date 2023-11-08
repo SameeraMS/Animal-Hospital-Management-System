@@ -22,7 +22,7 @@ public class MedicineFormcontroller {
 
     public void infoMedOnAction(ActionEvent actionEvent) throws IOException {
 
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/add/infoMedicine_form.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/info/infoMedicine_form.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);

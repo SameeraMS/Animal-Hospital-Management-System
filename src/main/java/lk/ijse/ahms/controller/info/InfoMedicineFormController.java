@@ -1,4 +1,4 @@
-package lk.ijse.ahms.controller.add;
+package lk.ijse.ahms.controller.info;
 
 public class InfoMedicineFormController {
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -20,32 +19,15 @@
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="282.0" layoutY="151.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Search" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../asserts/icons/update.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <TableView layoutX="30.0" layoutY="270.0" prefHeight="421.0" prefWidth="443.0">
+      <TableView fx:id="tblEmployee" layoutX="30.0" layoutY="270.0" prefHeight="421.0" prefWidth="446.0">
         <columns>
-          <TableColumn editable="false" prefWidth="92.0" text="Id" />
-          <TableColumn editable="false" prefWidth="92.0" text="Name" />
-            <TableColumn editable="false" prefWidth="92.0" text="Type" />
-            <TableColumn editable="false" prefWidth="44.0" />
-            <TableColumn editable="false" prefWidth="44.0" />
+          <TableColumn fx:id="colId" editable="false" prefWidth="86.5268325805664" text="Id" />
+          <TableColumn fx:id="colName" editable="false" minWidth="8.0" prefWidth="117.0" text="Name" />
+            <TableColumn fx:id="colTel" editable="false" minWidth="9.0" prefWidth="128.0" text="Telephone" />
+            <TableColumn fx:id="colType" editable="false" minWidth="9.0" prefWidth="112.66549682617188" text="Type" />
         </columns>
       </TableView>
-      <JFXTextField layoutX="25.0" layoutY="153.0" prefHeight="47.0" prefWidth="239.0" />
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="436.0" layoutY="148.0" onAction="#addEmpOnAction" prefHeight="51.0" prefWidth="182.0" style="-fx-background-color: green;" text="Add New Employee" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="279.0" layoutY="127.0" onAction="#addEmpOnAction" prefHeight="51.0" prefWidth="182.0" style="-fx-background-color: green;" text="Add New Employee" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -60,7 +42,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="827.0" layoutY="149.0" onAction="#infoEmpOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: rgb(128,128,128);" text="Info" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="367.0" layoutY="227.0" onAction="#infoEmpOnAction" prefHeight="34.0" prefWidth="103.0" style="-fx-background-color: rgb(128,128,128);" text="Info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -75,7 +57,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="633.0" layoutY="148.0" onAction="#addDocOnAction" prefHeight="51.0" prefWidth="182.0" style="-fx-background-color: green;" text="Add New Doctor" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="476.0" layoutY="127.0" onAction="#addDocOnAction" prefHeight="51.0" prefWidth="182.0" style="-fx-background-color: green;" text="Add New Doctor" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -90,13 +72,11 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView layoutX="495.0" layoutY="266.0" prefHeight="424.0" prefWidth="443.0">
+      <TableView fx:id="tblDoc" layoutX="539.0" layoutY="270.0" prefHeight="424.0" prefWidth="378.0">
          <columns>
-            <TableColumn editable="false" prefWidth="92.0" text="Id" />
-            <TableColumn editable="false" prefWidth="92.0" text="Name" />
-            <TableColumn editable="false" prefWidth="92.0" text="Type" />
-            <TableColumn editable="false" prefWidth="44.0" />
-            <TableColumn editable="false" prefWidth="44.0" />
+            <TableColumn fx:id="colDocId" editable="false" prefWidth="112.0" text="Id" />
+            <TableColumn fx:id="colDocName" editable="false" prefWidth="137.0" text="Name" />
+            <TableColumn fx:id="colDocTel" editable="false" prefWidth="126.0" text="Telephone" />
          </columns>
       </TableView>
       <Label layoutX="33.0" layoutY="247.0" text="Employee">
@@ -104,10 +84,25 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="497.0" layoutY="245.0" text="Doctor">
+      <Label layoutX="540.0" layoutY="245.0" text="Doctor">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="810.0" layoutY="228.0" onAction="#infoDocOnAction" prefHeight="34.0" prefWidth="103.0" style="-fx-background-color: rgb(128,128,128);" text="Info" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
