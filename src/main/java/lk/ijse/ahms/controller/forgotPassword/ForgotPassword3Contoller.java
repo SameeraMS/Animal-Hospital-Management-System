@@ -1,4 +1,4 @@
-package lk.ijse.ahms.controller;
+package lk.ijse.ahms.controller.forgotPassword;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;

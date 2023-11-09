@@ -2,22 +2,15 @@ package lk.ijse.ahms.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.model.UserModel;
-import lk.ijse.ahms.smtp.Mail;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.*;
 
 public class SigninFormController {
     public AnchorPane root;
@@ -88,7 +81,7 @@ public class SigninFormController {
     }
 
     public void forgotPassOnAction(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/view/forgotpass1_form.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/view/forgotPassword/forgotpass1_form.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();

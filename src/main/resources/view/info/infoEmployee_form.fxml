@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="435.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.info.InfoEmployeeFormController">
    <children>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="324.0" layoutY="374.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btndelete" buttonType="RAISED" contentDisplay="RIGHT" layoutX="324.0" layoutY="374.0" onAction="#deleteOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -27,7 +27,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="181.0" layoutY="374.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Update" textFill="WHITE">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" contentDisplay="RIGHT" layoutX="181.0" layoutY="374.0" onAction="#updateOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -72,19 +72,34 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXComboBox layoutX="170.0" layoutY="30.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Employee Id">
+      <JFXComboBox fx:id="cmbEmpId" layoutX="170.0" layoutY="30.0" onAction="#cmbEmpIdOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Select Employee Id">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXComboBox>
-      <JFXTextField layoutX="170.0" layoutY="75.0" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
-      <JFXTextField layoutX="170.0" layoutY="119.0" prefHeight="35.0" prefWidth="271.0" promptText="Address" />
-      <JFXTextField layoutX="170.0" layoutY="163.0" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
-      <JFXTextField layoutX="170.0" layoutY="210.0" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
-      <JFXComboBox layoutX="170.0" layoutY="257.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Type">
+      <JFXTextField fx:id="txtname" layoutX="170.0" layoutY="75.0" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
+      <JFXTextField fx:id="txtadress" layoutX="170.0" layoutY="119.0" prefHeight="35.0" prefWidth="271.0" promptText="Address" />
+      <JFXTextField fx:id="txttel" layoutX="170.0" layoutY="163.0" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
+      <JFXTextField fx:id="txtemail" layoutX="170.0" layoutY="210.0" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
+      <JFXComboBox fx:id="cmbEmpType" layoutX="170.0" layoutY="257.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Type">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXComboBox>
+      <JFXButton fx:id="btnEdit" buttonType="RAISED" contentDisplay="RIGHT" layoutX="37.0" layoutY="374.0" onAction="#editOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: rgb(128,128,128);" text="Edit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

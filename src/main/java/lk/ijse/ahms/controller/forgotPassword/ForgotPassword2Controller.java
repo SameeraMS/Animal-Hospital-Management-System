@@ -1,4 +1,4 @@
-package lk.ijse.ahms.controller;
+package lk.ijse.ahms.controller.forgotPassword;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -109,7 +109,7 @@ public class ForgotPassword2Controller implements Initializable {
             lblStatus.setStyle("-fx-text-fill: Green");
             lblStatus.setText("Correct OTP");
 
-            Parent root = FXMLLoader.load(getClass().getResource("/view/ForgotPassword3.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/forgotPassword/ForgotPassword3.fxml"));
             Scene scene = btn1.getScene();
             root.translateXProperty().set(scene.getWidth());
 

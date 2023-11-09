@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="697.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.Forgotpass1FormController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="697.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.forgotPassword.Forgotpass1FormController">
    <children>
       <AnchorPane fx:id="AnchorPaneFogotPassword" layoutX="3.0" layoutY="4.0" prefHeight="447.0" prefWidth="697.0">
          <children>
@@ -23,7 +23,7 @@
             <Label fx:id="lblEmail" layoutX="94.0" layoutY="386.0" opacity="0.0" text="Label" />
             <ImageView fx:id="btnClose" fitHeight="32.0" fitWidth="35.0" layoutX="651.0" layoutY="14.0" onMouseClicked="#btnCloseOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../asserts/icons/close.png" />
+                  <Image url="@../../asserts/icons/close.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

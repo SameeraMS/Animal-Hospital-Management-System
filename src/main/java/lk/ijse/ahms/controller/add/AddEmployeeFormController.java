@@ -7,6 +7,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import lk.ijse.ahms.controller.DashboardControlsController;
+import lk.ijse.ahms.controller.dashboard.DashboardController;
+import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
 
@@ -34,6 +37,7 @@ public class AddEmployeeFormController {
     @FXML
     private JFXComboBox<String> cmbEmpType;
 
+
     public void initialize() {
         loadCmbBox();
     }
@@ -42,7 +46,6 @@ public class AddEmployeeFormController {
 
         ObservableList<String> obList = FXCollections.observableArrayList();
 
-        obList.add("Manager");
         obList.add("Helper");
         obList.add("Cleaner");
 

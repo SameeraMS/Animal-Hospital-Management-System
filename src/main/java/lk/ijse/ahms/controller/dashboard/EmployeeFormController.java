@@ -34,7 +34,7 @@ public class EmployeeFormController {
     public TableColumn colDocTel;
     private EmpModel empModel = new EmpModel();
 
-    public void initialize() {
+    public  void initialize() {
         setCellValueFactoryEmployee();
         loadAllEmployee();
 
