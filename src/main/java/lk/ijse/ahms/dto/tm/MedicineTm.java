@@ -1,19 +1,18 @@
-package lk.ijse.ahms.dto;
+package lk.ijse.ahms.dto.tm;
 
 import lombok.*;
 
-@NoArgsConstructor
 @AllArgsConstructor
-@Setter
+@NoArgsConstructor
 @Getter
+@Setter
 @ToString
-public class MedicineDto {
+public class MedicineTm {
     private String medId;
     private String name;
     private String type;
-    private String qty;
     private String price;
     private String description;
-    private String expdate;
-
+    private String expDate;
+    private String qty;
 }

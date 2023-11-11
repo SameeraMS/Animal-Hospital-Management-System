@@ -7,8 +7,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
+import lk.ijse.ahms.controller.dashboard.MedicineFormcontroller;
 import lk.ijse.ahms.dto.MedicineDto;
 import lk.ijse.ahms.model.MedModel;
+import lombok.Setter;
 
 import java.sql.SQLException;
 
@@ -32,6 +35,9 @@ public class AddMedicineFormController {
 
     @FXML
     private JFXTextField medExpDate;
+
+    @Setter
+    private MedicineFormcontroller medFormController;
 
     public void initialize() {
         loadCmbBox();
@@ -63,7 +69,7 @@ public class AddMedicineFormController {
         String expDate = medExpDate.getText();
         String qty = medqty.getText();
 
-        var dto = new MedicineDto(id, name, type, price, desc, expDate, qty);
+        var dto = new MedicineDto(id, name, type, qty, price, desc, expDate );
 
         if(!id.isEmpty() && !name.isEmpty() && !type.isEmpty() && !price.isEmpty() && !desc.isEmpty() && !expDate.isEmpty() && !qty.isEmpty()) {
             try {
@@ -72,6 +78,7 @@ public class AddMedicineFormController {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Medicine saved!").show();
                     clearFields();
+                    medFormController.initialize();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

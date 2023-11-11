@@ -32,6 +32,7 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <JFXTextField fx:id="medId" layoutX="232.0" layoutY="37.0" prefHeight="35.0" prefWidth="271.0" />
       <JFXTextField fx:id="medName" layoutX="232.0" layoutY="82.0" prefHeight="35.0" prefWidth="271.0" />
       <JFXTextField fx:id="medPrice" layoutX="232.0" layoutY="171.0" onAction="#priceOnAction" prefHeight="35.0" prefWidth="271.0" />
       <JFXComboBox fx:id="cmbType" layoutX="232.0" layoutY="126.0" prefHeight="35.0" prefWidth="271.0" />
@@ -83,6 +84,5 @@
          </font>
       </Label>
       <JFXTextField fx:id="medqty" layoutX="232.0" layoutY="312.0" prefHeight="35.0" prefWidth="271.0" />
-      <JFXTextField fx:id="medId" layoutX="232.0" layoutY="37.0" prefHeight="35.0" prefWidth="271.0" />
    </children>
 </AnchorPane>
