@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="775.0" prefWidth="960.0" style="-fx-background-color: #E4F1FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.DetailsFormController">
+<AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.DetailsFormController">
    <children>
       <TextField layoutX="259.0" layoutY="131.0" prefHeight="50.0" prefWidth="272.0" />
       <JFXTextArea editable="false" focusColor="BLACK" layoutX="91.0" layoutY="230.0" prefHeight="519.0" prefWidth="724.0" promptText="dwds" style="-fx-background-color: #F1EFEF;" text="Id:&#10;Name :&#10;&#10;&#10;" />

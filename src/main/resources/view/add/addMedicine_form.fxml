@@ -12,27 +12,26 @@
 
 <AnchorPane prefHeight="498.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.add.AddMedicineFormController">
    <children>
-      <Label layoutX="60.0" layoutY="51.0" text="Medicine Id">
+      <Label layoutX="60.0" layoutY="55.0" text="Medicine Id">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="60.0" layoutY="95.0" text="Medicine Name">
+      <Label layoutX="60.0" layoutY="99.0" text="Medicine Name">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="60.0" layoutY="139.0" text="Type">
+      <Label layoutX="60.0" layoutY="143.0" text="Type">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="60.0" layoutY="183.0" text="Price">
+      <Label layoutX="60.0" layoutY="187.0" text="Price">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="medId" layoutX="232.0" layoutY="37.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" />
       <JFXTextField fx:id="medName" layoutX="232.0" layoutY="82.0" prefHeight="35.0" prefWidth="271.0" />
       <JFXTextField fx:id="medPrice" layoutX="232.0" layoutY="171.0" onAction="#priceOnAction" prefHeight="35.0" prefWidth="271.0" />
       <JFXComboBox fx:id="cmbType" layoutX="232.0" layoutY="126.0" prefHeight="35.0" prefWidth="271.0" />
@@ -66,17 +65,24 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <Label layoutX="60.0" layoutY="227.0" text="Description">
+      <Label layoutX="60.0" layoutY="231.0" text="Description">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="60.0" layoutY="271.0" text="Expire Date">
+      <Label layoutX="60.0" layoutY="275.0" text="Expire Date">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <JFXTextField fx:id="medDesc" layoutX="232.0" layoutY="216.0" onAction="#descOnAction" prefHeight="35.0" prefWidth="271.0" />
       <JFXTextField fx:id="medExpDate" layoutX="232.0" layoutY="261.0" prefHeight="35.0" prefWidth="271.0" />
+      <Label layoutX="60.0" layoutY="320.0" text="Qty On hand">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="medqty" layoutX="232.0" layoutY="312.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="medId" layoutX="232.0" layoutY="37.0" prefHeight="35.0" prefWidth="271.0" />
    </children>
 </AnchorPane>

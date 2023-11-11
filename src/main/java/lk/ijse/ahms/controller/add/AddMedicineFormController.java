@@ -13,6 +13,8 @@ import lk.ijse.ahms.model.MedModel;
 import java.sql.SQLException;
 
 public class AddMedicineFormController {
+
+    public JFXTextField medqty;
     @FXML
     private JFXTextField medId;
 
@@ -59,18 +61,23 @@ public class AddMedicineFormController {
         String price = medPrice.getText();
         String desc = medDesc.getText();
         String expDate = medExpDate.getText();
+        String qty = medqty.getText();
 
-        var dto = new MedicineDto(id, name, type, price, desc, expDate);
+        var dto = new MedicineDto(id, name, type, price, desc, expDate, qty);
 
-        try {
-            boolean isSaved = MedModel.saveMedicine(dto);
+        if(!id.isEmpty() && !name.isEmpty() && !type.isEmpty() && !price.isEmpty() && !desc.isEmpty() && !expDate.isEmpty() && !qty.isEmpty()) {
+            try {
+                boolean isSaved = MedModel.saveMedicine(dto);
 
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Medicine saved!").show();
-                clearFields();
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Medicine saved!").show();
+                    clearFields();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "All fields are required!").show();
         }
     }
 
@@ -85,9 +92,12 @@ public class AddMedicineFormController {
         cmbType.getSelectionModel().clearSelection();
         medDesc.clear();
         medExpDate.clear();
+        medqty.clear();
     }
 
     public void descOnAction(ActionEvent actionEvent) {
         medExpDate.requestFocus();
     }
+
+
 }

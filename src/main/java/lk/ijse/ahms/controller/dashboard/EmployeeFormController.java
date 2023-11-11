@@ -10,6 +10,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lk.ijse.ahms.controller.add.AddDocFormcontroller;
+import lk.ijse.ahms.controller.add.AddEmployeeFormController;
+import lk.ijse.ahms.controller.info.InfoDoctorFormController;
+import lk.ijse.ahms.controller.info.InfoEmployeeFormController;
 import lk.ijse.ahms.dto.DoctorDto;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.dto.tm.DoctorTm;
@@ -18,6 +22,7 @@ import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.EmpModel;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -48,8 +53,8 @@ public class EmployeeFormController {
         colDocTel.setCellValueFactory(new PropertyValueFactory<>("Tel"));
     }
 
-    private void loadAllDoctors() {
-
+    public void loadAllDoctors() {
+        System.out.println("Loading all doctors");
         ObservableList<DoctorTm> obList = FXCollections.observableArrayList();
 
         try {
@@ -78,8 +83,8 @@ public class EmployeeFormController {
         colType.setCellValueFactory(new PropertyValueFactory<>("Type"));
     }
 
-    private void loadAllEmployee() {
-
+    public void loadAllEmployee() {
+        System.out.println("Loading all employees");
         ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
 
         try {
@@ -103,8 +108,12 @@ public class EmployeeFormController {
     }
 
     public void addEmpOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/add/addEmployee_form.fxml"));
+        Parent root = fxmlLoader.load();
 
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/add/addEmployee_form.fxml"));
+        AddEmployeeFormController emp =  fxmlLoader.getController();
+        emp.setEmpFormController(this);
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -114,7 +123,12 @@ public class EmployeeFormController {
     }
 
     public void infoEmpOnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/info/infoEmployee_form.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/info/infoEmployee_form.fxml"));
+        Parent root = fxmlLoader.load();
+
+        InfoEmployeeFormController emp =  fxmlLoader.getController();
+        emp.setEmpFormController(this);
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -123,7 +137,12 @@ public class EmployeeFormController {
     }
 
     public void addDocOnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/add/addDoc_form.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/add/addDoc_form.fxml"));
+        Parent root = fxmlLoader.load();
+
+        AddDocFormcontroller emp =  fxmlLoader.getController();
+        emp.setEmpFormController(this);
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -131,7 +150,18 @@ public class EmployeeFormController {
         stage.show();
     }
 
-    public void infoDocOnAction(ActionEvent actionEvent) {
+    public void infoDocOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/info/infoDoctor_form.fxml"));
+        Parent root = fxmlLoader.load();
+
+        InfoDoctorFormController emp =  fxmlLoader.getController();
+        emp.setEmpFormController(this);
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
 
     }
 }

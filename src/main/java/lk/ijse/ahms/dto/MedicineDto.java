@@ -14,5 +14,6 @@ public class MedicineDto {
     private String price;
     private String description;
     private String expdate;
+    private String qty;
 
 }

@@ -9,23 +9,28 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
+import lombok.Setter;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public class InfoEmployeeFormController {
-    public JFXComboBox cmbEmpId;
+    public JFXComboBox<String> cmbEmpId;
     public JFXTextField txtname;
     public JFXTextField txtadress;
     public JFXTextField txttel;
     public JFXTextField txtemail;
-    public JFXComboBox cmbEmpType;
+    public JFXComboBox<String> cmbEmpType;
     public JFXButton btndelete;
     public JFXButton btnUpdate;
     public JFXButton btnEdit;
+
+    @Setter
+    private EmployeeFormController empFormController;
 
     public void initialize(){
         setAllEmpId();
@@ -36,11 +41,9 @@ public class InfoEmployeeFormController {
 
         try {
             List<EmployeeDto> idList = EmpModel.getAllEmployee();
-
             for (EmployeeDto dto : idList) {
                 obList.add(dto.getId());
             }
-
             cmbEmpId.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -52,24 +55,26 @@ public class InfoEmployeeFormController {
         String id = (String) cmbEmpId.getValue();
 
         try {
-            EmployeeDto dto = EmpModel.getEmployeeDetails(id);
+          if(id!=null){
+              EmployeeDto dto = EmpModel.getEmployeeDetails(id);
 
-            txtname.setText(dto.getName());
-            txtadress.setText(dto.getAddress());
-            txttel.setText(dto.getTel());
-            txtemail.setText(dto.getEmail());
+              txtname.setText(dto.getName());
+              txtadress.setText(dto.getAddress());
+              txttel.setText(dto.getTel());
+              txtemail.setText(dto.getEmail());
 
-            ObservableList<String> obList = FXCollections.observableArrayList();
+              ObservableList<String> obList = FXCollections.observableArrayList();
 
-            obList.add(dto.getType());
+              obList.add(dto.getType());
 
-            cmbEmpType.setItems(obList);
-            cmbEmpType.setValue(cmbEmpType.getItems().get(0));
+              cmbEmpType.setItems(obList);
+              cmbEmpType.setValue(cmbEmpType.getItems().get(0));
 
-            setEdit(false);
+              setEdit(false);
+          }
         }
         catch (SQLException e) {
-            throw new RuntimeException(e);
+ //           throw new RuntimeException(e);
         }
 
     }
@@ -86,40 +91,35 @@ public class InfoEmployeeFormController {
 
         String emptype = (String)cmbEmpType.getValue();
 
-        btnEdit.setOnAction((e) -> {
-            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
-            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        if(emptype!=null){
+            btnEdit.setOnAction((e) -> {
+                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Edit?", yes, no).showAndWait();
+                Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Edit?", yes, no).showAndWait();
 
-            if(!emptype.equals("Admin")) {
-                if (type.orElse(no) == yes) {
-                    setEdit(true);
+                if(!emptype.equals("Admin")) {
+                    if (type.orElse(no) == yes) {
+                        setEdit(true);
 
-                    ObservableList<String> obList = FXCollections.observableArrayList();
+                        ObservableList<String> obList = FXCollections.observableArrayList();
 
-                    obList.add("Helper");
-                    obList.add("Cleaner");
+                        obList.add("Helper");
+                        obList.add("Cleaner");
 
-                    cmbEmpType.setItems(obList);
+                        cmbEmpType.setItems(obList);
+                    }
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Cannot Edit Admin!").show();
                 }
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Cannot Edit Admin!").show();
-            }
-        });
+            });
+        }
 
     }
 
     public void updateOnAction(ActionEvent actionEvent) {
 
-        String id = (String) cmbEmpId.getValue();
-        String name = txtname.getText();
-        String address = txtadress.getText();
-        String tel = txttel.getText();
-        String mail = txtemail.getText();
-        String type = (String) cmbEmpType.getSelectionModel().getSelectedItem();
 
-        var dto = new EmployeeDto(id, name, address, tel, mail, type);
 
         btnUpdate.setOnAction((e) -> {
             ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
@@ -129,13 +129,23 @@ public class InfoEmployeeFormController {
 
             if (type1.orElse(no) == yes) {
                 try {
+                    String id = (String) cmbEmpId.getValue();
+                    String name = txtname.getText();
+                    String address = txtadress.getText();
+                    String tel = txttel.getText();
+                    String mail = txtemail.getText();
+                    String type = (String) cmbEmpType.getSelectionModel().getSelectedItem();
+
+                    var dto = new EmployeeDto(id, name, address, tel, mail, type);
+
                     boolean isSaved = EmpModel.updateEmployee(dto);
 
                     if (isSaved) {
                         new Alert(Alert.AlertType.CONFIRMATION, "Employee updated!").show();
                         setEdit(false);
                         clearall();
-                        initialize();
+                        setAllEmpId();
+                        empFormController.initialize();
                     }
                 } catch (SQLException a) {
                     new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
@@ -173,7 +183,8 @@ public class InfoEmployeeFormController {
                             new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted!").show();
                             setEdit(false);
                             clearall();
-                            initialize();
+                            setAllEmpId();
+                            empFormController.initialize();
                         }
                     } catch (SQLException a) {
                         new Alert(Alert.AlertType.ERROR, a.getMessage()).show();

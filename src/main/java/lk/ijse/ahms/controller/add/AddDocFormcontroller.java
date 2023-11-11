@@ -4,10 +4,12 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.dto.DoctorDto;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.EmpModel;
+import lombok.Setter;
 
 import java.sql.SQLException;
 
@@ -23,6 +25,9 @@ public class AddDocFormcontroller {
 
     @FXML
     private JFXTextField email;
+
+    @Setter
+    private EmployeeFormController empFormController;
 
     public void nameOnAction(ActionEvent actionEvent) {
         tel.requestFocus();
@@ -59,15 +64,22 @@ public class AddDocFormcontroller {
 
         var dto = new DoctorDto(nid, nname, ntel, mail);
 
-        try {
-            boolean isSaved = DocModel.saveDoctor(dto);
+        if (!nid.isEmpty() && !nname.isEmpty() && !ntel.isEmpty() && mail.isEmpty()) {
+            {
+                try {
+                    boolean isSaved = DocModel.saveDoctor(dto);
 
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
-                claerFields();
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
+                        claerFields();
+                        empFormController.initialize();
+                    }
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "All fields are required").show();
         }
     }
 }

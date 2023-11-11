@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="435.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.info.InfoDoctorFormController">
    <children>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="324.0" layoutY="374.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btndelete" buttonType="RAISED" contentDisplay="RIGHT" layoutX="324.0" layoutY="374.0" onAction="#deleteOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -27,7 +27,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="181.0" layoutY="374.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Update" textFill="WHITE">
+      <JFXButton fx:id="btnupdate" buttonType="RAISED" contentDisplay="RIGHT" layoutX="181.0" layoutY="374.0" onAction="#updateOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -52,39 +52,38 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="129.0" text="Address">
+      <Label layoutX="43.0" layoutY="131.0" text="Contact No">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="173.0" text="Contact No">
+      <Label layoutX="43.0" layoutY="178.0" text="Email">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="220.0" text="Email">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="43.0" layoutY="267.0" text="Type">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <JFXComboBox layoutX="171.0" layoutY="26.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Doctor Id">
+      <JFXComboBox fx:id="cmbDocId" layoutX="171.0" layoutY="26.0" onAction="#cmbDocIdOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Select Doctor Id">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXComboBox>
-      <JFXTextField layoutX="171.0" layoutY="71.0" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
-      <JFXTextField layoutX="171.0" layoutY="115.0" prefHeight="35.0" prefWidth="271.0" promptText="Address" />
-      <JFXTextField layoutX="171.0" layoutY="159.0" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
-      <JFXTextField layoutX="171.0" layoutY="206.0" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
-      <JFXComboBox layoutX="171.0" layoutY="253.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Type">
+      <JFXTextField fx:id="txtname" layoutX="171.0" layoutY="71.0" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
+      <JFXTextField fx:id="txttel" layoutX="171.0" layoutY="117.0" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
+      <JFXTextField fx:id="txtemail" layoutX="171.0" layoutY="164.0" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
+      <JFXButton fx:id="btnedit" buttonType="RAISED" contentDisplay="RIGHT" layoutX="29.0" layoutY="374.0" onAction="#editOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Edit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXComboBox>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

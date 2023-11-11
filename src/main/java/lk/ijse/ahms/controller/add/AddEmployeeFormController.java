@@ -6,13 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import lk.ijse.ahms.controller.DashboardControlsController;
 import lk.ijse.ahms.controller.dashboard.DashboardController;
 import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
+import lombok.Setter;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,6 +45,10 @@ public class AddEmployeeFormController {
     public void initialize() {
         loadCmbBox();
     }
+
+    @Setter
+    private EmployeeFormController empFormController;
+
 
     private void loadCmbBox() {
 
@@ -72,15 +80,21 @@ public class AddEmployeeFormController {
 
         var dto = new EmployeeDto(id, name, address, tel, mail, type);
 
-        try {
-            boolean isSaved = EmpModel.saveEmployee(dto);
+        if (!id.isEmpty() && !name.isEmpty() && !address.isEmpty() && !tel.isEmpty() && !mail.isEmpty() && !type.isEmpty()) {
+            try {
+                boolean isSaved = EmpModel.saveEmployee(dto);
 
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
-                clearfields();
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+                    clearfields();
+                    empFormController.initialize();
+
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "All fields are required!").show();
         }
     }
 

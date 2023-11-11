@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainroot" prefHeight="775.0" prefWidth="1300.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.DashboardControlsController">
+<AnchorPane fx:id="mainroot" prefHeight="800.0" prefWidth="1440.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.DashboardControlsController">
    <children>
-      <AnchorPane fx:id="subroot" layoutX="341.0" prefHeight="775.0" prefWidth="960.0" style="-fx-background-color: #E4F1FF;" />
+      <AnchorPane fx:id="subroot" layoutX="340.0" prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF;" />
       <JFXButton fx:id="btndashboard" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="118.0" onAction="#dashboardOnAction" prefHeight="60.0" prefWidth="300.0" text="Dashboard">
          <font>
             <Font name="Arial Bold" size="22.0" />
@@ -99,7 +99,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <Line endX="20.17242431640625" endY="606.1725463867188" layoutX="304.0" layoutY="152.0" startX="20.17242431640625" startY="-129.31417846679688" />
+      <Line endX="20.17242431640625" endY="606.1725463867188" layoutX="304.0" layoutY="156.0" startX="20.17242431640625" startY="-129.31417846679688" />
       <ImageView fitHeight="94.0" fitWidth="103.0" layoutX="19.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../asserts/images/logo.jpg" />
