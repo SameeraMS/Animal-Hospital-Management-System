@@ -1,12 +1,14 @@
 package lk.ijse.ahms.controller.add;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.controller.dashboard.MedicineFormcontroller;
 import lk.ijse.ahms.dto.MedicineDto;
@@ -18,6 +20,8 @@ import java.sql.SQLException;
 public class AddMedicineFormController {
 
     public JFXTextField medqty;
+    public DatePicker medExpDate;
+
     @FXML
     private JFXTextField medId;
 
@@ -33,8 +37,6 @@ public class AddMedicineFormController {
     @FXML
     private JFXTextField medDesc;
 
-    @FXML
-    private JFXTextField medExpDate;
 
     @Setter
     private MedicineFormcontroller medFormController;
@@ -66,7 +68,7 @@ public class AddMedicineFormController {
         String type = cmbType.getSelectionModel().getSelectedItem();
         String price = medPrice.getText();
         String desc = medDesc.getText();
-        String expDate = medExpDate.getText();
+        String expDate = medExpDate.getValue().toString();
         String qty = medqty.getText();
 
         var dto = new MedicineDto(id, name, type, qty, price, desc, expDate );
@@ -98,13 +100,11 @@ public class AddMedicineFormController {
         medPrice.clear();
         cmbType.getSelectionModel().clearSelection();
         medDesc.clear();
-        medExpDate.clear();
+        medExpDate.setValue(null);
         medqty.clear();
     }
 
-    public void descOnAction(ActionEvent actionEvent) {
-        medExpDate.requestFocus();
-    }
+
 
 
 }

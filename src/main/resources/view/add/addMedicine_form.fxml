@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -32,7 +33,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="medId" layoutX="232.0" layoutY="37.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="medId" layoutX="232.0" layoutY="37.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" />
       <JFXTextField fx:id="medName" layoutX="232.0" layoutY="82.0" prefHeight="35.0" prefWidth="271.0" />
       <JFXTextField fx:id="medPrice" layoutX="232.0" layoutY="171.0" onAction="#priceOnAction" prefHeight="35.0" prefWidth="271.0" />
       <JFXComboBox fx:id="cmbType" layoutX="232.0" layoutY="126.0" prefHeight="35.0" prefWidth="271.0" />
@@ -76,13 +77,13 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="medDesc" layoutX="232.0" layoutY="216.0" onAction="#descOnAction" prefHeight="35.0" prefWidth="271.0" />
-      <JFXTextField fx:id="medExpDate" layoutX="232.0" layoutY="261.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="medDesc" layoutX="232.0" layoutY="216.0" prefHeight="35.0" prefWidth="271.0" />
       <Label layoutX="60.0" layoutY="320.0" text="Qty On hand">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <JFXTextField fx:id="medqty" layoutX="232.0" layoutY="312.0" prefHeight="35.0" prefWidth="271.0" />
+      <DatePicker fx:id="medExpDate" layoutX="231.0" layoutY="267.0" prefHeight="35.0" prefWidth="271.0" />
    </children>
 </AnchorPane>

@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.ahms.controller.add.AddEmployeeFormController;
 import lk.ijse.ahms.controller.add.AddMedicineFormController;
+import lk.ijse.ahms.controller.info.InfoMedicineFormController;
 import lk.ijse.ahms.dto.DoctorDto;
 import lk.ijse.ahms.dto.MedicineDto;
 import lk.ijse.ahms.dto.tm.DoctorTm;
@@ -94,7 +95,12 @@ public class MedicineFormcontroller {
 
     public void infoMedOnAction(ActionEvent actionEvent) throws IOException {
 
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/info/infoMedicine_form.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/info/infoMedicine_form.fxml"));
+        Parent root = fxmlLoader.load();
+
+        InfoMedicineFormController med =  fxmlLoader.getController();
+        med.setMedFormController(this);
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
