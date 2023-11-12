@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="498.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.add.AddPetsFormController">
+   <children>
+      <Label layoutX="60.0" layoutY="55.0" text="Pet Id">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="99.0" text="Pet Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="143.0" text="Owner Id">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="187.0" text="age">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="petId" layoutX="232.0" layoutY="37.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="petName" layoutX="232.0" layoutY="82.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="petAge" layoutX="232.0" layoutY="171.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXComboBox fx:id="cmbOwnerId" layoutX="232.0" layoutY="126.0" prefHeight="35.0" prefWidth="172.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="383.0" layoutY="412.0" onAction="#saveOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/save.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="215.0" layoutY="412.0" onAction="#clearOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #7f8c8d;" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/clear.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="60.0" layoutY="231.0" text="Gender">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="275.0" text="Type">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="petType" layoutX="232.0" layoutY="267.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXComboBox fx:id="cmbGender" layoutX="232.0" layoutY="216.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="424.0" layoutY="127.0" onAction="#addOwnerOnAction" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #2980b9;" text=" " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/save.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

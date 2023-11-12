@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -13,5 +19,64 @@
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
+      <TableView fx:id="tblPets" layoutX="40.0" layoutY="280.0" prefHeight="421.0" prefWidth="560.0">
+         <columns>
+            <TableColumn fx:id="colId" editable="false" prefWidth="86.5268325805664" text="Id" />
+            <TableColumn fx:id="colName" editable="false" minWidth="8.0" prefWidth="117.0" text="Name" />
+            <TableColumn fx:id="colAge" editable="false" minWidth="9.0" prefWidth="128.0" text="Age" />
+            <TableColumn fx:id="colGender" editable="false" minWidth="9.0" prefWidth="112.66549682617188" text="Gender" />
+            <TableColumn fx:id="colType" editable="false" minWidth="9.0" prefWidth="112.66549682617188" text="Type" />
+         </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="289.0" layoutY="137.0" onAction="#addPetOnAction" prefHeight="51.0" prefWidth="182.0" style="-fx-background-color: green;" text="Add New Pet" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="421.0" layoutY="205.0" onAction="#infoPetOnAction" prefHeight="34.0" prefWidth="103.0" style="-fx-background-color: rgb(128,128,128);" text="Info" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="43.0" layoutY="257.0" text="Pets">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="600.0" layoutY="146.0" onAction="#addPetOwnerOnAction" prefHeight="53.0" prefWidth="243.0" style="-fx-background-color: green;" text="Add Pet Owner" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

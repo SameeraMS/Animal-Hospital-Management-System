@@ -9,12 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.ahms.controller.dashboard.DashboardController;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Statement;
 
 public class DashboardControlsController {
     public AnchorPane mainroot;
@@ -109,7 +106,7 @@ public class DashboardControlsController {
     public void detailsOnAction(ActionEvent actionEvent) throws IOException {
         setButtonUp();
         btndetails.setStyle("-fx-background-color: #89CFF3;");
-        setform("/view/dashboard/details_form.fxml");
+        setform("/view/dashboard/prescription_form.fxml");
     }
 
     public void paymentOnAction(ActionEvent actionEvent) throws IOException {

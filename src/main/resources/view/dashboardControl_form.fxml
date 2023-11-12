@@ -88,7 +88,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btndetails" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="328.0" onAction="#detailsOnAction" prefHeight="60.0" prefWidth="300.0" text="Details">
+      <JFXButton fx:id="btndetails" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="60.0" layoutX="11.0" layoutY="328.0" onAction="#detailsOnAction" prefHeight="60.0" prefWidth="300.0" text="Prescription">
          <font>
             <Font name="Arial Bold" size="22.0" />
          </font>
