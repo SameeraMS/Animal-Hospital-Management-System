@@ -8,9 +8,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="664.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.add.AddApointmentFormController">
+<AnchorPane prefHeight="767.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.add.AddApointmentFormController">
    <children>
-      <JFXComboBox layoutX="234.0" layoutY="117.0" prefHeight="40.0" prefWidth="185.0" />
+      <JFXTextField fx:id="appointmentId" layoutX="234.0" layoutY="129.0" prefHeight="40.0" prefWidth="185.0" />
+      <JFXComboBox fx:id="cmbDocId" layoutX="234.0" layoutY="176.0" onAction="#DocIdOnAction" prefHeight="40.0" prefWidth="185.0" />
       <Label layoutX="407.0" layoutY="26.0" text="Time">
          <font>
             <Font size="18.0" />
@@ -21,72 +22,81 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="472.0" layoutY="26.0" prefHeight="17.0" prefWidth="32.0">
+      <Label fx:id="lblTime" layoutX="472.0" layoutY="26.0" prefHeight="17.0" prefWidth="32.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="472.0" layoutY="60.0" prefHeight="17.0" prefWidth="30.0">
+      <Label fx:id="lblDate" layoutX="472.0" layoutY="60.0" prefHeight="17.0" prefWidth="30.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="287.0" text="Pet Owner Name">
+      <Label layoutX="39.0" layoutY="346.0" text="Pet Owner Name">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="337.0" text="Contact No">
+      <Label layoutX="39.0" layoutY="146.0" text="Appointment No">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="387.0" text="Pet Id">
+      <Label layoutX="39.0" layoutY="396.0" text="Pet Id">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="437.0" text="Pet Name">
+      <Label layoutX="39.0" layoutY="446.0" text="Pet Name">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="487.0" text="Description">
+      <Label layoutX="39.0" layoutY="496.0" text="Description">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="234.0" layoutY="270.0" prefHeight="40.0" prefWidth="185.0" />
-      <JFXComboBox layoutX="234.0" layoutY="370.0" prefHeight="40.0" prefWidth="185.0" />
-      <Label layoutX="39.0" layoutY="237.0" text="Pet Owner Id">
+      <JFXTextField fx:id="petOwnerName" layoutX="234.0" layoutY="329.0" prefHeight="40.0" prefWidth="185.0" />
+      <JFXComboBox fx:id="cmbPetId" layoutX="234.0" layoutY="379.0" onAction="#cmbPetIdOnAction" prefHeight="40.0" prefWidth="185.0" />
+      <Label layoutX="39.0" layoutY="296.0" text="Pet Owner Id">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXComboBox layoutX="234.0" layoutY="220.0" prefHeight="40.0" prefWidth="185.0" />
-      <JFXTextField layoutX="234.0" layoutY="320.0" prefHeight="40.0" prefWidth="185.0" />
-      <JFXTextField layoutX="234.0" layoutY="420.0" prefHeight="40.0" prefWidth="185.0" />
-      <JFXTextArea layoutX="234.0" layoutY="470.0" prefHeight="73.0" prefWidth="185.0" />
-      <Label layoutX="39.0" layoutY="184.0" text="Doctor Name">
+      <JFXComboBox fx:id="cmbPetOwnerId" layoutX="234.0" layoutY="279.0" onAction="#cmbPetOwnerIdOnAction" prefHeight="40.0" prefWidth="185.0" />
+      <JFXTextField fx:id="petName" layoutX="234.0" layoutY="429.0" prefHeight="40.0" prefWidth="185.0" />
+      <JFXTextArea fx:id="desc" layoutX="234.0" layoutY="479.0" prefHeight="73.0" prefWidth="185.0" />
+      <Label layoutX="39.0" layoutY="243.0" text="Doctor Name">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="234.0" layoutY="167.0" prefHeight="40.0" prefWidth="185.0" />
-      <Label layoutX="39.0" layoutY="134.0" text="Doctor Id">
+      <JFXTextField fx:id="docName" layoutX="234.0" layoutY="226.0" prefHeight="40.0" prefWidth="185.0" />
+      <Label layoutX="39.0" layoutY="193.0" text="Doctor Id">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="378.0" layoutY="603.0" style="-fx-background-color: yellow;" text="Make Appointment">
+      <JFXButton buttonType="RAISED" layoutX="382.0" layoutY="681.0" onAction="#makeAppointmentOnAction" style="-fx-background-color: yellow;" text="Make Appointment">
          <font>
             <Font size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="41.0" layoutY="603.0" style="-fx-background-color: grey;" text="Clear">
+      <JFXButton buttonType="RAISED" layoutX="45.0" layoutY="681.0" onAction="#clearOnAction" style="-fx-background-color: grey;" text="Clear">
          <font>
             <Font size="16.0" />
          </font>
       </JFXButton>
+      <Label layoutX="42.0" layoutY="578.0" text="Amount              LKR">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAmount" layoutX="234.0" layoutY="569.0" prefHeight="40.0" prefWidth="185.0" text="1500.00">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

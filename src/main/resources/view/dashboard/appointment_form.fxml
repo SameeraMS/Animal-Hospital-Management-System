@@ -28,16 +28,15 @@
             <Font size="25.0" />
          </font>
       </JFXButton>
-      <TableView layoutX="46.0" layoutY="224.0" prefHeight="457.0" prefWidth="871.0">
+      <TableView fx:id="tblAppointments" layoutX="46.0" layoutY="224.0" prefHeight="457.0" prefWidth="871.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="colId" prefWidth="99.05105209350586" text="Id" />
+          <TableColumn fx:id="colDate" prefWidth="138.948974609375" text="Date" />
+            <TableColumn fx:id="colTime" prefWidth="117.50704956054688" text="Time" />
+            <TableColumn fx:id="colDesc" prefWidth="239.43829345703125" text="Description" />
+            <TableColumn fx:id="colDocId" prefWidth="131.56170654296875" text="Doc Id" />
+            <TableColumn fx:id="colPetOwnerId" prefWidth="141.39093017578125" text="PetOwnerId" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="672.0" layoutY="700.0" style="-fx-background-color: green;" text="Print Appointment">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </JFXButton>
    </children>
 </AnchorPane>

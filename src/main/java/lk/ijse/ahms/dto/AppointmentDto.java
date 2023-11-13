@@ -16,5 +16,10 @@ public class AppointmentDto {
     private String description;
     private String userId;
     private String doctorId;
+    private String doctorName;
     private String petOwnerId;
+    private String petOwnerName;
+    private String petId;
+    private String petName;
+
 }
