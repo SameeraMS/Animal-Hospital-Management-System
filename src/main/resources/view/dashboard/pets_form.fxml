@@ -63,7 +63,22 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="600.0" layoutY="146.0" onAction="#addPetOwnerOnAction" prefHeight="53.0" prefWidth="243.0" style="-fx-background-color: green;" text="Add Pet Owner" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="753.0" layoutY="134.0" onAction="#addPetOwnerOnAction" prefHeight="53.0" prefWidth="243.0" style="-fx-background-color: green;" text="Add Pet Owner" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="893.0" layoutY="198.0" onAction="#infoPetOwnerOnAction" prefHeight="34.0" prefWidth="103.0" style="-fx-background-color: rgb(128,128,128);" text="Info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>

@@ -3,23 +3,166 @@ package lk.ijse.ahms.controller.info;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import lk.ijse.ahms.controller.dashboard.PetsFormController;
+import lk.ijse.ahms.dto.EmployeeDto;
+import lk.ijse.ahms.dto.PetOwnerDto;
+import lk.ijse.ahms.model.EmpModel;
+import lk.ijse.ahms.model.PetOwnerModel;
+import lombok.Setter;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
 
 public class InfoPetOwnerFormController {
     public JFXButton btndelete;
     public JFXButton btnUpdate;
     public JFXButton btnEdit;
-    public JFXComboBox cmbOwnerId;
+    public JFXComboBox<String> cmbOwnerId;
     public JFXTextField ownerName;
     public JFXTextField ownerMail;
     public JFXTextField ownerTel;
 
+    @Setter
+    private PetsFormController petsFormController;
+
+    public void initialize() {
+        loadAllOwners();
+        editAccess(false);
+    }
+
+    private void loadAllOwners() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        try {
+            List<PetOwnerDto> idList = PetOwnerModel.getAllOwners();
+
+            for (PetOwnerDto dto : idList) {
+                obList.add(dto.getOwnerId());
+            }
+            cmbOwnerId.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public void deleteOnAction(ActionEvent actionEvent) {
+        String id = (String) cmbOwnerId.getValue();
+
+        btndelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> type1 = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Delete?", yes, no).showAndWait();
+
+            if (type1.orElse(no) == yes) {
+                    try {
+                        boolean isDelete = PetOwnerModel.deletePetOwner(id);
+
+                        if (isDelete) {
+                            new Alert(Alert.AlertType.CONFIRMATION, "PetOwner Deleted!").show();
+                            editAccess(false);
+                            clearall();
+                            loadAllOwners();
+                            petsFormController.initialize();
+                        }
+                    } catch (SQLException a) {
+                        new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
+                    }
+
+            }
+        });
+
+    }
+
+    private void clearall() {
+        ownerName.clear();
+        ownerMail.clear();
+        ownerTel.clear();
+        cmbOwnerId.getSelectionModel().clearSelection();
     }
 
     public void editOnAction(ActionEvent actionEvent) {
+
+            btnEdit.setOnAction((e) -> {
+                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Edit?", yes, no).showAndWait();
+
+                    if (type.orElse(no) == yes) {
+                        editAccess(true);
+                    }
+
+            });
+
+
+    }
+
+    private void editAccess(boolean b) {
+        ownerName.setEditable(b);
+        ownerMail.setEditable(b);
+        ownerTel.setEditable(b);
     }
 
     public void upDateOnAction(ActionEvent actionEvent) {
+
+        btnUpdate.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> type1 = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Update?", yes, no).showAndWait();
+
+            if (type1.orElse(no) == yes) {
+                try {
+                    String id = (String) cmbOwnerId.getValue();
+                    String name = ownerName.getText();
+                    String mail = ownerMail.getText();
+                    String tel = ownerTel.getText();
+
+
+                    var dto = new PetOwnerDto(id, name, mail, tel);
+
+                    boolean isSaved = PetOwnerModel.updatePetOwner(dto);
+
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Employee updated!").show();
+                        editAccess(false);
+                        clearall();
+                        loadAllOwners();
+                        petsFormController.initialize();
+                    }
+                } catch (SQLException a) {
+                    new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
+                }
+            }
+        });
+    }
+
+    public void cmbOwnerIdOnAction(ActionEvent actionEvent) {
+
+        String id = (String) cmbOwnerId.getValue();
+
+        try {
+            if(id!=null){
+                PetOwnerDto dto = PetOwnerModel.getOwnerDetails(id);
+
+                ownerName.setText(dto.getName());
+                ownerMail.setText(dto.getEmail());
+                ownerTel.setText(dto.getTel());
+
+                editAccess(false);
+            }
+        }
+        catch (SQLException e) {
+                       throw new RuntimeException(e);
+        }
     }
 }
