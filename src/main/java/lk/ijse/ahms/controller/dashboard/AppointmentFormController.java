@@ -43,7 +43,7 @@ public class AppointmentFormController {
         colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
         colTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
         colDesc.setCellValueFactory(new PropertyValueFactory<>("Description"));
-        colDocId.setCellValueFactory(new PropertyValueFactory<>("DoctorId"));
+        colDocId.setCellValueFactory(new PropertyValueFactory<>("DocId"));
         colPetOwnerId.setCellValueFactory(new PropertyValueFactory<>("PetOwnerId"));
 
     }

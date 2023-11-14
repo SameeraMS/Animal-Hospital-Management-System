@@ -64,7 +64,7 @@ public class AddDocFormcontroller {
 
         var dto = new DoctorDto(nid, nname, ntel, mail);
 
-        if (!nid.isEmpty() && !nname.isEmpty() && !ntel.isEmpty() && mail.isEmpty()) {
+        if (!nid.isEmpty() && !nname.isEmpty() && !ntel.isEmpty() && !mail.isEmpty()) {
             {
                 try {
                     boolean isSaved = DocModel.saveDoctor(dto);

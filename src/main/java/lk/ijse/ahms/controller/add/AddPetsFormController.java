@@ -32,6 +32,9 @@ public class AddPetsFormController {
     @Setter
     private PetsFormController petsFormController;
 
+    @Setter
+    private AddApointmentFormController addApointmentFormController;
+
     public void initialize() {
         loadAllOwnerstoComboBox();
         loadAllGender();
@@ -82,8 +85,11 @@ public class AddPetsFormController {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Pet saved!").show();
                     clearFields();
-                    petsFormController.initialize();
-
+                    if (petsFormController != null) {
+                        petsFormController.initialize();
+                    } else if (addApointmentFormController != null) {
+                        addApointmentFormController.initialize();
+                    }
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

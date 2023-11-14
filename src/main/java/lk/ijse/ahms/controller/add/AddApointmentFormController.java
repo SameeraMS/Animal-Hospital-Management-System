@@ -6,8 +6,12 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import lk.ijse.ahms.controller.dashboard.AppointmentFormController;
 import lk.ijse.ahms.dto.AppointmentDto;
 import lk.ijse.ahms.dto.DoctorDto;
@@ -19,6 +23,7 @@ import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.PetOwnerModel;
 import lombok.Setter;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -200,4 +205,33 @@ public class AddApointmentFormController {
     }
 
 
+    public void newPetOwnerOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/add/addPetOwner_form.fxml"));
+        Parent root = fxmlLoader.load();
+
+        AddPetOwnerFormController ownr =  fxmlLoader.getController();
+        ownr.setAddApointmentFormController(this);
+
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void newPetOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/add/addPets_form.fxml"));
+        Parent root = fxmlLoader.load();
+
+        AddPetsFormController ownr =  fxmlLoader.getController();
+        ownr.setAddApointmentFormController(this);
+
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
 }

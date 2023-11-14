@@ -98,5 +98,7 @@
             <Font size="22.0" />
          </font>
       </Label>
+      <JFXButton buttonType="RAISED" layoutX="460.0" layoutY="286.0" onAction="#newPetOwnerOnAction" style="-fx-background-color: green;" text="+" />
+      <JFXButton buttonType="RAISED" layoutX="459.0" layoutY="385.0" onAction="#newPetOnAction" style="-fx-background-color: green;" text="+" />
    </children>
 </AnchorPane>

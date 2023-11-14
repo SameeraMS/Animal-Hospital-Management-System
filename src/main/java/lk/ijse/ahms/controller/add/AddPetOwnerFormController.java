@@ -26,6 +26,9 @@ public class AddPetOwnerFormController {
     @Setter
     private AddPetsFormController addPetFormController;
 
+    @Setter
+    private AddApointmentFormController addApointmentFormController;
+
     public void idOnAction(ActionEvent actionEvent) {
         ownerName.requestFocus();
     }
@@ -74,6 +77,10 @@ public class AddPetOwnerFormController {
                         infoPetFormController.initialize();
                     } else if(addPetFormController != null) {
                         addPetFormController.initialize();
+                    } else if(addApointmentFormController != null) {
+                        addApointmentFormController.initialize();
+                    } else if(PetFormController != null) {
+                        PetFormController.initialize();
                     }
 
                 }
