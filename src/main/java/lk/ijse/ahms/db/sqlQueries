@@ -78,7 +78,6 @@ create table appointment(
     date                date            not null,
     time                varchar(20)     not null,
     description         varchar(50),
-    employee_id             varchar(10)     not null,
     doc_id              varchar(10)     not null,
     doc_name            varchar(20)  ,
     pet_owner_id        varchar(10)     not null,
@@ -90,8 +89,6 @@ create table appointment(
     constraint foreign key (pet_owner_id) references pet_owner (pet_owner_id)
     on delete cascade on update cascade,
     constraint foreign key (doc_id) references doctor (doc_id)
-    on delete cascade on update cascade,
-    constraint foreign key (employee_id) references user (employee_id)
     on delete cascade on update cascade
 );
 

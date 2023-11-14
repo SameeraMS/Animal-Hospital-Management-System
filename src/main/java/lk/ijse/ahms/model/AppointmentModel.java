@@ -33,13 +33,35 @@ public class AppointmentModel {
                             resultSet.getString(8),
                             resultSet.getString(9),
                             resultSet.getString(10),
-                            resultSet.getString(11),
-                            resultSet.getString(12)
+                            resultSet.getString(11)
                     )
             );
         }
 
 
         return appointmentDtos;
+    }
+
+    public static boolean saveAppointment(AppointmentDto dto) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "INSERT INTO appointment VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, dto.getAppointmentId());
+        pstm.setString(2, dto.getAmount());
+        pstm.setString(3, dto.getDate());
+        pstm.setString(4, dto.getTime());
+        pstm.setString(5, dto.getDescription());
+        pstm.setString(6, dto.getDoctorId());
+        pstm.setString(7, dto.getDoctorName());
+        pstm.setString(8, dto.getPetOwnerId());
+        pstm.setString(9, dto.getPetOwnerName());
+        pstm.setString(10, dto.getPetId());
+        pstm.setString(11, dto.getPetName());
+
+        boolean isSaved = pstm.executeUpdate() > 0;
+
+        return isSaved;
     }
 }

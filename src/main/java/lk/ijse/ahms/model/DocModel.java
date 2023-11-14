@@ -30,30 +30,6 @@ public class DocModel {
 
     }
 
-    public static List<DoctorDto> getAllDoctors() throws SQLException {
-
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM doctor";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        ResultSet resultSet = pstm.executeQuery();
-
-        ArrayList<DoctorDto> dtoList = new ArrayList<>();
-
-        while(resultSet.next()) {
-            dtoList.add(
-                    new DoctorDto(
-                            resultSet.getString(1),
-                            resultSet.getString(2),
-                            resultSet.getString(3),
-                            resultSet.getString(4)
-                    )
-            );
-        }
-        return dtoList;
-    }
-
     public static List<DoctorDto> getAllDoctor() throws SQLException {
 
         Connection connection = DbConnection.getInstance().getConnection();

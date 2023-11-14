@@ -58,7 +58,7 @@ public class EmployeeFormController {
         ObservableList<DoctorTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<DoctorDto> doctorDtos = DocModel.getAllDoctors();
+            List<DoctorDto> doctorDtos = DocModel.getAllDoctor();
 
             for (DoctorDto dto : doctorDtos) {
 
