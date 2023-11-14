@@ -26,6 +26,7 @@ import lombok.Setter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -110,7 +111,7 @@ public class AddApointmentFormController {
 
     private void setDateandTime() {
         lblDate.setText(String .valueOf(LocalDate.now()));
-        lblTime.setText(String.valueOf(LocalDate.now()));
+        lblTime.setText(String.valueOf(LocalTime.now()));
     }
 
     public void DocIdOnAction(ActionEvent actionEvent) {

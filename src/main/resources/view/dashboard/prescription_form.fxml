@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -13,5 +15,27 @@
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="53.0" layoutY="147.0" prefHeight="608.0" prefWidth="784.0" style="-fx-background-color: white;">
+         <children>
+            <JFXTextField layoutX="193.0" layoutY="15.0" />
+            <Label layoutX="500.0" layoutY="15.0" prefHeight="32.0" prefWidth="133.0" text="Prescription No">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="15.0" prefHeight="32.0" prefWidth="133.0" text="Appointment No">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="59.0" prefHeight="32.0" prefWidth="133.0" text="Description">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="628.0" layoutY="15.0" />
+         </children>
+      </AnchorPane>
+      <JFXButton buttonType="RAISED" layoutX="924.0" layoutY="210.0" prefHeight="44.0" prefWidth="124.0" text="Save" />
    </children>
 </AnchorPane>

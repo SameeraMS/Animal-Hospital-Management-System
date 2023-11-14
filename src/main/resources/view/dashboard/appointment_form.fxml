@@ -17,13 +17,13 @@
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="113.0" layoutY="123.0" prefHeight="52.0" prefWidth="279.0" />
+      <JFXTextField fx:id="txtAppointId" layoutX="113.0" layoutY="123.0" onAction="#idOnAction" prefHeight="52.0" prefWidth="279.0" />
       <JFXButton buttonType="RAISED" layoutX="661.0" layoutY="125.0" onAction="#makeApointmentOnAction" style="-fx-background-color: yellow;" text="Make Appointment">
          <font>
             <Font size="25.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="419.0" layoutY="128.0" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: pink;" text="Search">
+      <JFXButton buttonType="RAISED" layoutX="419.0" layoutY="128.0" onAction="#searchOnAction" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: pink;" text="Search">
          <font>
             <Font size="25.0" />
          </font>
@@ -38,5 +38,10 @@
             <TableColumn fx:id="colPetOwnerId" prefWidth="141.39093017578125" text="PetOwnerId" />
         </columns>
       </TableView>
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="942.0" layoutY="400.0" onAction="#deleteOnAction" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Delete">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

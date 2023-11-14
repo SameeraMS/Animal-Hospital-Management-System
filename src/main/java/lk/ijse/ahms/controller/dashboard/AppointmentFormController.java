@@ -1,13 +1,14 @@
 package lk.ijse.ahms.controller.dashboard;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.ahms.controller.add.AddApointmentFormController;
@@ -22,6 +23,7 @@ import lk.ijse.ahms.model.MedModel;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class AppointmentFormController {
 
@@ -32,6 +34,10 @@ public class AppointmentFormController {
     public TableColumn colDesc;
     public TableColumn colDocId;
     public TableColumn colPetOwnerId;
+    public JFXTextField txtAppointId;
+    public JFXButton btnDelete;
+
+    private ObservableList<AppointmentTm> obList = FXCollections.observableArrayList();
 
     public void initialize() {
         setCellValueFactoryAppointments();
@@ -50,7 +56,7 @@ public class AppointmentFormController {
 
     private void loadAllAppointments() {
         System.out.println("Loading all Appointments");
-        ObservableList<AppointmentTm> obList = FXCollections.observableArrayList();
+
 
         try {
             List<AppointmentDto> AppointmentDtos = AppointmentModel.getAllAppointments();
@@ -86,6 +92,69 @@ public class AppointmentFormController {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
+
+    }
+
+    public void searchOnAction(ActionEvent actionEvent) {
+        String id = txtAppointId.getText();
+
+        try {
+            List<AppointmentDto> appointmentDtos = AppointmentModel.searchAppointments(id);
+
+            ObservableList<AppointmentTm> obList1 = FXCollections.observableArrayList();
+
+            for (AppointmentDto dto : appointmentDtos) {
+                obList1.add(
+                        new AppointmentTm(
+                                dto.getAppointmentId(),
+                                dto.getDate(),
+                                dto.getTime(),
+                                dto.getDescription(),
+                                dto.getDoctorId(),
+                                dto.getPetOwnerId()
+                        )
+                );
+            }
+            tblAppointments.setItems(obList1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void idOnAction(ActionEvent actionEvent) {
+        searchOnAction(actionEvent);
+    }
+
+    public void deleteOnAction(ActionEvent actionEvent) {
+
+        btnDelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
+
+            if (type.orElse(no) == yes) {
+                int focusedIndex = tblAppointments.getSelectionModel().getSelectedIndex();
+                AppointmentTm selectedItem = (AppointmentTm) tblAppointments.getSelectionModel().getSelectedItem();
+
+                String id = selectedItem.getId();
+
+                try {
+                    boolean isDelete = AppointmentModel.deleteAppoint(id);
+
+                    if (isDelete) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Appoint Deleted!").show();
+                        obList.remove(focusedIndex);
+                        tblAppointments.refresh();
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
+            }
+        });
 
     }
 }
