@@ -147,6 +147,7 @@ public class AppointmentFormController {
                         new Alert(Alert.AlertType.CONFIRMATION, "Appoint Deleted!").show();
                         obList.remove(focusedIndex);
                         tblAppointments.refresh();
+                        initialize();
                     }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
