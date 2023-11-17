@@ -50,7 +50,7 @@ public class DashboardControlsController {
         btnsettings.setStyle("-fx-background-color: white;");
         btndashboard.setStyle("-fx-background-color: white;");
         btnEmployee.setStyle("-fx-background-color: white;");
-        btnsignout.setStyle("-fx-background-color: #C70039;");
+        btnsignout.setStyle("-fx-background-color: #D0D4CA;");
     }
 
     public void signoutOnAction(ActionEvent actionEvent) throws IOException {

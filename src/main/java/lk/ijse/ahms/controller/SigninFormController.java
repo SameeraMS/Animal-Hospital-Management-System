@@ -3,35 +3,41 @@ package lk.ijse.ahms.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.ahms.model.UserModel;
+import lk.ijse.ahms.smtp.Mail;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SigninFormController {
     public AnchorPane root;
-    public TextField txtusername;
+    public  TextField txtusername;
     public PasswordField txtpassword;
 
     UserModel usermodel = new UserModel();
 
     public void signinOnAction(ActionEvent actionEvent) throws IOException {
 
-        String getun = txtusername.getText();
-        String getpw = txtpassword.getText();
+       String getun = txtusername.getText();
+       String getpw = txtpassword.getText();
 
+        /*
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
         Scene scene = new Scene(anchorPane);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(scene);
         stage.setTitle("dashboard");
+         */
 
 
-     /*    if(getun.isEmpty()) {
+        if(getun.isEmpty()) {
             new Alert(Alert.AlertType.INFORMATION, "username required..!!").show();
         }else if(getpw.isEmpty()) {
             new Alert(Alert.AlertType.INFORMATION, "password required..!!").show();
@@ -51,7 +57,7 @@ public class SigninFormController {
                         stage.setScene(scene);
                         stage.setTitle("dashboard");
 
-                            Mail mail = new Mail();
+                        /*    Mail mail = new Mail();
                             mail.setMsg("Welcome..! \n\n\tYou are successfully logged in to the Animal Hospital Management System \n\nThank you..!");
                             mail.setTo(getun);
                             mail.setSubject("Animal Hospital Management System Login");
@@ -59,17 +65,19 @@ public class SigninFormController {
                             Thread thread = new Thread(mail);
                             thread.start();
 
-
+                         */
 
                          } else {
                             new Alert(Alert.AlertType.INFORMATION, "username or password incorrect..!").show();
+
+
                             }
                     }
 
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } */
+        }
     }
 
     public void passOnAction(ActionEvent actionEvent) throws IOException {

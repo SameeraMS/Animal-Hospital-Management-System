@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -36,14 +36,6 @@
             <Font name="Arial Black" size="67.0" />
          </font>
       </Label>
-      <TextField fx:id="txtusername" layoutX="213.0" layoutY="315.0" onAction="#usernameOnAction" prefHeight="54.0" prefWidth="434.0" promptText="Username">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextField>
       <JFXButton buttonType="RAISED" layoutX="382.0" layoutY="540.0" onAction="#signinOnAction" style="-fx-background-color: black; -fx-background-radius: 10;" text="Sign in" textFill="WHITE">
          <font>
             <Font size="26.0" />
@@ -52,17 +44,31 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="517.0" layoutY="498.0" onMouseClicked="#forgotPassOnAction" text="Forgot Password..?" textFill="#5568c9">
+      <Label layoutX="487.0" layoutY="481.0" onMouseClicked="#forgotPassOnAction" text="Forgot Password..?" textFill="#0e36ff">
          <font>
-            <Font size="16.0" />
+            <Font size="19.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <PasswordField fx:id="txtpassword" layoutX="213.0" layoutY="432.0" onAction="#passOnAction" prefHeight="54.0" prefWidth="434.0" promptText="Password">
+      <JFXPasswordField fx:id="txtpassword" layoutX="213.0" layoutY="416.0" onAction="#passOnAction" prefHeight="54.0" prefWidth="434.0" promptText="   Password" style="-fx-background-color: white; -fx-background-radius: 15;">
          <font>
-            <Font size="24.0" />
-         </font></PasswordField>
+            <Font size="22.0" />
+         </font></JFXPasswordField>
+      <JFXTextField fx:id="txtusername" layoutX="213.0" layoutY="299.0" onAction="#usernameOnAction" prefHeight="54.0" prefWidth="434.0" promptText="   Username" style="-fx-background-color: white; -fx-background-radius: 15;" unFocusColor="#4d4d4d">
+         <font>
+            <Font size="22.0" />
+         </font></JFXTextField>
+      <Label layoutX="217.0" layoutY="272.0" text="Username" textFill="#cdca43">
+         <font>
+            <Font name="Arial Black" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="220.0" layoutY="391.0" text="Password" textFill="#cdca43">
+         <font>
+            <Font name="Arial Black" size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
