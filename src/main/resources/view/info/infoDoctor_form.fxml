@@ -10,9 +10,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="435.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.info.InfoDoctorFormController">
+<AnchorPane prefHeight="348.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.info.InfoDoctorFormController">
    <children>
-      <JFXButton fx:id="btndelete" buttonType="RAISED" contentDisplay="RIGHT" layoutX="324.0" layoutY="374.0" onAction="#deleteOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+      <ImageView fitHeight="340.0" fitWidth="651.0" layoutY="1.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../asserts/images/docinfo.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btndelete" buttonType="RAISED" contentDisplay="RIGHT" layoutX="340.0" layoutY="255.0" onAction="#deleteOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -22,12 +27,12 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/save.png" />
+                  <Image url="@../../asserts/icons/delete.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnupdate" buttonType="RAISED" contentDisplay="RIGHT" layoutX="181.0" layoutY="374.0" onAction="#updateOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Update" textFill="WHITE">
+      <JFXButton fx:id="btnupdate" buttonType="RAISED" contentDisplay="RIGHT" layoutX="197.0" layoutY="255.0" onAction="#updateOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -70,7 +75,7 @@
       <JFXTextField fx:id="txtname" layoutX="171.0" layoutY="71.0" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
       <JFXTextField fx:id="txttel" layoutX="171.0" layoutY="117.0" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
       <JFXTextField fx:id="txtemail" layoutX="171.0" layoutY="164.0" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
-      <JFXButton fx:id="btnedit" buttonType="RAISED" contentDisplay="RIGHT" layoutX="29.0" layoutY="374.0" onAction="#editOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Edit" textFill="WHITE">
+      <JFXButton fx:id="btnedit" buttonType="RAISED" contentDisplay="RIGHT" layoutX="45.0" layoutY="255.0" onAction="#editOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: grey;" text="Edit" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -80,7 +85,7 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/update.png" />
+                  <Image url="@../../asserts/icons/edit.png" />
                </image>
             </ImageView>
          </graphic>

@@ -2,13 +2,18 @@ package lk.ijse.ahms.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.ahms.controller.add.AddPetsFormController;
+import lk.ijse.ahms.dto.EmployeeDto;
+import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.UserModel;
 import lk.ijse.ahms.smtp.Mail;
 
@@ -20,6 +25,7 @@ public class SigninFormController {
     public AnchorPane root;
     public  TextField txtusername;
     public PasswordField txtpassword;
+    public ImageView imageview1;
 
     UserModel usermodel = new UserModel();
 
@@ -51,11 +57,22 @@ public class SigninFormController {
                     String id = resultSet.getString(3);
 
                         if (password.equals(getpw) & name.equals(getun)) {
-                        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
+                       // AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/dashboardControl_form.fxml"));
+
+                            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/dashboardControl_form.fxml"));
+                            Parent anchorPane = fxmlLoader.load();
+
+                            DashboardControlsController dash =  fxmlLoader.getController();
+                            dash.setSigninFormController(this);
+
                         Scene scene = new Scene(anchorPane);
                         Stage stage = (Stage) root.getScene().getWindow();
                         stage.setScene(scene);
                         stage.setTitle("dashboard");
+
+                            EmployeeDto dto = EmpModel.getEmployeeDetails(id);
+                            dash.setLblname(dto.getName());
+
 
                         /*    Mail mail = new Mail();
                             mail.setMsg("Welcome..! \n\n\tYou are successfully logged in to the Animal Hospital Management System \n\nThank you..!");

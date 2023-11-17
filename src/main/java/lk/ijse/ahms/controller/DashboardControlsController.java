@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,9 @@ public class DashboardControlsController {
     public JFXButton btndetails;
     public JFXButton btnpayment;
     public JFXButton btnsignout;
+
+    @Setter
+    private SigninFormController signinFormController;
 
 
     public void initialize() throws IOException {
@@ -121,5 +125,9 @@ public class DashboardControlsController {
 
     public void signoutOnMouseExit(MouseEvent mouseEvent) {
         setButtonUp();
+    }
+
+    public void setLblname(String name) {
+        lblname.setText(name);
     }
 }

@@ -19,7 +19,7 @@
             <Image url="@../asserts/images/signin.jpg" />
          </image>
       </ImageView>
-      <ImageView blendMode="SCREEN" depthTest="ENABLE" fitHeight="695.0" fitWidth="553.0" layoutX="156.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageview1" blendMode="SCREEN" depthTest="ENABLE" fitHeight="695.0" fitWidth="553.0" layoutX="156.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../asserts/images/signinblur.jpg" />
          </image>
@@ -31,14 +31,14 @@
             </InnerShadow>
          </effect>
       </ImageView>
-      <Label layoutX="278.0" layoutY="138.0" prefHeight="112.0" prefWidth="325.0" text="SIGN IN" textFill="WHITE">
+      <Label layoutX="295.0" layoutY="139.0" prefHeight="112.0" prefWidth="285.0" text="SIGN IN" textFill="WHITE">
          <font>
-            <Font name="Arial Black" size="67.0" />
+            <Font name="AppleMyungjo Regular" size="67.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="382.0" layoutY="540.0" onAction="#signinOnAction" style="-fx-background-color: black; -fx-background-radius: 10;" text="Sign in" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="370.0" layoutY="538.0" onAction="#signinOnAction" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: #272121; -fx-background-radius: 20;" text="Sign in" textFill="WHITE">
          <font>
-            <Font size="26.0" />
+            <Font name="Apple SD Gothic Neo Regular" size="26.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

@@ -23,6 +23,7 @@ import java.util.Optional;
 
 public class InfoDoctorFormController {
     public JFXButton btndelete;
+
     public JFXButton btnupdate;
     public JFXComboBox<String> cmbDocId;
     public JFXTextField txtname;

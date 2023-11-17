@@ -18,8 +18,8 @@
                   <Font name="Madhura" size="48.0" />
                </font>
             </Label>
-            <ComboBox fx:id="comUserName" layoutX="214.0" layoutY="159.0" prefHeight="31.0" prefWidth="270.0" promptText="Selecte User Name"   />
-            <Button fx:id="btnSendOTP" layoutX="281.0" layoutY="322.0" mnemonicParsing="false" onAction="#btnSendOTPOnAction" prefHeight="39.0" prefWidth="136.0"   text="Send OTP" />
+            <ComboBox fx:id="comUserName" layoutX="214.0" layoutY="159.0" prefHeight="31.0" prefWidth="270.0" promptText="Selecte User Name" />
+            <Button fx:id="btnSendOTP" layoutX="281.0" layoutY="322.0" mnemonicParsing="false" onAction="#btnSendOTPOnAction" prefHeight="39.0" prefWidth="136.0" text="Send OTP" />
             <Label fx:id="lblEmail" layoutX="94.0" layoutY="386.0" opacity="0.0" text="Label" />
             <ImageView fx:id="btnClose" fitHeight="32.0" fitWidth="35.0" layoutX="651.0" layoutY="14.0" onMouseClicked="#btnCloseOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,6 +29,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <Label layoutX="613.0" layoutY="422.0" text="\@SameerMS" textFill="#797979" />
          </children>
       </AnchorPane>
       <Label layoutX="161.0" layoutY="18.0" text="Forgot Password" textFill="WHITE">
