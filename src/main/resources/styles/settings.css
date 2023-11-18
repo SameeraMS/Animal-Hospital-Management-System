@@ -1,30 +1,30 @@
 #btnSaveNewUser{
-    -fx-border-color: #14fff5;
-    -fx-border-radius: 10;
+    -fx-border-color: #361500;
+    -fx-border-radius: 5;
     -fx-border-width: 2;
-    -fx-background-radius: 10;
-    -fx-background-color: #F8F5E4;
-    -fx-text-fill: #C683D7;
+    -fx-background-radius: 5;
+    -fx-background-color: #70F170CC;
+    -fx-text-fill: black;
 
 }
 
 #btnDelete{
-    -fx-border-color: #14fff5;
-    -fx-border-radius: 10;
+    -fx-border-color: #361500;
+    -fx-border-radius: 5;
     -fx-border-width: 2;
-    -fx-background-radius: 10;
-    -fx-background-color: #F8F5E4;
-    -fx-text-fill: #C683D7;
+    -fx-background-radius: 5;
+    -fx-background-color: #D80032;
+    -fx-text-fill: white;
 
 }
 
 #btnchangePass{
-    -fx-border-color: #14fff5;
-    -fx-border-radius: 10;
+    -fx-border-color: #361500;
+    -fx-border-radius: 5;
     -fx-border-width: 2;
-    -fx-background-radius: 10;
-    -fx-background-color: #F8F5E4;
-    -fx-text-fill: #C683D7;
+    -fx-background-radius: 5;
+    -fx-background-color: #70F170CC;
+    -fx-text-fill: black;
 
 }
 
