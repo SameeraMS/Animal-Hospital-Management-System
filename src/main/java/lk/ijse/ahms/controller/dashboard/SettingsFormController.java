@@ -63,6 +63,7 @@ public class SettingsFormController {
     public ObservableList<UserTm> obList = FXCollections.observableArrayList();
 
     public void initialize() {
+        tblUser.getItems().clear();
         setCellValueFactoryUser();
         loadAllUsers();
         loadEmployee();

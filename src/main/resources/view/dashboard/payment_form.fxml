@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF; -fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.PaymentFormController">
    <children>
-      <Line endX="681.085205078125" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
+      <Line endX="830" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
       <Label layoutX="55.0" layoutY="44.0" text="Payment">
          <font>
             <Font name="Arial Bold" size="46.0" />

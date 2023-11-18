@@ -36,12 +36,18 @@ public class AppointmentFormController {
     public TableColumn colPetOwnerId;
     public JFXTextField txtAppointId;
     public JFXButton btnDelete;
+    public JFXButton btnappointment;
 
     private ObservableList<AppointmentTm> obList = FXCollections.observableArrayList();
 
     public void initialize() {
+        cleartable();
         setCellValueFactoryAppointments();
         loadAllAppointments();
+    }
+
+    private void cleartable() {
+        tblAppointments.getItems().clear();
     }
 
     private void setCellValueFactoryAppointments() {

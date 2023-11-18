@@ -13,22 +13,22 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF; -fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.PetsFormController">
    <children>
-      <Line endX="681.085205078125" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
+      <Line endX="830" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
       <Label layoutX="55.0" layoutY="44.0" text="Pets">
          <font>
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
-      <TableView fx:id="tblPets" layoutX="40.0" layoutY="280.0" prefHeight="421.0" prefWidth="560.0">
+      <TableView fx:id="tblPets" layoutX="43.0" layoutY="199.0" prefHeight="504.0" prefWidth="684.0" stylesheets="@../../styles/table.css">
          <columns>
             <TableColumn fx:id="colId" editable="false" prefWidth="86.5268325805664" text="Id" />
             <TableColumn fx:id="colName" editable="false" minWidth="8.0" prefWidth="117.0" text="Name" />
             <TableColumn fx:id="colAge" editable="false" minWidth="9.0" prefWidth="128.0" text="Age" />
             <TableColumn fx:id="colGender" editable="false" minWidth="9.0" prefWidth="112.66549682617188" text="Gender" />
-            <TableColumn fx:id="colType" editable="false" minWidth="9.0" prefWidth="112.66549682617188" text="Type" />
+            <TableColumn fx:id="colType" editable="false" minWidth="9.0" prefWidth="114.0" text="Type" />
          </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="289.0" layoutY="137.0" onAction="#addPetOnAction" prefHeight="51.0" prefWidth="182.0" style="-fx-background-color: green;" text="Add New Pet" textFill="WHITE">
+      <JFXButton fx:id="btnnewpet" buttonType="RAISED" contentDisplay="RIGHT" layoutX="754.0" layoutY="409.0" onAction="#addPetOnAction" prefHeight="55.0" prefWidth="245.0" stylesheets="@../../styles/pets.css" text="Add New Pet" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -38,12 +38,12 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/update.png" />
+                  <Image url="@../../asserts/icons/addpet.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="421.0" layoutY="205.0" onAction="#infoPetOnAction" prefHeight="34.0" prefWidth="103.0" style="-fx-background-color: rgb(128,128,128);" text="Info" textFill="WHITE">
+      <JFXButton fx:id="btnpetinfo" buttonType="RAISED" contentDisplay="RIGHT" layoutX="747.0" layoutY="328.0" onAction="#infoPetOnAction" prefHeight="55.0" prefWidth="245.0" stylesheets="@../../styles/pets.css" text="Pets Info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -53,17 +53,17 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/update.png" />
+                  <Image url="@../../asserts/icons/info.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <Label layoutX="43.0" layoutY="257.0" text="Pets">
+      <Label layoutX="49.0" layoutY="162.0" prefHeight="20.0" prefWidth="52.0" text="Pets">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="753.0" layoutY="134.0" onAction="#addPetOwnerOnAction" prefHeight="53.0" prefWidth="243.0" style="-fx-background-color: green;" text="Add Pet Owner" textFill="WHITE">
+      <JFXButton fx:id="btnnewowner" buttonType="RAISED" contentDisplay="RIGHT" layoutX="744.0" layoutY="242.0" onAction="#addPetOwnerOnAction" prefHeight="55.0" prefWidth="245.0" stylesheets="@../../styles/pets.css" text="Add Pet Owner" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -73,12 +73,12 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/update.png" />
+                  <Image url="@../../asserts/icons/addPetOwner.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="893.0" layoutY="198.0" onAction="#infoPetOwnerOnAction" prefHeight="34.0" prefWidth="103.0" style="-fx-background-color: rgb(128,128,128);" text="Info" textFill="WHITE">
+      <JFXButton fx:id="btnownerinfo" buttonType="RAISED" contentDisplay="RIGHT" layoutX="758.0" layoutY="488.0" onAction="#infoPetOwnerOnAction" prefHeight="55.0" prefWidth="245.0" stylesheets="@../../styles/pets.css" text="Owner Info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -88,7 +88,7 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/update.png" />
+                  <Image url="@../../asserts/icons/info.png" />
                </image>
             </ImageView>
          </graphic>

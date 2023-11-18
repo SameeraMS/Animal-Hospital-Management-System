@@ -14,25 +14,25 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF; -fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.MedicineFormcontroller">
    <children>
-      <Line endX="681.085205078125" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
+      <Line endX="830" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
       <Label layoutX="55.0" layoutY="44.0" text="Medicine">
          <font>
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
-      <TableView fx:id="tblMed" layoutX="41.0" layoutY="216.0" prefHeight="464.0" prefWidth="884.0">
+      <TableView fx:id="tblMed" layoutX="41.0" layoutY="216.0" prefHeight="464.0" prefWidth="835.0" stylesheets="@../../styles/table.css">
         <columns>
           <TableColumn fx:id="colId" prefWidth="103.0" text="Med Id" />
           <TableColumn fx:id="colName" prefWidth="128.29571533203125" text="Name" />
             <TableColumn fx:id="colType" prefWidth="97.67449951171875" text="Type" />
-            <TableColumn fx:id="colPrice" prefWidth="143.56478881835938" text="price" />
-            <TableColumn fx:id="colDesc" minWidth="0.0" prefWidth="167.43511962890625" text="description" />
-            <TableColumn fx:id="colExp" minWidth="0.0" prefWidth="147.34906005859375" text="exp Date" />
-            <TableColumn fx:id="colQty" minWidth="0.0" prefWidth="93.996826171875" text="Qty" />
+            <TableColumn fx:id="colPrice" prefWidth="106.54412841796875" text="price" />
+            <TableColumn fx:id="colDesc" minWidth="0.0" prefWidth="160.40155029296875" text="description" />
+            <TableColumn fx:id="colExp" minWidth="0.0" prefWidth="122.34515380859375" text="exp Date" />
+            <TableColumn fx:id="colQty" minWidth="0.0" prefWidth="109.001953125" text="Qty" />
         </columns>
       </TableView>
       <JFXTextField layoutX="195.0" layoutY="118.0" prefHeight="52.0" prefWidth="266.0" />
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="493.0" layoutY="121.0" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Search" textFill="WHITE">
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" contentDisplay="RIGHT" layoutX="493.0" layoutY="121.0" prefHeight="55.0" prefWidth="155.0" stylesheets="@../../styles/medicine.css" text="Search" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -42,12 +42,12 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/update.png" />
+                  <Image url="@../../asserts/icons/search.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="734.0" layoutY="46.0" onAction="#addMedOnAction" prefHeight="48.0" prefWidth="149.0" style="-fx-background-color: green;" text="Add New" textFill="WHITE">
+      <JFXButton fx:id="btnnew" buttonType="RAISED" contentDisplay="RIGHT" layoutX="910.0" layoutY="264.0" onAction="#addMedOnAction" prefHeight="55.0" prefWidth="155.0" stylesheets="@../../styles/medicine.css" text="Add New" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -57,12 +57,12 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/update.png" />
+                  <Image url="@../../asserts/icons/addpet.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="742.0" layoutY="123.0" onAction="#infoMedOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #e67e22;" text="Info" textFill="WHITE">
+      <JFXButton fx:id="btninfo" buttonType="RAISED" contentDisplay="RIGHT" layoutX="917.0" layoutY="357.0" onAction="#infoMedOnAction" prefHeight="55.0" prefWidth="155.0" stylesheets="@../../styles/medicine.css" text="Info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -72,7 +72,7 @@
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../asserts/icons/update.png" />
+                  <Image url="@../../asserts/icons/info.png" />
                </image>
             </ImageView>
          </graphic>

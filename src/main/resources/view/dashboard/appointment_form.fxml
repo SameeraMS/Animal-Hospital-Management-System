@@ -2,31 +2,48 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF; -fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.AppointmentFormController">
    <children>
-      <Line endX="681.085205078125" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
+      <Line endX="830.0" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
       <Label layoutX="55.0" layoutY="44.0" text="Appointment">
          <font>
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
       <JFXTextField fx:id="txtAppointId" layoutX="113.0" layoutY="123.0" onAction="#idOnAction" prefHeight="52.0" prefWidth="279.0" />
-      <JFXButton buttonType="RAISED" layoutX="661.0" layoutY="125.0" onAction="#makeApointmentOnAction" style="-fx-background-color: yellow;" text="Make Appointment">
+      <JFXButton fx:id="btnappointment" buttonType="RAISED" contentDisplay="RIGHT" layoutX="661.0" layoutY="125.0" onAction="#makeApointmentOnAction" stylesheets="@../../styles/appointment.css" text="Make Appointment">
          <font>
             <Font size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/addappointment.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="419.0" layoutY="128.0" onAction="#searchOnAction" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: pink;" text="Search">
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" contentDisplay="RIGHT" layoutX="419.0" layoutY="128.0" onAction="#searchOnAction" prefHeight="48.0" prefWidth="165.0" stylesheets="@../../styles/appointment.css" text="Search">
          <font>
             <Font size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/search.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
       <TableView fx:id="tblAppointments" layoutX="46.0" layoutY="224.0" prefHeight="457.0" prefWidth="871.0">
         <columns>
@@ -37,11 +54,23 @@
             <TableColumn fx:id="colDocId" prefWidth="131.56170654296875" text="Doc Id" />
             <TableColumn fx:id="colPetOwnerId" prefWidth="141.39093017578125" text="PetOwnerId" />
         </columns>
+         <styleClass>
+            <String fx:value="arrow" />
+            <String fx:value="column-header" />
+            <String fx:value="table-view" />
+         </styleClass>
       </TableView>
-      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="942.0" layoutY="400.0" onAction="#deleteOnAction" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: pink;" text="Delete">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" contentDisplay="RIGHT" layoutX="931.0" layoutY="400.0" onAction="#deleteOnAction" prefHeight="52.0" prefWidth="159.0" stylesheets="@../../styles/appointment.css" text="Delete">
          <font>
             <Font size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
    </children>
 </AnchorPane>

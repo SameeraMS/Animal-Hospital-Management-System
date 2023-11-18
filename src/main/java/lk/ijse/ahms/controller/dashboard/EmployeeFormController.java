@@ -40,6 +40,8 @@ public class EmployeeFormController {
     private EmpModel empModel = new EmpModel();
 
     public  void initialize() {
+        tblDoc.getItems().clear();
+        tblEmployee.getItems().clear();
         setCellValueFactoryEmployee();
         loadAllEmployee();
 

@@ -33,6 +33,7 @@ public class PetsFormController {
     public TableColumn colType;
 
     public void initialize() {
+        tblPets.getItems().clear();
         setCellValueFactoryPets();
         loadAllPets();
     }

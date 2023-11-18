@@ -36,6 +36,7 @@ public class MedicineFormcontroller {
     private MedModel medModel = new MedModel();
 
     public void initialize() {
+        tblMed.getItems().clear();
         setCellValueFactoryMedicine();
         loadAllMedicine();
     }
