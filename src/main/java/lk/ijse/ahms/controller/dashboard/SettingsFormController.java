@@ -156,8 +156,7 @@ public class SettingsFormController {
                 focusedIndex = tblUser.getSelectionModel().getSelectedIndex();
                 UserTm selectedItem = (UserTm) tblUser.getSelectionModel().getSelectedItem();
 
-                id = selectedItem.getUsername();
-
+                    id = selectedItem.getUsername();
 
                 try {
                     UserDto dto = UserModel.searchByName(id);

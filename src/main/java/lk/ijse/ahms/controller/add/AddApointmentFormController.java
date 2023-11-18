@@ -42,7 +42,7 @@ public class AddApointmentFormController {
     public JFXTextField petName;
     public JFXTextArea desc;
     public JFXTextField docName;
-    public Label lblAmount;
+    public JFXTextField lblAmount;
     @Setter
     private AppointmentFormController appointmentFormController;
 
