@@ -18,18 +18,18 @@
 
 #btnempinfo{
     -fx-border-color: #14fff5;
-    -fx-border-radius: 20;
+    -fx-border-radius: 10;
     -fx-border-width: 2;
-    -fx-background-radius: 20;
+    -fx-background-radius: 10;
     -fx-background-color: #F8F5E4;
     -fx-text-fill: #C683D7;
 }
 
 #btndocinfo{
     -fx-border-color: #14fff5;
-    -fx-border-radius: 20;
+    -fx-border-radius: 10;
     -fx-border-width: 2;
-    -fx-background-radius: 20;
+    -fx-background-radius: 10;
     -fx-background-color: #F8F5E4;
     -fx-text-fill: #C683D7;
 }
