@@ -111,4 +111,26 @@ public class PrescriptionModel {
 
         return isUpdated;
     }
+
+    public static PrescriptionDto searchPrescriptionbyAppId(String appId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM prescription WHERE appointment_id=?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, appId);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        PrescriptionDto dto = null;
+
+        if(resultSet.next()) {
+            dto = new PrescriptionDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3)
+            );
+        }
+        return dto;
+    }
 }

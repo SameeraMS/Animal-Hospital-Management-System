@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -111,7 +113,8 @@ public class AddApointmentFormController {
 
     private void setDateandTime() {
         lblDate.setText(String .valueOf(LocalDate.now()));
-        lblTime.setText(String.valueOf(LocalTime.now()));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        lblTime.setText(LocalTime.now().format(formatter));
     }
 
     public void DocIdOnAction(ActionEvent actionEvent) {
@@ -203,6 +206,7 @@ public class AddApointmentFormController {
         cmbPetId.getSelectionModel().clearSelection();
         cmbPetOwnerId.getSelectionModel().clearSelection();
         cmbDocId.getSelectionModel().clearSelection();
+        lblAmount.clear();
     }
 
 

@@ -37,6 +37,7 @@ public class AppointmentFormController {
     public JFXTextField txtAppointId;
     public JFXButton btnDelete;
     public JFXButton btnappointment;
+    public JFXButton btnsearch;
 
     private ObservableList<AppointmentTm> obList = FXCollections.observableArrayList();
 
