@@ -113,4 +113,29 @@ public class EmpModel {
 
         return isDelete;
     }
+
+    public static String generateNextempId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT employee_id FROM employee ORDER BY employee_id DESC LIMIT 1";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return splitempId(resultSet.getString(1));
+        }
+        return splitempId(null);
+    }
+
+    private static String splitempId(String currentempId) {
+        if(currentempId != null) {
+            String[] split = currentempId.split("E0");
+
+            int id = Integer.parseInt(split[1]); //01
+            id++;
+            return "E00" + id;
+        } else {
+            return "E001";
+        }
+    }
 }

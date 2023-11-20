@@ -112,4 +112,29 @@ public class PetModel {
 
         return isUpdated;
     }
+
+    public static String generateNextId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT pet_id FROM pets ORDER BY pet_id DESC LIMIT 1";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return splitpetId(resultSet.getString(1));
+        }
+        return splitpetId(null);
+    }
+
+    private static String splitpetId(String currentId) {
+        if(currentId != null) {
+            String[] split = currentId.split("PE0");
+
+            int id = Integer.parseInt(split[1]); //01
+            id++;
+            return "PE00" + id;
+        } else {
+            return "PE001";
+        }
+    }
 }

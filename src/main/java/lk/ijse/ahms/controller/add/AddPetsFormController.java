@@ -38,9 +38,20 @@ public class AddPetsFormController {
     private AddApointmentFormController addApointmentFormController;
 
     public void initialize() {
+        generatenextId();
         loadAllOwnerstoComboBox();
         loadAllGender();
 
+    }
+
+    private void generatenextId() {
+        try {
+            String payId = PetModel.generateNextId();
+            petId.setText(payId);
+            petId.setEditable(false);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void loadAllGender() {

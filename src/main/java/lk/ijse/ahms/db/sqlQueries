@@ -1,3 +1,5 @@
+drop database if exists animalhospital;
+
 create database animalhospital;
 
 use animalhospital;
@@ -18,9 +20,9 @@ create table user(
     constraint foreign key (employee_id ) references employee (employee_id )
 );
 
-insert into employee values ('e001','sameera','panadura','779582592','sameerams2002@gmail.com','Admin');
+insert into employee values ('E001','sameera','panadura','779582592','sameerams2002@gmail.com','Admin');
 
-insert into user values('sameerams2002@gmail.com','1234','e001');
+insert into user values('sameerams2002@gmail.com','1234','E001');
 
 create table doctor(
     doc_id      varchar(10)     primary key,

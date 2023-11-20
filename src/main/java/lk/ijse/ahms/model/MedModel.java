@@ -116,6 +116,31 @@ public class MedModel {
         return isDelete;
     }
 
+    public static String generateNextMedId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT med_id FROM medicine ORDER BY med_id DESC LIMIT 1";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return splitmedId(resultSet.getString(1));
+        }
+        return splitmedId(null);
+    }
+
+    private static String splitmedId(String currentMedId) {
+        if(currentMedId != null) {
+            String[] split = currentMedId.split("M0");
+
+            int id = Integer.parseInt(split[1]); //01
+            id++;
+            return "M00" + id;
+        } else {
+            return "M001";
+        }
+    }
+
 
     public boolean updateMed(List<CartTm> cartTmList) throws SQLException {
         System.out.println("med model -> "+cartTmList);

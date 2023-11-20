@@ -31,6 +31,20 @@ public class AddPetOwnerFormController {
     @Setter
     private AddApointmentFormController addApointmentFormController;
 
+    public void initialize() {
+        generateNextId();
+    }
+
+    private void generateNextId() {
+        try {
+            String payId = PetOwnerModel.generateNextId();
+            ownerId.setText(payId);
+            ownerId.setEditable(false);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
     public void idOnAction(ActionEvent actionEvent) {
         ownerName.requestFocus();
     }

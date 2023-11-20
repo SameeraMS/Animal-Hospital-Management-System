@@ -103,4 +103,29 @@ public class PetOwnerModel {
         return isSaved;
 
     }
+
+    public static String generateNextId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT pet_owner_id FROM pet_owner ORDER BY pet_owner_id DESC LIMIT 1";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return splitId(resultSet.getString(1));
+        }
+        return splitId(null);
+    }
+
+    private static String splitId(String currentId) {
+        if(currentId != null) {
+            String[] split = currentId.split("O0");
+
+            int id = Integer.parseInt(split[1]); //01
+            id++;
+            return "O00" + id;
+        } else {
+            return "O001";
+        }
+    }
 }

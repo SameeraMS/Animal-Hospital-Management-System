@@ -51,11 +51,23 @@ public class AddApointmentFormController {
     private AppointmentFormController appointmentFormController;
 
     public void initialize() {
+        generateNextId();
         setDateandTime();
         loadAllDoc();
         loadAllPetOwner();
         loadAllPet();
         setEdit(false);
+
+    }
+
+    private void generateNextId() {
+        try {
+            String appId = AppointmentModel.generateNextAppointId();
+            appointmentId.setText(appId);
+            appointmentId.setEditable(false);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void setEdit(boolean b) {

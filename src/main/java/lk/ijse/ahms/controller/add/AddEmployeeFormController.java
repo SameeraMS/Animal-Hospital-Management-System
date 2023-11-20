@@ -45,7 +45,18 @@ public class AddEmployeeFormController {
 
 
     public void initialize() {
+        generateNextId();
         loadCmbBox();
+    }
+
+    private void generateNextId() {
+        try {
+            String Id = EmpModel.generateNextempId();
+            empId.setText(Id);
+            empId.setEditable(false);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @Setter

@@ -109,4 +109,29 @@ public class AppointmentModel {
 
         return isDeleted;
     }
+
+    public static String generateNextAppointId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT appointment_id FROM appointment ORDER BY appointment_id DESC LIMIT 1";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return splitAppId(resultSet.getString(1));
+        }
+        return splitAppId(null);
+    }
+
+    private static String splitAppId(String currentAppId) {
+        if(currentAppId != null) {
+            String[] split = currentAppId.split("A0");
+
+            int id = Integer.parseInt(split[1]); //01
+            id++;
+            return "A00" + id;
+        } else {
+            return "A001";
+        }
+    }
 }

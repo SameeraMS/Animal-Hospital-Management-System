@@ -44,7 +44,18 @@ public class AddMedicineFormController {
     private MedicineFormcontroller medFormController;
 
     public void initialize() {
+        generatenextId();
         loadCmbBox();
+    }
+
+    private void generatenextId() {
+        try {
+            String payId = MedModel.generateNextMedId();
+            medId.setText(payId);
+            medId.setEditable(false);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void loadCmbBox() {

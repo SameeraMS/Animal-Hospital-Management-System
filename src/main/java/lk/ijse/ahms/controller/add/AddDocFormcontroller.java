@@ -31,6 +31,21 @@ public class AddDocFormcontroller {
     @Setter
     private EmployeeFormController empFormController;
 
+    public void initialize() {
+        generateNextId();
+
+    }
+
+    private void generateNextId() {
+        try {
+            String payId = DocModel.generateNextDocId();
+            id.setText(payId);
+            id.setEditable(false);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
     public void nameOnAction(ActionEvent actionEvent) {
         tel.requestFocus();
     }

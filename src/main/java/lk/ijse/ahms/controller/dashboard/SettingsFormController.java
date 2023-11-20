@@ -28,6 +28,7 @@ import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.UserModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.awt.*;
@@ -137,7 +138,8 @@ public class SettingsFormController {
                     if (newpassword.equals(newpassword2)) {
                         boolean isChanged = UserModel.changePassword(dto.getUsername(), newpassword);
                         if (isChanged) {
-                            new Alert(Alert.AlertType.CONFIRMATION, "Password changed!").show();
+                       //     new Alert(Alert.AlertType.CONFIRMATION, "Password changed!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Password changed Successfully..!", ButtonType.OK).show();
                         }
                     } else {
                         new Alert(Alert.AlertType.ERROR, "Passwords do not match!").show();
@@ -196,12 +198,16 @@ public class SettingsFormController {
                         UserDto dto2 = new UserDto(username, password, empId);
                         boolean isSaved = UserModel.saveUser(dto2);
                         if (isSaved) {
-                            new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
+                      //      new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","User saved Successfully..!", ButtonType.OK).show();
+
                             initialize();
                             clearFields();
                         }
                     } else {
-                        new Alert(Alert.AlertType.ERROR, "Passwords do not match!").show();
+                      //  new Alert(Alert.AlertType.ERROR, "Passwords do not match!").show();
+                        new SystemAlert(Alert.AlertType.ERROR,"Error","Passwords do not match!", ButtonType.OK).show();
+
                     }
                 }
             } catch (SQLException e) {

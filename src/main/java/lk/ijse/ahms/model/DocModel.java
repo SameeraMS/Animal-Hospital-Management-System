@@ -104,4 +104,29 @@ public class DocModel {
 
         return isDelete;
     }
+
+    public static String generateNextDocId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT doc_id FROM doctor ORDER BY doc_id DESC LIMIT 1";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return splitDocId(resultSet.getString(1));
+        }
+        return splitDocId(null);
+    }
+
+    private static String splitDocId(String currentDocId) {
+        if(currentDocId != null) {
+            String[] split = currentDocId.split("D0");
+
+            int id = Integer.parseInt(split[1]); //01
+            id++;
+            return "D00" + id;
+        } else {
+            return "D001";
+        }
+    }
 }
