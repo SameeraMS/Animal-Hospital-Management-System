@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import lk.ijse.ahms.dto.AppointmentDto;
 import lk.ijse.ahms.dto.PrescriptionDto;
+import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.PrescriptionModel;
 
 import java.sql.SQLException;
@@ -28,7 +29,18 @@ public class PrescriptionFormController {
 
 
     public  void initialize() {
+        generateNextId();
         loadAllAppId();
+    }
+
+    private void generateNextId() {
+        try {
+            String presId = PrescriptionModel.generateNextPresId();
+            txtPresId.setText(presId);
+            txtPresId.setEditable(false);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void loadAllAppId() {

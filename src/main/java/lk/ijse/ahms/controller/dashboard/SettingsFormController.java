@@ -28,6 +28,7 @@ import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.UserModel;
+import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -184,36 +185,45 @@ public class SettingsFormController {
     }
 
     public void saveUserOnAction(ActionEvent actionEvent) {
-        String username = txtUsername.getText();
-        String password = txtPassword1.getText();
-        String password2 = txtPassword2.getText();
-        String empId = cmbEmpId.getValue();
 
-        if (!username.isEmpty() && !password.isEmpty() && !password2.isEmpty() && !empId.isEmpty()) {
-            try {
-                UserDto dto = UserModel.searchByName(username);
+        if(Regex.getEmailPattern().matcher(txtUsername.getText()).matches()){
 
-                if (dto == null) {
-                    if (password.equals(password2)) {
-                        UserDto dto2 = new UserDto(username, password, empId);
-                        boolean isSaved = UserModel.saveUser(dto2);
-                        if (isSaved) {
-                      //      new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
-                            new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","User saved Successfully..!", ButtonType.OK).show();
+            String username = txtUsername.getText();
+            String password = txtPassword1.getText();
+            String password2 = txtPassword2.getText();
+            String empId = cmbEmpId.getValue();
 
-                            initialize();
-                            clearFields();
+            if (!username.isEmpty() && !password.isEmpty() && !password2.isEmpty() && !empId.isEmpty()) {
+                try {
+                    UserDto dto = UserModel.searchByName(username);
+
+                    if (dto == null) {
+                        if (password.equals(password2)) {
+                            UserDto dto2 = new UserDto(username, password, empId);
+                            boolean isSaved = UserModel.saveUser(dto2);
+                            if (isSaved) {
+                                //      new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
+                                new SystemAlert(Alert.AlertType.CONFIRMATION, "Confirmation", "User saved Successfully..!", ButtonType.OK).show();
+
+                                initialize();
+                                clearFields();
+                            }
+                        } else {
+                            //  new Alert(Alert.AlertType.ERROR, "Passwords do not match!").show();
+                            new SystemAlert(Alert.AlertType.ERROR, "Error", "Passwords do not match!", ButtonType.OK).show();
+
                         }
-                    } else {
-                      //  new Alert(Alert.AlertType.ERROR, "Passwords do not match!").show();
-                        new SystemAlert(Alert.AlertType.ERROR,"Error","Passwords do not match!", ButtonType.OK).show();
-
                     }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
             }
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Invalid Username(Email address)!").show();
         }
+
+
+
     }
 
     private void clearFields() {

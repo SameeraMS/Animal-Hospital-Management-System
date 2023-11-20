@@ -185,31 +185,39 @@ public class PaymentFormController {
         double unitPrice = Double.parseDouble(lblamount.getText());
         double tot = unitPrice * qty;
 
-        if (!obList.isEmpty()) {
-            for (int i = 0; i < tblcart.getItems().size(); i++) {
-                if (colid.getCellData(i).equals(medid)) {
-                    int col_qty = Integer.valueOf(String.valueOf(colqty.getCellData(i)));
-                    qty += col_qty;
-                    tot = unitPrice * qty;
+        if (qty <= Integer.parseInt(lblqtyOnHand.getText())) {
 
-                    obList.get(i).setQty(String.valueOf(qty));
-                    obList.get(i).setTotal(String.valueOf(tot));
+            if (!obList.isEmpty()) {
+                for (int i = 0; i < tblcart.getItems().size(); i++) {
+                    if (colid.getCellData(i).equals(medid)) {
+                        int col_qty = Integer.valueOf(String.valueOf(colqty.getCellData(i)));
+                        qty += col_qty;
+                        tot = unitPrice * qty;
 
-                    calculateTotal();
-                    tblcart.refresh();
-                    return;
+                        obList.get(i).setQty(String.valueOf(qty));
+                        obList.get(i).setTotal(String.valueOf(tot));
+
+                        calculateTotal();
+                        tblcart.refresh();
+                        return;
+                    }
                 }
             }
+
+
+            var cartTm = new CartTm(medid, medname, String.valueOf(unitPrice), String.valueOf(qty), String.valueOf(tot));
+
+            obList.add(cartTm);
+
+            tblcart.setItems(obList);
+            calculateTotal();
+            txtqty.clear();
+
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Out of stock").show();
         }
 
 
-        var cartTm = new CartTm(medid, medname, String.valueOf(unitPrice), String.valueOf(qty), String.valueOf(tot));
-
-        obList.add(cartTm);
-
-        tblcart.setItems(obList);
-        calculateTotal();
-        txtqty.clear();
     }
 
     private void calculateTotal() {

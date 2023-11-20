@@ -133,4 +133,29 @@ public class PrescriptionModel {
         }
         return dto;
     }
+
+    public static String generateNextPresId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT presc_id FROM prescription ORDER BY presc_id DESC LIMIT 1";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return splitPresId(resultSet.getString(1));
+        }
+        return splitPresId(null);
+    }
+
+    private static String splitPresId(String currentId) {
+        if(currentId != null) {
+            String[] split = currentId.split("PR0");
+
+            int id = Integer.parseInt(split[1]); //01
+            id++;
+            return "PR00" + id;
+        } else {
+            return "PR001";
+        }
+    }
 }
