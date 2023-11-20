@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import lk.ijse.ahms.controller.dashboard.AppointmentFormController;
@@ -21,6 +22,7 @@ import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.io.IOException;
@@ -179,7 +181,8 @@ public class AddApointmentFormController {
                 boolean isSaved = AppointmentModel.saveAppointment(dto);
 
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Appointment saved!").show();
+                //    new Alert(Alert.AlertType.CONFIRMATION, "Appointment saved!").show();
+                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Appointment saved Successfully..!", ButtonType.OK).show();
                     appointmentFormController.initialize();
                     clearFields();
                 }
@@ -187,7 +190,7 @@ public class AddApointmentFormController {
                 throw new RuntimeException(e);
             }
         } else {
-            new Alert(Alert.AlertType.WARNING, "Please fill all fields").show();
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
         }
 
 

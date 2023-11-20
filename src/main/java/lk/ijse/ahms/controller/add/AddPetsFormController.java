@@ -9,12 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import lk.ijse.ahms.controller.dashboard.PetsFormController;
 import lk.ijse.ahms.dto.PetOwnerDto;
 import lk.ijse.ahms.dto.PetsDto;
 import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.io.IOException;
@@ -83,7 +85,8 @@ public class AddPetsFormController {
                 boolean isSaved = PetModel.savePet(dto);
 
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Pet saved!").show();
+              //      new Alert(Alert.AlertType.CONFIRMATION, "Pet saved!").show();
+                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Pet saved Successfully..!", ButtonType.OK).show();
                     clearFields();
                     if (petsFormController != null) {
                         petsFormController.initialize();
@@ -94,7 +97,9 @@ public class AddPetsFormController {
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-            }
+            } else {
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
+        }
 
     }
 

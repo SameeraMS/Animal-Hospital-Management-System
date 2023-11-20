@@ -8,11 +8,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import lk.ijse.ahms.controller.DashboardControlsController;
 import lk.ijse.ahms.controller.dashboard.DashboardController;
 import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.io.IOException;
@@ -85,7 +87,9 @@ public class AddEmployeeFormController {
                 boolean isSaved = EmpModel.saveEmployee(dto);
 
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+                  //  new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Employee saved Successfully..!", ButtonType.OK).show();
+
                     clearfields();
                     empFormController.initialize();
 
@@ -94,7 +98,7 @@ public class AddEmployeeFormController {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "All fields are required!").show();
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
         }
     }
 

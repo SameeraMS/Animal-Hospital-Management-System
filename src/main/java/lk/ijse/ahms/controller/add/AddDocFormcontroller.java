@@ -4,11 +4,13 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.dto.DoctorDto;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.EmpModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.sql.SQLException;
@@ -70,7 +72,8 @@ public class AddDocFormcontroller {
                     boolean isSaved = DocModel.saveDoctor(dto);
 
                     if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
+                       // new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
+                        new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Doctor saved Successfully..!", ButtonType.OK).show();
                         claerFields();
                         empFormController.initialize();
                     }
@@ -79,7 +82,7 @@ public class AddDocFormcontroller {
                 }
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "All fields are required").show();
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
         }
     }
 }

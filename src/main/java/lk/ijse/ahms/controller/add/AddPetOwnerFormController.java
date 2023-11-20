@@ -3,10 +3,12 @@ package lk.ijse.ahms.controller.add;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import lk.ijse.ahms.controller.dashboard.PetsFormController;
 import lk.ijse.ahms.controller.info.InfoPetsFormController;
 import lk.ijse.ahms.dto.PetOwnerDto;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.sql.SQLException;
@@ -70,7 +72,8 @@ public class AddPetOwnerFormController {
                 boolean isSaved = PetOwnerModel.savePetOwner(dto);
 
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Pet Owner saved!").show();
+                //    new Alert(Alert.AlertType.CONFIRMATION, "Pet Owner saved!").show();
+                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Pet Owner saved Successfully..!", ButtonType.OK).show();
                     clearFields();
 
                     if(infoPetFormController != null) {
@@ -87,6 +90,8 @@ public class AddPetOwnerFormController {
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
+        } else {
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
         }
     }
 }

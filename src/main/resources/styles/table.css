@@ -3,9 +3,11 @@
 }
 
 .table-view .column-header{
-    -fx-background-color: #f8f5e4;
-    -fx-pref-height: 50px;
+    -fx-background-color: #83A2FF;
+    -fx-pref-height: 45px;
     -fx-font-size: 15px;
+    -fx-text-fill: black;
+    -fx-font-style: bold;
 }
 
 .table-view .arrow{

@@ -110,11 +110,11 @@ create table prescription(
 );
 
 create table prescription_details(
-    presc_id    varchar(10)    not null,
+    payment_id    varchar(10)    not null,
     med_id      varchar(10)    not null,
     qty         int(10)        not null,
     unit_price  decimal(6,2),
-    constraint foreign key (presc_id) references prescription (presc_id)
+    constraint foreign key (payment_id) references payment (payment_id)
     on delete cascade on update cascade,
     constraint foreign key (med_id) references medicine (med_id)
     on delete cascade on update cascade

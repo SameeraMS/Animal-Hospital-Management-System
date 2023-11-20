@@ -1,26 +1,31 @@
 package lk.ijse.ahms.controller.dashboard;
 
+import com.google.protobuf.StringValue;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.ahms.dto.AppointmentDto;
 import lk.ijse.ahms.dto.MedicineDto;
+import lk.ijse.ahms.dto.PlaceOrderDto;
 import lk.ijse.ahms.dto.PrescriptionDto;
-import lk.ijse.ahms.model.AppointmentModel;
-import lk.ijse.ahms.model.MedModel;
-import lk.ijse.ahms.model.PrescriptionModel;
+import lk.ijse.ahms.dto.tm.CartTm;
+import lk.ijse.ahms.model.*;
+import lk.ijse.ahms.util.SystemAlert;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class PaymentFormController {
     public Label lbldate;
@@ -44,12 +49,42 @@ public class PaymentFormController {
     public TableColumn coltotal;
     public Label lbltotal;
     public Label lblappointmentAmount;
+    public JFXButton btndelete;
+    public JFXButton btnaddtocart;
+    public JFXButton btnplaceorder;
+
+    private PaymentModel paymentModel = new PaymentModel();
+    private MedModel medModel = new MedModel();
+    private PresDetailsModel presDetailsModel = new PresDetailsModel();
+    private ObservableList<CartTm> obList = FXCollections.observableArrayList();
+
+    private PlaceOrderModel placeOrderModel = new PlaceOrderModel();
 
     public void initialize() {
+        setCellValueFactory();
+        generateNextPayId();
         loadAllAppointments();
         loadAllMedicine();
         setDateTime();
 
+    }
+
+    private void setCellValueFactory() {
+        colid.setCellValueFactory(new PropertyValueFactory<>("medId"));
+        colname.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        colunitprice.setCellValueFactory(new PropertyValueFactory<>("UnitPrice"));
+        colqty.setCellValueFactory(new PropertyValueFactory<>("Qty"));
+        coltotal.setCellValueFactory(new PropertyValueFactory<>("Total"));
+    }
+
+    private void generateNextPayId() {
+        try {
+            String payId = paymentModel.generateNextPayId();
+            txtpaymentId.setText(payId);
+            txtpaymentId.setEditable(false);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void setDateTime() {
@@ -98,8 +133,8 @@ public class PaymentFormController {
             if (AppId != null) {
                 List<AppointmentDto> dto = AppointmentModel.searchAppointments(AppId);
 
-                txtPetOwner.setText(dto.get(0).getPetOwnerId());
-                txtPet.setText(dto.get(0).getPetId());
+                txtPetOwner.setText(dto.get(0).getPetOwnerName());
+                txtPet.setText(dto.get(0).getPetName());
                 lblappointmentAmount.setText(dto.get(0).getAmount());
 
                 PrescriptionDto presDto = PrescriptionModel.searchPrescriptionbyAppId(AppId);
@@ -130,7 +165,7 @@ public class PaymentFormController {
             if (id != null) {
                 MedicineDto dto = MedModel.getMedicineDetails(id);
 
-                txtmedname.setText(dto.getMedId());
+                txtmedname.setText(dto.getName());
                 lblqtyOnHand.setText(dto.getQty());
                 lbltype.setText(dto.getType());
                 lblamount.setText(dto.getPrice());
@@ -143,12 +178,108 @@ public class PaymentFormController {
         }
     }
 
-        public void addToCartOnAction(ActionEvent actionEvent) {
+    public void addToCartOnAction(ActionEvent actionEvent) {
+        String medid = cmbmedid.getValue();
+        String medname = txtmedname.getText();
+        int qty = Integer.parseInt(txtqty.getText());
+        double unitPrice = Double.parseDouble(lblamount.getText());
+        double tot = unitPrice * qty;
+
+        if (!obList.isEmpty()) {
+            for (int i = 0; i < tblcart.getItems().size(); i++) {
+                if (colid.getCellData(i).equals(medid)) {
+                    int col_qty = Integer.valueOf(String.valueOf(colqty.getCellData(i)));
+                    qty += col_qty;
+                    tot = unitPrice * qty;
+
+                    obList.get(i).setQty(String.valueOf(qty));
+                    obList.get(i).setTotal(String.valueOf(tot));
+
+                    calculateTotal();
+                    tblcart.refresh();
+                    return;
+                }
+            }
+        }
+
+
+        var cartTm = new CartTm(medid, medname, String.valueOf(unitPrice), String.valueOf(qty), String.valueOf(tot));
+
+        obList.add(cartTm);
+
+        tblcart.setItems(obList);
+        calculateTotal();
+        txtqty.clear();
+    }
+
+    private void calculateTotal() {
+        double total = 0;
+        for (int i = 0; i < tblcart.getItems().size(); i++) {
+            total += Double.parseDouble((String) coltotal.getCellData(i));
+        }
+        total = total + Double.parseDouble(lblappointmentAmount.getText());
+        lbltotal.setText(String.valueOf(total));
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {
+        btndelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+            if (type.orElse(no) == yes) {
+                int focusedIndex = tblcart.getSelectionModel().getSelectedIndex();
+
+                obList.remove(focusedIndex);
+                tblcart.refresh();
+                calculateTotal();
+            }
+        });
     }
 
-    public void placeOrderOnAction(ActionEvent actionEvent) {
+    public void placeOrderOnAction(ActionEvent actionEvent) throws SQLException {
+        String payId = txtpaymentId.getText();
+        String date = lbldate.getText();
+        String appointId = cmbAppId.getValue();
+        String total = lbltotal.getText();
+
+
+                List<CartTm> cartTmList = new ArrayList<>();
+                for (int i = 0; i < tblcart.getItems().size(); i++) {
+                    cartTmList.add((CartTm) tblcart.getItems().get(i));
+                }
+        System.out.println("place order on action -> "+cartTmList);
+                var placeOrderDto = new PlaceOrderDto(payId, date, total, appointId, cartTmList);
+                boolean isSuccess = false;
+                try {
+                    isSuccess = placeOrderModel.placeOrder(placeOrderDto);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                if (isSuccess) {
+                   // new Alert(Alert.AlertType.CONFIRMATION, "Order Successfully Placed!").show();
+                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Order Placed Successfully..!",ButtonType.OK).show();
+                    clearall();
+                }
+
+
+    }
+
+    private void clearall() {
+        txtmedname.clear();
+        txtqty.clear();
+        txtmedname.requestFocus();
+        tblcart.getItems().clear();
+        lbltotal.setText("0");
+        lblappointmentAmount.setText("0");
+        cmbpresid.getItems().clear();
+        cmbmedid.getItems().clear();
+        cmbAppId.getItems().clear();
+        initialize();
+    }
+
+    public void qtyOnAction(ActionEvent actionEvent) {
+        addToCartOnAction(actionEvent);
     }
 }

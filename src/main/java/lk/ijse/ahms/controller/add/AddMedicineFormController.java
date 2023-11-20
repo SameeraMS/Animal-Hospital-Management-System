@@ -8,11 +8,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.controller.dashboard.MedicineFormcontroller;
 import lk.ijse.ahms.dto.MedicineDto;
 import lk.ijse.ahms.model.MedModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.sql.SQLException;
@@ -78,7 +80,8 @@ public class AddMedicineFormController {
                 boolean isSaved = MedModel.saveMedicine(dto);
 
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Medicine saved!").show();
+                  //  new Alert(Alert.AlertType.CONFIRMATION, "Medicine saved!").show();
+                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Medicine saved Successfully..!", ButtonType.OK).show();
                     clearFields();
                     medFormController.initialize();
                 }
@@ -86,7 +89,7 @@ public class AddMedicineFormController {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "All fields are required!").show();
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
         }
     }
 

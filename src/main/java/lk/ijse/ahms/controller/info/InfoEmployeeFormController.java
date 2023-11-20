@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.sql.SQLException;
@@ -110,7 +111,8 @@ public class InfoEmployeeFormController {
                         cmbEmpType.setItems(obList);
                     }
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Cannot Edit Admin!").show();
+                  //  new Alert(Alert.AlertType.ERROR, "Cannot Edit Admin!").show();
+                    new SystemAlert(Alert.AlertType.WARNING,"Warning","Cannot Edit Admin!", ButtonType.OK).show();
                 }
             });
         }

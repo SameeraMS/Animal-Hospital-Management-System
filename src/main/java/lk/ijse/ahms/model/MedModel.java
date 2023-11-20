@@ -3,6 +3,7 @@ package lk.ijse.ahms.model;
 import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.dto.MedicineDto;
+import lk.ijse.ahms.dto.tm.CartTm;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -116,4 +117,27 @@ public class MedModel {
     }
 
 
+    public boolean updateMed(List<CartTm> cartTmList) throws SQLException {
+        System.out.println("med model -> "+cartTmList);
+        for(CartTm tm : cartTmList) {
+
+                if (!updateQty(tm.getMedId(), tm.getQty())) {
+                    return false;
+                }
+
+        }
+        return true;
+    }
+
+    public boolean updateQty(String medid, String qty) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE medicine SET qty = qty - ? WHERE med_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, qty);
+        pstm.setString(2, medid);
+
+        return pstm.executeUpdate() > 0;
+    }
 }

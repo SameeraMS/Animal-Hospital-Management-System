@@ -36,7 +36,7 @@
             <Font name="AppleMyungjo Regular" size="67.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="370.0" layoutY="538.0" onAction="#signinOnAction" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: #272121; -fx-background-radius: 20;" text="Sign in" textFill="WHITE">
+      <JFXButton fx:id="btnsignin" buttonType="RAISED" layoutX="370.0" layoutY="538.0" onAction="#signinOnAction" prefHeight="52.0" prefWidth="126.0" stylesheets="@../styles/signin.css" text="Sign in" textFill="WHITE">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="26.0" />
          </font>
@@ -52,11 +52,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <JFXPasswordField fx:id="txtpassword" layoutX="213.0" layoutY="416.0" onAction="#passOnAction" prefHeight="54.0" prefWidth="434.0" promptText="   Password" style="-fx-background-color: white; -fx-background-radius: 15;">
+      <JFXPasswordField fx:id="txtpassword" layoutX="213.0" layoutY="416.0" onAction="#passOnAction" prefHeight="54.0" prefWidth="434.0" promptText="   Password" stylesheets="@../styles/signin.css">
          <font>
             <Font size="22.0" />
          </font></JFXPasswordField>
-      <JFXTextField fx:id="txtusername" layoutX="213.0" layoutY="299.0" onAction="#usernameOnAction" prefHeight="54.0" prefWidth="434.0" promptText="   Username" style="-fx-background-color: white; -fx-background-radius: 15;" unFocusColor="#4d4d4d">
+      <JFXTextField fx:id="txtusername" layoutX="213.0" layoutY="299.0" onAction="#usernameOnAction" prefHeight="54.0" prefWidth="434.0" promptText="   Username" stylesheets="@../styles/signin.css" unFocusColor="#4d4d4d">
          <font>
             <Font size="22.0" />
          </font></JFXTextField>
