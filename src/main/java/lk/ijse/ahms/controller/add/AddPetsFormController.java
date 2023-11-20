@@ -16,6 +16,7 @@ import lk.ijse.ahms.dto.PetOwnerDto;
 import lk.ijse.ahms.dto.PetsDto;
 import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -82,36 +83,48 @@ public class AddPetsFormController {
 
 
     public void saveOnAction(ActionEvent actionEvent) {
-        String id = petId.getText();
-        String name = petName.getText();
-        String age = petAge.getText();
-        String ownerId = cmbOwnerId.getValue();
-        String type = petType.getText();
-        String gender = cmbGender.getValue();
 
-        var dto = new PetsDto(id, name, age, gender, type, ownerId);
+        if(Regex.getNamePattern().matcher(petName.getText()).matches()){
+            if(Regex.getIntPattern().matcher(petAge.getText()).matches()){
 
-        if(!id.isEmpty() && !name.isEmpty() && !age.isEmpty() && !ownerId.isEmpty() && !type.isEmpty() && !gender.isEmpty()) {
-            try {
-                boolean isSaved = PetModel.savePet(dto);
+                String id = petId.getText();
+                String name = petName.getText();
+                String age = petAge.getText();
+                String ownerId = cmbOwnerId.getValue();
+                String type = petType.getText();
+                String gender = cmbGender.getValue();
 
-                if (isSaved) {
-              //      new Alert(Alert.AlertType.CONFIRMATION, "Pet saved!").show();
-                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Pet saved Successfully..!", ButtonType.OK).show();
-                    clearFields();
-                    if (petsFormController != null) {
-                        petsFormController.initialize();
-                    } else if (addApointmentFormController != null) {
-                        addApointmentFormController.initialize();
+                var dto = new PetsDto(id, name, age, gender, type, ownerId);
+
+                if(!id.isEmpty() && !name.isEmpty() && !age.isEmpty() && !ownerId.isEmpty() && !type.isEmpty() && !gender.isEmpty()) {
+                    try {
+                        boolean isSaved = PetModel.savePet(dto);
+
+                        if (isSaved) {
+                            //      new Alert(Alert.AlertType.CONFIRMATION, "Pet saved!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Pet saved Successfully..!", ButtonType.OK).show();
+                            clearFields();
+
+                            if (petsFormController != null) {
+                                petsFormController.initialize();
+                            } else if (addApointmentFormController != null) {
+                                addApointmentFormController.initialize();
+                            }
+                            initialize();
+                        }
+                    } catch (SQLException e) {
+                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                     }
+                } else {
+                    new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
                 }
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            }
-            } else {
-            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
-        }
 
+            }else {
+                new SystemAlert(Alert.AlertType.INFORMATION,"Information","Invalid Age!..!", ButtonType.OK).show();
+            }
+        }else {
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Invalid Name!..!", ButtonType.OK).show();
+        }
     }
 
     public void clearOnAction(ActionEvent actionEvent) {

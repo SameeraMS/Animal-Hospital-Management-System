@@ -31,8 +31,8 @@
             <TableColumn fx:id="colQty" minWidth="0.0" prefWidth="109.001953125" text="Qty" />
         </columns>
       </TableView>
-      <JFXTextField layoutX="195.0" layoutY="118.0" prefHeight="52.0" prefWidth="266.0" />
-      <JFXButton fx:id="btnsearch" buttonType="RAISED" contentDisplay="RIGHT" layoutX="493.0" layoutY="121.0" prefHeight="55.0" prefWidth="155.0" stylesheets="@../../styles/medicine.css" text="Search" textFill="WHITE">
+      <JFXTextField fx:id="txtsearchid" layoutX="195.0" layoutY="118.0" onAction="#serachidOnAction" prefHeight="52.0" prefWidth="266.0" />
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" contentDisplay="RIGHT" layoutX="493.0" layoutY="121.0" onAction="#searchOnAction" prefHeight="55.0" prefWidth="155.0" stylesheets="@../../styles/medicine.css" text="Search" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>

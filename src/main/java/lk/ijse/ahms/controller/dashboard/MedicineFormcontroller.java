@@ -1,11 +1,14 @@
 package lk.ijse.ahms.controller.dashboard;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,10 +16,13 @@ import javafx.stage.Stage;
 import lk.ijse.ahms.controller.add.AddEmployeeFormController;
 import lk.ijse.ahms.controller.add.AddMedicineFormController;
 import lk.ijse.ahms.controller.info.InfoMedicineFormController;
+import lk.ijse.ahms.dto.AppointmentDto;
 import lk.ijse.ahms.dto.DoctorDto;
 import lk.ijse.ahms.dto.MedicineDto;
+import lk.ijse.ahms.dto.tm.AppointmentTm;
 import lk.ijse.ahms.dto.tm.DoctorTm;
 import lk.ijse.ahms.dto.tm.MedicineTm;
+import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.MedModel;
 
@@ -33,6 +39,8 @@ public class MedicineFormcontroller {
     public TableColumn colDesc;
     public TableColumn colExp;
     public TableColumn colQty;
+    public JFXTextField txtsearchid;
+    public JFXButton btnsearch;
     private MedModel medModel = new MedModel();
 
     public void initialize() {
@@ -107,6 +115,44 @@ public class MedicineFormcontroller {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
+
+    }
+
+    public void serachidOnAction(ActionEvent actionEvent) {
+        searchOnAction(actionEvent);
+
+    }
+
+    public void searchOnAction(ActionEvent actionEvent) {
+        String id = txtsearchid.getText();
+
+        try {
+            MedicineDto dtos = MedModel.getMedicineDetails(id);
+
+            if (dtos == null) {
+                new Alert(Alert.AlertType.ERROR, "Medicine not found").show();
+            } else {
+
+                ObservableList<MedicineTm> obList1 = FXCollections.observableArrayList();
+
+                    obList1.add(
+                            new MedicineTm(
+                                    dtos.getMedId(),
+                                    dtos.getName(),
+                                    dtos.getType(),
+                                    dtos.getPrice(),
+                                    dtos.getDescription(),
+                                    dtos.getExpdate(),
+                                    dtos.getQty()
+                            )
+                    );
+
+                tblMed.setItems(obList1);
+            }
+            } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }

@@ -10,6 +10,7 @@ import lk.ijse.ahms.dto.DoctorDto;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.EmpModel;
+import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -74,30 +75,49 @@ public class AddDocFormcontroller {
     }
 
     public void saveOnAction(ActionEvent actionEvent) {
-        String nid = id.getText();
-        String nname = name.getText();
-        String ntel = tel.getText();
-        String mail = email.getText();
 
-        var dto = new DoctorDto(nid, nname, ntel, mail);
+        if(Regex.getMobilePattern().matcher(tel.getText()).matches()){
+            if(Regex.getEmailPattern().matcher(email.getText()).matches()){
+                if (Regex.getNamePattern().matcher(name.getText()).matches()){
 
-        if (!nid.isEmpty() && !nname.isEmpty() && !ntel.isEmpty() && !mail.isEmpty()) {
-            {
-                try {
-                    boolean isSaved = DocModel.saveDoctor(dto);
+                    String nid = id.getText();
+                    String nname = name.getText();
+                    String ntel = tel.getText();
+                    String mail = email.getText();
 
-                    if (isSaved) {
-                       // new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
-                        new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Doctor saved Successfully..!", ButtonType.OK).show();
-                        claerFields();
-                        empFormController.initialize();
+                    var dto = new DoctorDto(nid, nname, ntel, mail);
+
+                    if (!nid.isEmpty() && !nname.isEmpty() && !ntel.isEmpty() && !mail.isEmpty()) {
+                        {
+                            try {
+                                boolean isSaved = DocModel.saveDoctor(dto);
+
+                                if (isSaved) {
+                                    // new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
+                                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Doctor saved Successfully..!", ButtonType.OK).show();
+                                    claerFields();
+                                    initialize();
+                                    empFormController.initialize();
+                                }
+                            } catch (SQLException e) {
+                                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                            }
+                        }
+                    } else {
+                        new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
                     }
-                } catch (SQLException e) {
-                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+                }else{
+                    new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Enter Valid Name..!", ButtonType.OK).show();
                 }
+            }else{
+                new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Enter Valid Email..!", ButtonType.OK).show();
             }
         } else {
-            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Enter Valid Mobile Number..!", ButtonType.OK).show();
         }
+
+
+
     }
 }

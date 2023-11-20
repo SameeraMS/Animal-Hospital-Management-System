@@ -14,6 +14,7 @@ import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.controller.dashboard.MedicineFormcontroller;
 import lk.ijse.ahms.dto.MedicineDto;
 import lk.ijse.ahms.model.MedModel;
+import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -76,32 +77,44 @@ public class AddMedicineFormController {
     }
 
     public void saveOnAction(ActionEvent actionEvent) {
-        String id = medId.getText();
-        String name = medName.getText();
-        String type = cmbType.getSelectionModel().getSelectedItem();
-        String price = medPrice.getText();
-        String desc = medDesc.getText();
-        String expDate = medExpDate.getValue().toString();
-        String qty = medqty.getText();
 
-        var dto = new MedicineDto(id, name, type, qty, price, desc, expDate );
+        if(Regex.getDoublePattern().matcher(medPrice.getText()).matches()){
+            if(Regex.getIntPattern().matcher(medqty.getText()).matches()){
 
-        if(!id.isEmpty() && !name.isEmpty() && !type.isEmpty() && !price.isEmpty() && !desc.isEmpty() && !expDate.isEmpty() && !qty.isEmpty()) {
-            try {
-                boolean isSaved = MedModel.saveMedicine(dto);
+                String id = medId.getText();
+                String name = medName.getText();
+                String type = cmbType.getSelectionModel().getSelectedItem();
+                String price = medPrice.getText();
+                String desc = medDesc.getText();
+                String expDate = medExpDate.getValue().toString();
+                String qty = medqty.getText();
 
-                if (isSaved) {
-                  //  new Alert(Alert.AlertType.CONFIRMATION, "Medicine saved!").show();
-                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Medicine saved Successfully..!", ButtonType.OK).show();
-                    clearFields();
-                    medFormController.initialize();
+                var dto = new MedicineDto(id, name, type, qty, price, desc, expDate );
+
+                if(!id.isEmpty() && !name.isEmpty() && !type.isEmpty() && !price.isEmpty() && !desc.isEmpty() && !expDate.isEmpty() && !qty.isEmpty()) {
+                    try {
+                        boolean isSaved = MedModel.saveMedicine(dto);
+
+                        if (isSaved) {
+                            //  new Alert(Alert.AlertType.CONFIRMATION, "Medicine saved!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Medicine saved Successfully..!", ButtonType.OK).show();
+                            clearFields();
+                            medFormController.initialize();
+                            initialize();
+                        }
+                    } catch (SQLException e) {
+                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                    }
+                } else {
+                    new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
                 }
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }else{
+                new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Enter Valid Quantity..!", ButtonType.OK).show();
             }
-        } else {
-            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
+        }else{
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Enter Valid Price..!", ButtonType.OK).show();
         }
+
     }
 
     public void clearOnAction(ActionEvent actionEvent) {

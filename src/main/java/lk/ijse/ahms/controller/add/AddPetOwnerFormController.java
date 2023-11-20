@@ -8,6 +8,7 @@ import lk.ijse.ahms.controller.dashboard.PetsFormController;
 import lk.ijse.ahms.controller.info.InfoPetsFormController;
 import lk.ijse.ahms.dto.PetOwnerDto;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -74,38 +75,55 @@ public class AddPetOwnerFormController {
 
     public void saveOnAction(ActionEvent actionEvent) {
 
-        String id = ownerId.getText();
-        String name = ownerName.getText();
-        String email = ownerEmail.getText();
-        String tel = ownerTel.getText();
+        if(Regex.getNamePattern().matcher(ownerName.getText()).matches()){
+            if(Regex.getEmailPattern().matcher(ownerEmail.getText()).matches()){
+                if(Regex.getMobilePattern().matcher(ownerTel.getText()).matches()){
 
-        var dto = new PetOwnerDto(id, name, email, tel);
+                    String id = ownerId.getText();
+                    String name = ownerName.getText();
+                    String email = ownerEmail.getText();
+                    String tel = ownerTel.getText();
 
-        if(!id.isEmpty() && !name.isEmpty() && !email.isEmpty() && !tel.isEmpty()) {
-            try {
-                boolean isSaved = PetOwnerModel.savePetOwner(dto);
+                    var dto = new PetOwnerDto(id, name, email, tel);
 
-                if (isSaved) {
-                //    new Alert(Alert.AlertType.CONFIRMATION, "Pet Owner saved!").show();
-                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Pet Owner saved Successfully..!", ButtonType.OK).show();
-                    clearFields();
+                    if(!id.isEmpty() && !name.isEmpty() && !email.isEmpty() && !tel.isEmpty()) {
+                        try {
+                            boolean isSaved = PetOwnerModel.savePetOwner(dto);
 
-                    if(infoPetFormController != null) {
-                        infoPetFormController.initialize();
-                    } else if(addPetFormController != null) {
-                        addPetFormController.initialize();
-                    } else if(addApointmentFormController != null) {
-                        addApointmentFormController.initialize();
-                    } else if(PetFormController != null) {
-                        PetFormController.initialize();
+                            if (isSaved) {
+                                //    new Alert(Alert.AlertType.CONFIRMATION, "Pet Owner saved!").show();
+                                new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Pet Owner saved Successfully..!", ButtonType.OK).show();
+                                clearFields();
+
+
+                                if(infoPetFormController != null) {
+                                    infoPetFormController.initialize();
+                                } else if(addPetFormController != null) {
+                                    addPetFormController.initialize();
+                                } else if(addApointmentFormController != null) {
+                                    addApointmentFormController.initialize();
+                                } else if(PetFormController != null) {
+                                    PetFormController.initialize();
+                                }
+                                initialize();
+                            }
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
+                    } else {
+                        new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
                     }
 
+                }else{
+                    new Alert(Alert.AlertType.ERROR, "Invalid Phone Number!").show();
                 }
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Invalid Email!").show();
             }
-        } else {
-            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
+        }else{
+            new Alert(Alert.AlertType.ERROR, "Invalid Name!").show();
         }
+
+
     }
 }

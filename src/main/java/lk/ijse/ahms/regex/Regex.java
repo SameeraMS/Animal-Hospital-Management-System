@@ -4,10 +4,10 @@ import lombok.Getter;
 
 import java.util.regex.Pattern;
 
-@Getter
+
 public class Regex {
 
-    private static final Pattern namePattern = Pattern.compile("^[a-zA-Z '.-]{4,}$");
+    private static final Pattern namePattern = Pattern.compile("^[a-zA-Z '.-]{2,}$");
     private static final Pattern idPattern = Pattern.compile("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
     private static final Pattern registrationIdPattern = Pattern.compile("^[I][T][0-1]{1,}$");
     private static final Pattern emailPattern = Pattern.compile("(^[a-zA-Z0-9_.-]+)@([a-zA-Z]+)([\\.])([a-zA-Z]+)$");
@@ -18,4 +18,30 @@ public class Regex {
     private static final Pattern oldIDPattern = Pattern.compile("^[0-9]{9}[vVxX]$");
     private static final Pattern doublePattern = Pattern.compile("^[0-9]+\\.?[0-9]*$");
     private static final Pattern intPattern = Pattern.compile("^[1-9][0-9]?$|^100$");
+
+    public static Pattern getRegistrationIdPattern() {return registrationIdPattern;}
+    public static Pattern getIntPattern() {return intPattern;}
+    public static Pattern getOldIDPattern() {return oldIDPattern;}
+    public static Pattern getPostalCodePattern() {return postalCodePattern;}
+    public static Pattern getAddressPattern() {return addressPattern;}
+    public static Pattern getMobilePattern() {
+        return mobilePattern;
+    }
+    public static Pattern getCityPattern() {
+        return cityPattern;
+    }
+    public static Pattern getEmailPattern() {
+        return emailPattern;
+    }
+    public static Pattern getNamePattern() {
+        return namePattern;
+    }
+    public static Pattern getIdPattern() {
+        return idPattern;
+    }
+
+    public static Pattern getDoublePattern() {
+        return doublePattern;
+    }
+
 }

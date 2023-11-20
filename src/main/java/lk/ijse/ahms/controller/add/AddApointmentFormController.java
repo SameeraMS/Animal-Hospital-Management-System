@@ -22,6 +22,7 @@ import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -49,6 +50,8 @@ public class AddApointmentFormController {
     public JFXTextField lblAmount;
     @Setter
     private AppointmentFormController appointmentFormController;
+
+
 
     public void initialize() {
         generateNextId();
@@ -174,35 +177,42 @@ public class AddApointmentFormController {
     }
 
     public void makeAppointmentOnAction(ActionEvent actionEvent) {
-        String id = appointmentId.getText();
-        String docname = docName.getText();
-        String petname = petName.getText();
-        String petownername = petOwnerName.getText();
-        String description = desc.getText();
-        String amount = lblAmount.getText();
-        String date = lblDate.getText();
-        String time = lblTime.getText();
-        String docid = cmbDocId.getValue();
-        String petid = cmbPetId.getValue();
-        String petownerid = cmbPetOwnerId.getValue();
 
-        var dto = new AppointmentDto(id, amount, date, time, description, docid, docname, petownerid, petownername, petid, petname);
+        if(Regex.getDoublePattern().matcher(lblAmount.getText()).matches()){
 
-        if(!id.isEmpty() && !amount.isEmpty() && !date.isEmpty() && !time.isEmpty() && !description.isEmpty() && !docid.isEmpty() && !petid.isEmpty() && !petownerid.isEmpty()) {
-            try {
-                boolean isSaved = AppointmentModel.saveAppointment(dto);
+            String id = appointmentId.getText();
+            String docname = docName.getText();
+            String petname = petName.getText();
+            String petownername = petOwnerName.getText();
+            String description = desc.getText();
+            String amount = lblAmount.getText();
+            String date = lblDate.getText();
+            String time = lblTime.getText();
+            String docid = cmbDocId.getValue();
+            String petid = cmbPetId.getValue();
+            String petownerid = cmbPetOwnerId.getValue();
 
-                if (isSaved) {
-                //    new Alert(Alert.AlertType.CONFIRMATION, "Appointment saved!").show();
-                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Appointment saved Successfully..!", ButtonType.OK).show();
-                    appointmentFormController.initialize();
-                    clearFields();
+            var dto = new AppointmentDto(id, amount, date, time, description, docid, docname, petownerid, petownername, petid, petname);
+
+            if(!id.isEmpty() && !amount.isEmpty() && !date.isEmpty() && !time.isEmpty() && !description.isEmpty() && !docid.isEmpty() && !petid.isEmpty() && !petownerid.isEmpty()) {
+                try {
+                    boolean isSaved = AppointmentModel.saveAppointment(dto);
+
+                    if (isSaved) {
+                        //    new Alert(Alert.AlertType.CONFIRMATION, "Appointment saved!").show();
+                        new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Appointment saved Successfully..!", ButtonType.OK).show();
+                        appointmentFormController.initialize();
+                        initialize();
+                        clearFields();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+            } else {
+                new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
             }
-        } else {
-            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Please enter a valid amount").show();
         }
 
 

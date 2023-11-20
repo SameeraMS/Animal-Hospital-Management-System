@@ -14,6 +14,7 @@ import lk.ijse.ahms.controller.dashboard.DashboardController;
 import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
+import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -84,33 +85,53 @@ public class AddEmployeeFormController {
 
 
     public void saveOnAction(javafx.event.ActionEvent actionEvent) {
-        String id = empId.getText();
-        String name = empName.getText();
-        String address = empAddress.getText();
-        String tel = empTel.getText();
-        String mail = empMail.getText();
-        String type = cmbEmpType.getSelectionModel().getSelectedItem();
 
-        var dto = new EmployeeDto(id, name, address, tel, mail, type);
+        if(Regex.getNamePattern().matcher(empName.getText()).matches()){
+            if(Regex.getAddressPattern().matcher(empAddress.getText()).matches()){
+                if(Regex.getMobilePattern().matcher(empTel.getText()).matches()){
+                    if(Regex.getEmailPattern().matcher(empMail.getText()).matches()){
 
-        if (!id.isEmpty() && !name.isEmpty() && !address.isEmpty() && !tel.isEmpty() && !mail.isEmpty() && !type.isEmpty()) {
-            try {
-                boolean isSaved = EmpModel.saveEmployee(dto);
+                        String id = empId.getText();
+                        String name = empName.getText();
+                        String address = empAddress.getText();
+                        String tel = empTel.getText();
+                        String mail = empMail.getText();
+                        String type = cmbEmpType.getSelectionModel().getSelectedItem();
 
-                if (isSaved) {
-                  //  new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
-                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Employee saved Successfully..!", ButtonType.OK).show();
+                        var dto = new EmployeeDto(id, name, address, tel, mail, type);
 
-                    clearfields();
-                    empFormController.initialize();
+                        if (!id.isEmpty() && !name.isEmpty() && !address.isEmpty() && !tel.isEmpty() && !mail.isEmpty() && !type.isEmpty()) {
+                            try {
+                                boolean isSaved = EmpModel.saveEmployee(dto);
 
+                                if (isSaved) {
+                                    //  new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+                                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Employee saved Successfully..!", ButtonType.OK).show();
+
+                                    clearfields();
+                                    empFormController.initialize();
+                                    initialize();
+
+                                }
+                            } catch (SQLException e) {
+                                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                            }
+                        } else {
+                            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
+                        }
+                    }else{
+                        new Alert(Alert.AlertType.ERROR, "Invalid Email").show();
+                    }
+                }else{
+                    new Alert(Alert.AlertType.ERROR, "Invalid Mobile").show();
                 }
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }else{
+                new Alert(Alert.AlertType.ERROR, "Invalid Address").show();
             }
         } else {
-            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Name").show();
         }
+
     }
 
     public void clearOnAction(javafx.event.ActionEvent actionEvent) {
