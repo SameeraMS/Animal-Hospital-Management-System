@@ -158,4 +158,29 @@ public class PrescriptionModel {
             return "PR001";
         }
     }
+
+    public static List<PrescriptionDto> getAllPrescriptions() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM prescription";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<PrescriptionDto> dtoList = new ArrayList<>();
+
+        while(resultSet.next()) {
+            dtoList.add(
+                    new PrescriptionDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3)
+                    )
+            );
+
+        }
+        return dtoList;
+
+
+    }
 }

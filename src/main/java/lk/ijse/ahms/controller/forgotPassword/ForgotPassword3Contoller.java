@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.ahms.smtp.Mail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -119,6 +120,24 @@ public class ForgotPassword3Contoller implements Initializable {
 
                 if (pstm.executeUpdate() > 0) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Password Updated!!").show();
+
+                    String email = userName;
+                    String subject = "Animal Hospital System";
+                    String message = "Hi..! \n\nYour password has been changed.";
+
+                    Mail mail = new Mail(email,subject,message);
+                    Thread thread = new Thread(mail);
+
+                    mail.valueProperty().addListener((a, oldValue, newValue) -> {
+                        if (newValue){
+                            System.out.println("mail sent");
+                        }else {
+                            System.out.println("mail not sent");
+                        }
+                    });
+
+                    thread.setDaemon(true);
+                    thread.start();
                 }
                 txtReEnterPassword.setStyle("-fx-background-color: none;");
                 txtReEnterPassword1.setStyle("-fx-background-color: none;");

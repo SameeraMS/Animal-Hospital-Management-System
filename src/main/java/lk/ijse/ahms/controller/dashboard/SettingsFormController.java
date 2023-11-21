@@ -15,30 +15,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.ahms.controller.SigninFormController;
-import lk.ijse.ahms.controller.add.AddApointmentFormController;
 import lk.ijse.ahms.controller.deletePassword.DeleteUserFormController;
-import lk.ijse.ahms.controller.forgotPassword.Forgotpass1FormController;
 import lk.ijse.ahms.dto.EmployeeDto;
-import lk.ijse.ahms.dto.PetsDto;
 import lk.ijse.ahms.dto.UserDto;
-import lk.ijse.ahms.dto.tm.AppointmentTm;
-import lk.ijse.ahms.dto.tm.PetsTm;
 import lk.ijse.ahms.dto.tm.UserTm;
-import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.EmpModel;
-import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.UserModel;
 import lk.ijse.ahms.regex.Regex;
+import lk.ijse.ahms.smtp.Mail;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
-import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
-
-import static java.awt.Color.red;
 
 public class SettingsFormController {
     public JFXTextField txtUsername;
@@ -141,6 +131,24 @@ public class SettingsFormController {
                         if (isChanged) {
                        //     new Alert(Alert.AlertType.CONFIRMATION, "Password changed!").show();
                             new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Password changed Successfully..!", ButtonType.OK).show();
+
+                            String email = username;
+                            String subject = "Animal Hospital System";
+                            String message = "Hi \n\nYour password has been changed successfully.";
+
+                            Mail mail = new Mail(email,subject,message);
+                            Thread thread = new Thread(mail);
+
+                            mail.valueProperty().addListener((a, oldValue, newValue) -> {
+                                if (newValue){
+                                    System.out.println("mail sent");
+                                }else {
+                                    System.out.println("mail not sent");
+                                }
+                            });
+
+                            thread.setDaemon(true);
+                            thread.start();
                         }
                     } else {
                         new Alert(Alert.AlertType.ERROR, "Passwords do not match!").show();
@@ -205,6 +213,23 @@ public class SettingsFormController {
                                 //      new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
                                 new SystemAlert(Alert.AlertType.CONFIRMATION, "Confirmation", "User saved Successfully..!", ButtonType.OK).show();
 
+                                String email = username;
+                                String subject = "Animal Hospital System";
+                                String message = "Hi..! \n\n You have been added as a user to the Animal Hospitalsystem. \n Now you can login to your account using your username and password.";
+
+                                Mail mail = new Mail(email,subject,message);
+                                Thread thread = new Thread(mail);
+
+                                mail.valueProperty().addListener((a, oldValue, newValue) -> {
+                                    if (newValue){
+                                        System.out.println("mail sent");
+                                    }else {
+                                        System.out.println("mail not sent");
+                                    }
+                                });
+
+                                thread.setDaemon(true);
+                                thread.start();
                                 initialize();
                                 clearFields();
                             }

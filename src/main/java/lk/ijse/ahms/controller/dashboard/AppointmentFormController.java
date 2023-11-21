@@ -13,14 +13,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.ahms.controller.add.AddApointmentFormController;
 import lk.ijse.ahms.controller.add.AddMedicineFormController;
+import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.dto.AppointmentDto;
 import lk.ijse.ahms.dto.MedicineDto;
 import lk.ijse.ahms.dto.tm.AppointmentTm;
 import lk.ijse.ahms.dto.tm.MedicineTm;
 import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.MedModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -163,6 +169,22 @@ public class AppointmentFormController {
 
             }
         });
+
+    }
+
+    public void allappointmentsOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+
+        InputStream resourceAsStream = getClass().getResourceAsStream("/report/allappointments.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(
+                jasperReport,
+                null,
+                DbConnection.getInstance().getConnection());
+
+        JasperViewer.viewReport(jasperPrint, false);
+
+
 
     }
 }

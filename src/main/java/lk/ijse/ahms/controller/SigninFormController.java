@@ -11,11 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.ahms.controller.add.AddPetsFormController;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.UserModel;
-import lk.ijse.ahms.smtp.Mail;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -74,15 +72,26 @@ public class SigninFormController {
                             dash.setLblname(dto.getName());
 
 
-                        /*    Mail mail = new Mail();
-                            mail.setMsg("Welcome..! \n\n\tYou are successfully logged in to the Animal Hospital Management System \n\nThank you..!");
-                            mail.setTo(getun);
-                            mail.setSubject("Animal Hospital Management System Login");
+                        /*    String email = getun;
+                                String subject = "Animal Hospital System";
+                                String message = "Hi..! \n\n You have successfully log in to Animal Hospital System. \n\n Thank you..!";
 
-                            Thread thread = new Thread(mail);
-                            thread.start();
+                                Mail mail = new Mail(email,subject,message);
+                                Thread thread = new Thread(mail);
+
+                                mail.valueProperty().addListener((a, oldValue, newValue) -> {
+                                    if (newValue){
+                                        System.out.println("mail sent");
+                                    }else {
+                                        System.out.println("mail not sent");
+                                    }
+                                });
+
+                                thread.setDaemon(true);
+                                thread.start();
 
                          */
+
 
                          } else {
                             new Alert(Alert.AlertType.INFORMATION, "username or password incorrect..!").show();

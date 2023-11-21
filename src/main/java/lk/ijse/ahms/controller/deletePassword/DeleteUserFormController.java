@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import lk.ijse.ahms.controller.dashboard.SettingsFormController;
 import lk.ijse.ahms.dto.UserDto;
 import lk.ijse.ahms.model.UserModel;
+import lk.ijse.ahms.smtp.Mail;
 import lombok.Setter;
 
 import java.sql.SQLException;
@@ -44,6 +45,25 @@ public class DeleteUserFormController {
 
                             if (isDelete) {
                                 new Alert(Alert.AlertType.CONFIRMATION, "User Deleted!").show();
+
+                                String email = id;
+                                String subject = "Animal Hospital System";
+                                String message = "sorry..! \n\n You are no longer a member of our system. \n\n Please contact us for more information.";
+
+                                Mail mail = new Mail(email,subject,message);
+                                Thread thread = new Thread(mail);
+
+                                mail.valueProperty().addListener((a, oldValue, newValue) -> {
+                                    if (newValue){
+                                        System.out.println("mail sent");
+                                    }else {
+                                        System.out.println("mail not sent");
+                                    }
+                                });
+
+                                thread.setDaemon(true);
+                                thread.start();
+
                                 settingsFormController.initialize();
                             } else {
                                 new Alert(Alert.AlertType.ERROR, "Wrong Password").show();

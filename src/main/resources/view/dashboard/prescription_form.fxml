@@ -82,5 +82,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="924.0" layoutY="615.0" onAction="#printOnAction" prefHeight="41.0" prefWidth="88.0" style="-fx-background-color: yellow;" text="Print" />
+      <JFXComboBox fx:id="cmbPres" layoutX="624.0" layoutY="142.0" onAction="#cmbpresOnAction" prefHeight="46.0" prefWidth="172.0" promptText="Prescriptions" />
    </children>
 </AnchorPane>

@@ -25,14 +25,15 @@ import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.PetOwnerModel;
 import lk.ijse.ahms.qr.QRGenerator;
 import lk.ijse.ahms.regex.Regex;
+import lk.ijse.ahms.smtp.Mail;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -209,6 +210,28 @@ public class AddApointmentFormController {
                         String filepath = "/Users/sameeramadushan/Documents/final project/Appointment QR/"+ id + " - " + petownername + ".png";
                         boolean isGenerated = QRGenerator.generateQrCode(id, 1250, 1250, filepath);
                         if (isGenerated){
+
+                            PetOwnerDto newdto = PetOwnerModel.getOwnerDetails(petownerid);
+
+                            assert newdto != null;
+                            String email = newdto.getEmail();
+                            String subject = "Appointment Placed";
+                            String message = "Hi "+petownername+"\nYour appointment has placed on "+date+" at "+time+". "+"Your appointment fee is "+"LKR "+amount+".\nYou can cancel appointment by contact us.";
+
+                            Mail mail = new Mail(email, message, subject, new File(filepath));
+                            Thread thread = new Thread(mail);
+
+                            mail.valueProperty().addListener((a, oldValue, newValue) -> {
+                                if (newValue){
+                                    new SystemAlert(Alert.AlertType.INFORMATION,"Email","Mail sent successfully",ButtonType.OK).show();
+                                }else {
+                                    new SystemAlert(Alert.AlertType.NONE,"Connection Error","Connection Error!",ButtonType.OK).show();
+                                }
+                            });
+
+                            thread.setDaemon(true);
+                            thread.start();
+
                             new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Appointment Successfully saved..! \n\n QR code in '"+filepath+"'.", ButtonType.OK).show();
                         }
 

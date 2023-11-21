@@ -1,27 +1,31 @@
 package lk.ijse.ahms.controller.dashboard;
 
-import com.google.protobuf.StringValue;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.Cursor;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import lk.ijse.ahms.dto.AppointmentDto;
 import lk.ijse.ahms.dto.MedicineDto;
 import lk.ijse.ahms.dto.PlaceOrderDto;
 import lk.ijse.ahms.dto.PrescriptionDto;
 import lk.ijse.ahms.dto.tm.CartTm;
 import lk.ijse.ahms.model.*;
+import lk.ijse.ahms.qr.QRScanner;
 import lk.ijse.ahms.util.SystemAlert;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +33,8 @@ import java.util.Optional;
 
 public class PaymentFormController {
     public Label lbldate;
+    public static String scan;
+    static QRScanner qrScanner;
     public Label lbltime;
     public JFXComboBox<String> cmbAppId;
     public JFXTextField txtPetOwner;
@@ -52,6 +58,7 @@ public class PaymentFormController {
     public JFXButton btndelete;
     public JFXButton btnaddtocart;
     public JFXButton btnplaceorder;
+    public JFXButton btnqr;
 
     private PaymentModel paymentModel = new PaymentModel();
     private MedModel medModel = new MedModel();
@@ -289,5 +296,59 @@ public class PaymentFormController {
 
     public void qtyOnAction(ActionEvent actionEvent) {
         addToCartOnAction(actionEvent);
+    }
+
+    public void qrOnAction(ActionEvent actionEvent) throws IOException {
+
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(qrScanner.getVideoPanel());
+        Stage stage = new Stage();
+
+
+        stage.setScene(new Scene(stackPane, 800, 600));
+        stage.show();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                QRScanner.webcam.close();
+                qrScanner.thread.stop();
+            }
+        });
+
+    }
+
+    public void setAppId(String c) {
+        cmbAppId.setValue(c);
+        appointmentIdOnAction(c);
+    }
+
+    private void appointmentIdOnAction(String c) {
+        String AppId = c;
+
+        try {
+            if (AppId != null) {
+                List<AppointmentDto> dto = AppointmentModel.searchAppointments(AppId);
+
+                txtPetOwner.setText(dto.get(0).getPetOwnerName());
+                txtPet.setText(dto.get(0).getPetName());
+                lblappointmentAmount.setText(dto.get(0).getAmount());
+
+                PrescriptionDto presDto = PrescriptionModel.searchPrescriptionbyAppId(AppId);
+
+                ObservableList<String> obList = FXCollections.observableArrayList();
+
+                if (presDto != null) {
+                    obList.add(presDto.getPrescriptionId());
+                    cmbpresid.setItems(obList);
+                } else {
+                    obList.add("No Prescription");
+                    cmbpresid.setItems(obList);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

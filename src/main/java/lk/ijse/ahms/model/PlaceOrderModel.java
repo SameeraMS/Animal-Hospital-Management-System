@@ -20,6 +20,8 @@ public class PlaceOrderModel {
         String appointId = placeOrderDto.getAppointId();
 
 
+        boolean isOk = false;
+
         Connection connection = null;
         try {
             connection = DbConnection.getInstance().getConnection();
@@ -32,6 +34,7 @@ public class PlaceOrderModel {
                     boolean isOrderDetailSaved = presDetailModel.saveOrderDetails(placeOrderDto.getPayId(), placeOrderDto.getCartTmList());
                     if (isOrderDetailSaved) {
                         connection.commit();
+                        isOk = true;
                     }
                 }
             }
@@ -41,6 +44,6 @@ public class PlaceOrderModel {
             connection.setAutoCommit(true);
         }
 
-        return true;
+        return isOk;
     }
 }
