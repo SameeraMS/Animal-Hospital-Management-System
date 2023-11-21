@@ -20,11 +20,15 @@ import lk.ijse.ahms.dto.tm.AppointmentTm;
 import lk.ijse.ahms.dto.tm.MedicineTm;
 import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.MedModel;
+import lk.ijse.ahms.regex.Regex;
+import lk.ijse.ahms.smtp.Mail;
+import lk.ijse.ahms.util.SystemAlert;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -44,6 +48,7 @@ public class AppointmentFormController {
     public JFXButton btnDelete;
     public JFXButton btnappointment;
     public JFXButton btnsearch;
+    public JFXTextField txtrecmail;
 
     private ObservableList<AppointmentTm> obList = FXCollections.observableArrayList();
 
@@ -174,17 +179,61 @@ public class AppointmentFormController {
 
     public void allappointmentsOnAction(ActionEvent actionEvent) throws JRException, SQLException {
 
-        InputStream resourceAsStream = getClass().getResourceAsStream("/report/allappointments.jrxml");
-        JasperDesign load = JRXmlLoader.load(resourceAsStream);
-        JasperReport jasperReport = JasperCompileManager.compileReport(load);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(
-                jasperReport,
-                null,
-                DbConnection.getInstance().getConnection());
+            InputStream resourceAsStream = getClass().getResourceAsStream("/report/allappointments.jrxml");
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    null,
+                    DbConnection.getInstance().getConnection());
 
-        JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.viewReport(jasperPrint, false);
 
+    }
 
+    public void sendOnAction(ActionEvent actionEvent) throws JRException, SQLException {
 
+        String mail = txtrecmail.getText();
+
+        if (Regex.getEmailPattern().matcher(mail).matches()) {
+
+            InputStream resourceAsStream = getClass().getResourceAsStream("/report/allappointments.jrxml");
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    null,
+                    DbConnection.getInstance().getConnection());
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+            String filePath = "/Users/sameeramadushan/Documents/final project/reports/";
+
+            JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + mail + ".pdf");
+            System.out.println("report done");
+
+            String pdfOutputPath = filePath + mail + ".pdf";
+
+            String email = mail;
+            String subject = "All Appointments";
+            String message = "All Appointments";
+
+            Mail nmail = new Mail(email, message, subject, new File(pdfOutputPath));
+            Thread thread = new Thread(nmail);
+
+            nmail.valueProperty().addListener((a, oldValue, newValue) -> {
+                if (newValue) {
+                    new SystemAlert(Alert.AlertType.INFORMATION, "Email", "Mail sent successfully", ButtonType.OK).show();
+                } else {
+                    new SystemAlert(Alert.AlertType.NONE, "Connection Error", "Connection Error!", ButtonType.OK).show();
+                }
+            });
+
+            thread.setDaemon(true);
+            thread.start();
+
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Invalid Email").show();
+        }
     }
 }

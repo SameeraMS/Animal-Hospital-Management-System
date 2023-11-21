@@ -68,5 +68,7 @@
             </graphic>
         </JFXButton>
       <JFXButton buttonType="RAISED" layoutX="876.0" layoutY="708.0" onAction="#allappointmentsOnAction" style="-fx-background-color: yellow;" text="All Appointments" />
+      <JFXTextField fx:id="txtrecmail" layoutX="274.0" layoutY="702.0" prefHeight="40.0" prefWidth="237.0" promptText="Receiver Email" />
+      <JFXButton buttonType="RAISED" layoutX="528.0" layoutY="709.0" onAction="#sendOnAction" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: orange;" text="Send" />
     </children>
 </AnchorPane>
