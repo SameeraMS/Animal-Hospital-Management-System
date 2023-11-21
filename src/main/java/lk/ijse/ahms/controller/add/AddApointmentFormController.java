@@ -1,5 +1,6 @@
 package lk.ijse.ahms.controller.add;
 
+import com.google.zxing.WriterException;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -22,6 +23,7 @@ import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.qr.QRGenerator;
 import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
@@ -176,7 +178,7 @@ public class AddApointmentFormController {
         }
     }
 
-    public void makeAppointmentOnAction(ActionEvent actionEvent) {
+    public void makeAppointmentOnAction(ActionEvent actionEvent) throws WriterException {
 
         if(Regex.getDoublePattern().matcher(lblAmount.getText()).matches()){
 
@@ -200,8 +202,16 @@ public class AddApointmentFormController {
 
                     if (isSaved) {
                         //    new Alert(Alert.AlertType.CONFIRMATION, "Appointment saved!").show();
-                        new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Appointment saved Successfully..!", ButtonType.OK).show();
+                      //  new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Appointment saved Successfully..!", ButtonType.OK).show();
                         appointmentFormController.initialize();
+
+                        //make Qr
+                        String filepath = "/Users/sameeramadushan/Documents/final project/Appointment QR/"+ id + " - " + petownername + ".png";
+                        boolean isGenerated = QRGenerator.generateQrCode(id, 1250, 1250, filepath);
+                        if (isGenerated){
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Appointment Successfully saved..! \n\n QR code in '"+filepath+"'.", ButtonType.OK).show();
+                        }
+
                         initialize();
                         clearFields();
                     }
