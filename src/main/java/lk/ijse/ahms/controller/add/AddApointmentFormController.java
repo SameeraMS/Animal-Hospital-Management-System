@@ -26,6 +26,7 @@ import lk.ijse.ahms.model.PetOwnerModel;
 import lk.ijse.ahms.qr.QRGenerator;
 import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.smtp.Mail;
+import lk.ijse.ahms.util.PngToPdfConverter;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -211,6 +212,17 @@ public class AddApointmentFormController {
                         boolean isGenerated = QRGenerator.generateQrCode(id, 1250, 1250, filepath);
                         if (isGenerated){
 
+                            String[] imagePath = new String[]{filepath};
+                            String pdfOutputPath = "/Users/sameeramadushan/Documents/final project/Appointment QR/"+ id + " - " + petownername + ".pdf";
+
+                            try {
+                                PngToPdfConverter.convertImagesToPDF(imagePath, pdfOutputPath);
+                                System.out.println("Conversion successful!");
+                            } catch (IOException e) {
+                                System.err.println("Error during conversion: " + e.getMessage());
+                                e.printStackTrace();
+                            }
+
                             PetOwnerDto newdto = PetOwnerModel.getOwnerDetails(petownerid);
 
                             assert newdto != null;
@@ -218,7 +230,7 @@ public class AddApointmentFormController {
                             String subject = "Appointment Placed";
                             String message = "Hi "+petownername+"\nYour appointment has placed on "+date+" at "+time+". "+"Your appointment fee is "+"LKR "+amount+".\nYou can cancel appointment by contact us.";
 
-                            Mail mail = new Mail(email, message, subject, new File(filepath));
+                            Mail mail = new Mail(email, message, subject, new File(pdfOutputPath));
                             Thread thread = new Thread(mail);
 
                             mail.valueProperty().addListener((a, oldValue, newValue) -> {

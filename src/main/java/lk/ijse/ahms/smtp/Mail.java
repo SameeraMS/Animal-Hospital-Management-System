@@ -78,7 +78,7 @@ public class Mail extends Task<Boolean> {
                 MimeBodyPart messageBodyPart2 = new MimeBodyPart();
                 DataSource source = new FileDataSource(file);
                 messageBodyPart2.setDataHandler(new DataHandler(source));
-                messageBodyPart2.setFileName("Appointment.png");
+                messageBodyPart2.setFileName("Appointment.pdf");
 
                 Multipart multipart = new MimeMultipart();
                 multipart.addBodyPart(messageBodyPart1);
