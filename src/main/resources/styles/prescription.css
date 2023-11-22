@@ -5,6 +5,7 @@
     -fx-background-radius: 10;
     -fx-background-color: #1AACAC;
     -fx-text-fill: black;
+    -fx-font-size: 20;
 }
 
 #btnSave{
@@ -14,6 +15,8 @@
     -fx-background-radius: 5;
     -fx-background-color: #70F170CC;
     -fx-text-fill: black;
+    -fx-font-size: 20;
+
 }
 
 #btnupdate{
@@ -23,6 +26,8 @@
     -fx-background-radius: 5;
     -fx-background-color: #F3B664;
     -fx-text-fill: black;
+    -fx-font-size: 20;
+
 }
 
 #btndelete{
@@ -32,13 +37,28 @@
     -fx-background-radius: 5;
     -fx-background-color: #D80032;
     -fx-text-fill: white;
+    -fx-font-size: 20;
+
 }
 
 #btnClear{
     -fx-border-color: #361500;
-    -fx-border-radius: 10;
+    -fx-border-radius: 5;
     -fx-border-width: 2;
-    -fx-background-radius: 10;
+    -fx-background-radius: 5;
     -fx-background-color: #A9A9A9;
     -fx-text-fill: black;
+    -fx-font-size: 20;
+
+}
+
+#btnprint{
+    -fx-border-color: #361500;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-background-radius: 5;
+    -fx-background-color: yellow;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+
 }

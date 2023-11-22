@@ -14,13 +14,18 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF; -fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.MedicineFormcontroller">
    <children>
+      <ImageView fitHeight="800.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../asserts/images/background.png" />
+         </image>
+      </ImageView>
       <Line endX="830" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
       <Label layoutX="55.0" layoutY="44.0" text="Medicine">
          <font>
             <Font name="Arial Bold" size="46.0" />
          </font>
       </Label>
-      <TableView fx:id="tblMed" layoutX="41.0" layoutY="216.0" prefHeight="464.0" prefWidth="835.0" stylesheets="@../../styles/table.css">
+      <TableView fx:id="tblMed" layoutX="41.0" layoutY="216.0" prefHeight="464.0" prefWidth="836.0" stylesheets="@../../styles/table.css">
         <columns>
           <TableColumn fx:id="colId" prefWidth="103.0" text="Med Id" />
           <TableColumn fx:id="colName" prefWidth="128.29571533203125" text="Name" />
@@ -31,8 +36,11 @@
             <TableColumn fx:id="colQty" minWidth="0.0" prefWidth="109.001953125" text="Qty" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="txtsearchid" layoutX="195.0" layoutY="118.0" onAction="#serachidOnAction" prefHeight="52.0" prefWidth="266.0" />
-      <JFXButton fx:id="btnsearch" buttonType="RAISED" contentDisplay="RIGHT" layoutX="493.0" layoutY="121.0" onAction="#searchOnAction" prefHeight="55.0" prefWidth="155.0" stylesheets="@../../styles/medicine.css" text="Search" textFill="WHITE">
+      <JFXTextField fx:id="txtsearchid" layoutX="272.0" layoutY="128.0" onAction="#serachidOnAction" prefHeight="52.0" prefWidth="266.0" promptText="Search">
+         <font>
+            <Font size="22.0" />
+         </font></JFXTextField>
+      <JFXButton fx:id="btnsearch" buttonType="RAISED" contentDisplay="RIGHT" layoutX="570.0" layoutY="126.0" onAction="#searchOnAction" prefHeight="60.0" prefWidth="160.0" stylesheets="@../../styles/medicine.css" text="Search" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -40,14 +48,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../asserts/icons/search.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnnew" buttonType="RAISED" contentDisplay="RIGHT" layoutX="910.0" layoutY="264.0" onAction="#addMedOnAction" prefHeight="55.0" prefWidth="155.0" stylesheets="@../../styles/medicine.css" text="Add New" textFill="WHITE">
+      <JFXButton fx:id="btnnew" buttonType="RAISED" contentDisplay="RIGHT" layoutX="911.0" layoutY="265.0" onAction="#addMedOnAction" prefHeight="60.0" prefWidth="160.0" stylesheets="@../../styles/medicine.css" text="Add New" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -55,14 +63,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../asserts/icons/addpet.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btninfo" buttonType="RAISED" contentDisplay="RIGHT" layoutX="917.0" layoutY="357.0" onAction="#infoMedOnAction" prefHeight="55.0" prefWidth="155.0" stylesheets="@../../styles/medicine.css" text="Info" textFill="WHITE">
+      <JFXButton fx:id="btninfo" buttonType="RAISED" contentDisplay="RIGHT" layoutX="911.0" layoutY="358.0" onAction="#infoMedOnAction" prefHeight="60.0" prefWidth="160.0" stylesheets="@../../styles/medicine.css" text="Info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -70,7 +78,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="37.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../asserts/icons/info.png" />
                </image>

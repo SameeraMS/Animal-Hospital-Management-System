@@ -13,14 +13,22 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF; -fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.AppointmentFormController">
     <children>
+      <ImageView fitHeight="800.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../asserts/images/background.png" />
+         </image>
+      </ImageView>
         <Line endX="830.0" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
         <Label layoutX="55.0" layoutY="44.0" text="Appointment">
             <font>
                 <Font name="Arial Bold" size="46.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="txtAppointId" layoutX="113.0" layoutY="123.0" onAction="#idOnAction" prefHeight="52.0" prefWidth="279.0" />
-        <JFXButton fx:id="btnappointment" buttonType="RAISED" contentDisplay="RIGHT" layoutX="661.0" layoutY="125.0" onAction="#makeApointmentOnAction" stylesheets="@../../styles/appointment.css" text="Make Appointment">
+        <JFXTextField fx:id="txtAppointId" layoutX="250.0" layoutY="133.0" onAction="#idOnAction" prefHeight="52.0" prefWidth="279.0" promptText="Search">
+         <font>
+            <Font size="22.0" />
+         </font></JFXTextField>
+        <JFXButton fx:id="btnappointment" buttonType="RAISED" contentDisplay="RIGHT" layoutX="790.0" layoutY="132.0" onAction="#makeApointmentOnAction" stylesheets="@../../styles/appointment.css" text="Make Appointment">
             <font>
                 <Font size="25.0" />
             </font>
@@ -32,7 +40,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <JFXButton fx:id="btnsearch" buttonType="RAISED" contentDisplay="RIGHT" layoutX="419.0" layoutY="128.0" onAction="#searchOnAction" prefHeight="48.0" prefWidth="165.0" stylesheets="@../../styles/appointment.css" text="Search">
+        <JFXButton fx:id="btnsearch" buttonType="RAISED" contentDisplay="RIGHT" layoutX="556.0" layoutY="131.0" onAction="#searchOnAction" prefHeight="62.0" prefWidth="165.0" stylesheets="@../../styles/appointment.css" text="Search">
             <font>
                 <Font size="25.0" />
             </font>
@@ -44,7 +52,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <TableView fx:id="tblAppointments" layoutX="46.0" layoutY="224.0" prefHeight="457.0" prefWidth="871.0" stylesheets="@../../styles/table.css">
+        <TableView fx:id="tblAppointments" layoutX="42.0" layoutY="224.0" prefHeight="457.0" prefWidth="871.0" stylesheets="@../../styles/table.css">
             <columns>
                 <TableColumn fx:id="colId" prefWidth="99.05105209350586" text="Id" />
                 <TableColumn fx:id="colDate" prefWidth="138.948974609375" text="Date" />
@@ -55,7 +63,7 @@
             </columns>
 
         </TableView>
-        <JFXButton fx:id="btnDelete" buttonType="RAISED" contentDisplay="RIGHT" layoutX="931.0" layoutY="400.0" onAction="#deleteOnAction" prefHeight="52.0" prefWidth="159.0" stylesheets="@../../styles/appointment.css" text="Delete">
+        <JFXButton fx:id="btnDelete" buttonType="RAISED" contentDisplay="RIGHT" layoutX="928.0" layoutY="590.0" onAction="#deleteOnAction" prefHeight="52.0" prefWidth="159.0" stylesheets="@../../styles/appointment.css" text="Delete">
             <font>
                 <Font size="25.0" />
             </font>
@@ -67,8 +75,31 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="876.0" layoutY="708.0" onAction="#allappointmentsOnAction" style="-fx-background-color: yellow;" text="All Appointments" />
-      <JFXTextField fx:id="txtrecmail" layoutX="274.0" layoutY="702.0" prefHeight="40.0" prefWidth="237.0" promptText="Receiver Email" />
-      <JFXButton buttonType="RAISED" layoutX="528.0" layoutY="709.0" onAction="#sendOnAction" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: orange;" text="Send" />
+      <JFXButton fx:id="btnprint" buttonType="RAISED" contentDisplay="RIGHT" layoutX="926.0" layoutY="494.0" onAction="#allappointmentsOnAction" prefHeight="51.0" prefWidth="163.0" stylesheets="@../../styles/appointment.css" text="Print All">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/print.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXTextField fx:id="txtrecmail" layoutX="285.0" layoutY="695.0" prefHeight="52.0" prefWidth="270.0" promptText="Receiver Email">
+         <font>
+            <Font size="18.0" />
+         </font></JFXTextField>
+      <JFXButton fx:id="btnsend" buttonType="RAISED" contentDisplay="RIGHT" graphicTextGap="6.0" layoutX="570.0" layoutY="704.0" onAction="#sendOnAction" prefHeight="45.0" prefWidth="133.0" style="-fx-background-color: orange;" stylesheets="@../../styles/appointment.css" text="Send">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icons/send.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
     </children>
 </AnchorPane>

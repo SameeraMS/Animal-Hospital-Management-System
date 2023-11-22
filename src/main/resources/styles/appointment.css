@@ -28,3 +28,23 @@
 
 }
 
+#btnprint{
+    -fx-border-color: #361500;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-background-radius: 5;
+    -fx-background-color: Yellow;
+    -fx-text-fill: black;
+
+}
+
+
+#btnsend{
+    -fx-border-color: #361500;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-background-radius: 5;
+    -fx-background-color: orange;
+    -fx-text-fill: black;
+
+}

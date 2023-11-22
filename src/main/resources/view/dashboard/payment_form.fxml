@@ -15,6 +15,11 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #E4F1FF; -fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.dashboard.PaymentFormController">
    <children>
+      <ImageView fitHeight="800.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../asserts/images/background.png" />
+         </image>
+      </ImageView>
       <Line endX="830" layoutX="218.0" layoutY="108.0" startX="-184.88836669921875" />
       <Label layoutX="55.0" layoutY="44.0" text="Payment">
          <font>
@@ -45,30 +50,30 @@
          </font>
       </Label>
       <JFXComboBox fx:id="cmbAppId" layoutX="647.0" layoutY="137.0" onAction="#appointmentIdOnAction" prefHeight="38.0" prefWidth="181.0" stylesheets="@../../styles/payment.css" />
-      <Label layoutX="33.0" layoutY="208.0" text="Pet Owner :">
+      <Label layoutX="413.0" layoutY="208.0" text="Pet Owner :">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="397.0" layoutY="208.0" text="Pet :">
+      <Label layoutX="786.0" layoutY="208.0" text="Pet :">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtPetOwner" layoutX="167.0" layoutY="201.0" prefHeight="47.0" prefWidth="181.0" stylesheets="@../../styles/payment.css" />
-      <JFXTextField fx:id="txtPet" layoutX="450.0" layoutY="201.0" prefHeight="47.0" prefWidth="157.0" stylesheets="@../../styles/payment.css" />
+      <JFXTextField fx:id="txtPetOwner" layoutX="547.0" layoutY="201.0" prefHeight="47.0" prefWidth="181.0" stylesheets="@../../styles/payment.css" />
+      <JFXTextField fx:id="txtPet" layoutX="840.0" layoutY="201.0" prefHeight="47.0" prefWidth="157.0" stylesheets="@../../styles/payment.css" />
       <Label layoutX="33.0" layoutY="146.0" text="Payment ID :">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <JFXTextField fx:id="txtpaymentId" layoutX="167.0" layoutY="137.0" stylesheets="@../../styles/payment.css" />
-      <Label layoutX="676.0" layoutY="208.0" text="Prescription ID :">
+      <Label layoutX="33.0" layoutY="208.0" text="Prescription ID :">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbpresid" layoutX="843.0" layoutY="201.0" prefHeight="38.0" prefWidth="181.0" stylesheets="@../../styles/payment.css" />
+      <JFXComboBox fx:id="cmbpresid" layoutX="196.0" layoutY="201.0" prefHeight="38.0" prefWidth="181.0" stylesheets="@../../styles/payment.css" />
       <Label layoutX="33.0" layoutY="269.0" text="Medicine :">
          <font>
             <Font size="24.0" />
@@ -81,18 +86,18 @@
          </font>
       </Label>
       <JFXTextField fx:id="txtmedname" layoutX="542.0" layoutY="263.0" prefHeight="47.0" prefWidth="192.0" stylesheets="@../../styles/payment.css" />
-      <Label layoutX="780.0" layoutY="269.0" text="Qty_on_hand :">
+      <Label layoutX="568.0" layoutY="326.0" text="Qty_on_hand :">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblqtyOnHand" layoutX="939.0" layoutY="269.0" prefHeight="28.0" prefWidth="67.0" stylesheets="@../../styles/payment.css" />
-      <Label layoutX="890.0" layoutY="365.0" text="Qty :">
+      <Label fx:id="lblqtyOnHand" layoutX="727.0" layoutY="328.0" prefHeight="28.0" prefWidth="67.0" stylesheets="@../../styles/payment.css" />
+      <Label layoutX="903.0" layoutY="326.0" text="Qty :">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtqty" layoutX="947.0" layoutY="356.0" onAction="#qtyOnAction" prefHeight="27.0" prefWidth="62.0" stylesheets="@../../styles/payment.css" />
+      <JFXTextField fx:id="txtqty" layoutX="960.0" layoutY="317.0" onAction="#qtyOnAction" prefHeight="27.0" prefWidth="62.0" stylesheets="@../../styles/payment.css" />
       <Label layoutX="33.0" layoutY="326.0" text="Unit Price :">
          <font>
             <Font size="24.0" />
@@ -156,22 +161,22 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <Label layoutX="507.0" layoutY="730.0" prefHeight="29.0" prefWidth="159.0" text="Net Total:   LKR">
+      <Label layoutX="522.0" layoutY="730.0" prefHeight="29.0" prefWidth="159.0" text="Net Total:   LKR">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbltotal" layoutX="666.0" layoutY="721.0" prefHeight="47.0" prefWidth="181.0" stylesheets="@../../styles/payment.css">
+      <Label fx:id="lbltotal" layoutX="681.0" layoutY="721.0" prefHeight="47.0" prefWidth="181.0" stylesheets="@../../styles/payment.css">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="730.0" prefHeight="29.0" prefWidth="196.0" text="Appointment Fee :">
+      <Label layoutX="56.0" layoutY="730.0" prefHeight="29.0" prefWidth="196.0" text="Appointment Fee :">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblappointmentAmount" layoutX="234.0" layoutY="725.0" prefHeight="45.0" prefWidth="159.0" stylesheets="@../../styles/payment.css">
+      <Label fx:id="lblappointmentAmount" layoutX="252.0" layoutY="725.0" prefHeight="45.0" prefWidth="159.0" stylesheets="@../../styles/payment.css">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
