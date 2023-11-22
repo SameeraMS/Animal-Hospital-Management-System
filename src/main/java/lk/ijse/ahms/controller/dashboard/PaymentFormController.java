@@ -15,20 +15,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import lk.ijse.ahms.dto.AppointmentDto;
-import lk.ijse.ahms.dto.MedicineDto;
-import lk.ijse.ahms.dto.PlaceOrderDto;
-import lk.ijse.ahms.dto.PrescriptionDto;
+import lk.ijse.ahms.db.DbConnection;
+import lk.ijse.ahms.dto.*;
 import lk.ijse.ahms.dto.tm.CartTm;
 import lk.ijse.ahms.model.*;
 import lk.ijse.ahms.qr.QRScanner;
+import lk.ijse.ahms.regex.Regex;
+import lk.ijse.ahms.smtp.Mail;
 import lk.ijse.ahms.util.SystemAlert;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -283,17 +283,53 @@ public class PaymentFormController {
                     throw new RuntimeException(ex);
                 }
                 if (isSuccess) {
-                   // new Alert(Alert.AlertType.CONFIRMATION, "Order Successfully Placed!").show();
                     new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Order Placed Successfully..!",ButtonType.OK).show();
 
-                    printBill(payId,total,appointId);
+                    String outputPath = printBill(payId, total, appointId);
+                    sendBill(appointId,outputPath);
                     clearall();
                 }
 
 
     }
 
-    private void printBill(String payId, String total, String appointId) throws JRException {
+    private void sendBill(String appointId, String outputPath) {
+        String pdfOutputPath = outputPath;
+        String appointmentId = appointId;
+
+
+        try {
+            AppointmentDto dto = AppointmentModel.searchOwnerId(appointmentId);
+            String ownerId = dto.getPetOwnerId();
+
+            PetOwnerDto ownerDto = PetOwnerModel.getOwnerDetails(ownerId);
+            String email = ownerDto.getEmail();
+
+            String subject = "Payment Done Successfully";
+            String message = "Thank you for joining us.\n\n We have received your payment successfully. \n\nYour Bill is attached here. \n\nRegards,\nAnimal Hospital System";
+
+            Mail nmail = new Mail(email, message, subject, new File(pdfOutputPath));
+            Thread thread = new Thread(nmail);
+
+            nmail.valueProperty().addListener((a, oldValue, newValue) -> {
+                if (newValue) {
+                    new SystemAlert(Alert.AlertType.INFORMATION, "Email", "Mail sent successfully", ButtonType.OK).show();
+                } else {
+                    new SystemAlert(Alert.AlertType.NONE, "Connection Error", "Connection Error!", ButtonType.OK).show();
+                }
+            });
+
+            thread.setDaemon(true);
+            thread.start();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    private String printBill(String payId, String total, String appointId) throws JRException, SQLException {
 
 
         HashMap hashMap = new HashMap();
@@ -322,10 +358,24 @@ public class PaymentFormController {
          */
 
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
+      //  JasperPrint jasperPrint = JasperFillManager.fillReport(
+       //         jasperReport, hashMap, new JREmptyDataSource());
         JasperPrint jasperPrint = JasperFillManager.fillReport(
-                jasperReport, hashMap, new JREmptyDataSource());
+                jasperReport,
+                hashMap,
+                DbConnection.getInstance().getConnection());
 
         JasperViewer.viewReport(jasperPrint, false);
+
+        String filePath = "/Users/sameeramadushan/Documents/final project/reports/";
+
+        JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + payId + ".pdf");
+        System.out.println("report save done");
+
+        String pdfOutputPath = filePath + payId + ".pdf";
+
+        return pdfOutputPath;
+
     }
 
     private void clearall() {

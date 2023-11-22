@@ -18,7 +18,7 @@
 from print p
          join payment pa
               on p.payment_id = pa.payment_id
-where p.payment_id = 'p001']]>
+where p.payment_id = $P{parameterPaymentId}]]>
 	</queryString>
 	<field name="payment_id" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="payment_id"/>
@@ -169,7 +169,7 @@ where p.payment_id = 'p001']]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField>
 				<reportElement x="133" y="0" width="100" height="20" uuid="3874d4e1-a8a5-4dee-b193-7097069d1833">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3f0e37f6-2727-466c-9677-50fb01997608"/>
@@ -189,7 +189,7 @@ where p.payment_id = 'p001']]>
 				<textFieldExpression><![CDATA[$F{unit_price}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="355" y="0" width="47" height="20" uuid="ceece77a-71be-49ad-8c4b-a09fe484144d">
+				<reportElement x="358" y="0" width="47" height="20" uuid="ceece77a-71be-49ad-8c4b-a09fe484144d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c891673-82df-4f1e-b51c-39db4cfb07bf"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
@@ -198,6 +198,7 @@ where p.payment_id = 'p001']]>
 				<reportElement x="437" y="0" width="100" height="20" uuid="8ffbe00c-25a3-4616-9316-d5ccbbd26171">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19b1f0dd-e104-4fd0-9afb-f6535c097205"/>
 				</reportElement>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
 		</band>
