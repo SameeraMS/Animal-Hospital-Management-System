@@ -4,6 +4,7 @@ import com.google.zxing.WriterException;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,9 +34,11 @@ import lombok.Setter;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 
@@ -135,8 +138,23 @@ public class AddApointmentFormController {
 
     private void setDateandTime() {
         lblDate.setText(String .valueOf(LocalDate.now()));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        lblTime.setText(LocalTime.now().format(formatter));
+
+        //running time
+        Thread thread = new Thread(() -> {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+            while(true) {
+                try{
+                    Thread.sleep(1000);
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+                final String timenow = sdf.format(new Date());
+                Platform.runLater(() -> {
+                    lblTime.setText(timenow);
+                });
+            }
+        });
+        thread.start();
     }
 
     public void DocIdOnAction(ActionEvent actionEvent) {

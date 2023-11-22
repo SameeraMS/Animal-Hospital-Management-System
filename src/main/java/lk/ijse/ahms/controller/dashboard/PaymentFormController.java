@@ -3,6 +3,7 @@ package lk.ijse.ahms.controller.dashboard;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,13 +33,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class PaymentFormController {
     public Label lbldate;
@@ -105,8 +104,23 @@ public class PaymentFormController {
 
     private void setDateTime() {
         lbldate.setText(String.valueOf(LocalDate.now()));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        lbltime.setText(LocalTime.now().format(formatter));
+
+        //time
+        Thread thread = new Thread(() -> {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+            while(true) {
+                try{
+                    Thread.sleep(1000);
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+                final String timenow = sdf.format(new Date());
+                Platform.runLater(() -> {
+                    lbltime.setText(timenow);
+                });
+            }
+        });
+        thread.start();
     }
 
     private void loadAllMedicine() {
