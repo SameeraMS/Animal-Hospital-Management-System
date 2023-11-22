@@ -84,7 +84,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="38">
+		<band height="54">
 			<staticText>
 				<reportElement x="120" y="0" width="310" height="30" uuid="0069601f-9a16-47f4-ad21-f2fae6d2c2b5"/>
 				<textElement textAlignment="Center">
@@ -95,82 +95,90 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="45">
+		<band height="52">
 			<staticText>
-				<reportElement x="-8" y="15" width="100" height="30" uuid="ca724114-d2a9-4f52-ae85-8f3216357280"/>
-				<text><![CDATA[appointment_id]]></text>
+				<reportElement x="-3" y="15" width="100" height="30" uuid="ca724114-d2a9-4f52-ae85-8f3216357280"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Appointment_Id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="92" y="15" width="100" height="30" uuid="7bde0ef8-2a09-401f-8be1-eaf7688c50da"/>
-				<text><![CDATA[date]]></text>
+				<reportElement x="84" y="15" width="100" height="30" uuid="7bde0ef8-2a09-401f-8be1-eaf7688c50da"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="192" y="15" width="100" height="30" uuid="60f24f83-c182-4927-b558-1dbb45b03776"/>
-				<text><![CDATA[description]]></text>
+				<reportElement x="170" y="15" width="100" height="30" uuid="60f24f83-c182-4927-b558-1dbb45b03776"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="292" y="15" width="100" height="30" uuid="9e92c26e-175b-4c08-a270-e9ac7638d8a7"/>
-				<text><![CDATA[doc_name]]></text>
+				<reportElement x="270" y="15" width="100" height="30" uuid="9e92c26e-175b-4c08-a270-e9ac7638d8a7"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="392" y="15" width="100" height="30" uuid="cbde2571-dd22-4812-9d7c-965553b23107"/>
-				<text><![CDATA[pet_owner_name]]></text>
+				<reportElement x="370" y="15" width="105" height="30" uuid="cbde2571-dd22-4812-9d7c-965553b23107"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Owner]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="492" y="15" width="100" height="30" uuid="d02fb25a-ee1e-4caa-88c6-41c3746883d3"/>
-				<text><![CDATA[pet_name]]></text>
+				<reportElement x="460" y="15" width="100" height="30" uuid="d02fb25a-ee1e-4caa-88c6-41c3746883d3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pet]]></text>
 			</staticText>
+			<line>
+				<reportElement x="16" y="40" width="519" height="1" uuid="df81e9a6-7de2-447b-9e21-5b8932514298"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="298" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="-8" y="7" width="100" height="30" uuid="115be7dd-a428-4870-bf92-9fc548f5dbcf"/>
+				<reportElement x="10" y="7" width="100" height="24" uuid="115be7dd-a428-4870-bf92-9fc548f5dbcf"/>
 				<textFieldExpression><![CDATA[$F{appointment_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="92" y="7" width="100" height="30" uuid="bbf6f74b-7362-49f1-bfef-7cc08f5c9f57"/>
+				<reportElement x="89" y="7" width="100" height="24" uuid="bbf6f74b-7362-49f1-bfef-7cc08f5c9f57"/>
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="192" y="7" width="100" height="30" uuid="59aca866-3abe-47f9-9345-5af56c6f1ffd"/>
+				<reportElement x="192" y="7" width="100" height="24" uuid="59aca866-3abe-47f9-9345-5af56c6f1ffd"/>
 				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="292" y="7" width="100" height="30" uuid="8c6f0203-1e5a-40ff-a124-fcbd5125b333"/>
+				<reportElement x="296" y="5" width="100" height="24" uuid="8c6f0203-1e5a-40ff-a124-fcbd5125b333"/>
 				<textFieldExpression><![CDATA[$F{doc_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="392" y="7" width="100" height="30" uuid="7f083a08-72dc-46e9-b352-a13ad12b9151"/>
+				<reportElement x="395" y="6" width="100" height="24" uuid="7f083a08-72dc-46e9-b352-a13ad12b9151"/>
 				<textFieldExpression><![CDATA[$F{pet_owner_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="492" y="7" width="100" height="30" uuid="cbd6a5d7-2b7d-4bd3-81b0-0cd70f99aa46"/>
+				<reportElement x="495" y="7" width="100" height="24" uuid="cbd6a5d7-2b7d-4bd3-81b0-0cd70f99aa46"/>
 				<textFieldExpression><![CDATA[$F{pet_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="94" splitType="Stretch">
-			<image>
-				<reportElement x="-20" y="39" width="160" height="50" uuid="6ef6743b-65c6-4dc9-a802-27778aebfe4a"/>
-				<imageExpression><![CDATA["/Users/sameeramadushan/Documents/final project/Animal-Hospital-Management-System/src/main/resources/asserts/images/wave.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="140" y="39" width="160" height="50" uuid="1d904eef-806b-49bd-899b-c5be6e44f87c"/>
-				<imageExpression><![CDATA["/Users/sameeramadushan/Documents/final project/Animal-Hospital-Management-System/src/main/resources/asserts/images/wave.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="300" y="39" width="160" height="50" uuid="d19f0d3f-b207-4e14-a592-5115ac033aff"/>
-				<imageExpression><![CDATA["/Users/sameeramadushan/Documents/final project/Animal-Hospital-Management-System/src/main/resources/asserts/images/wave.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="430" y="39" width="160" height="50" uuid="a20ed3e0-b800-465a-9d99-39079980fffd"/>
-				<imageExpression><![CDATA["/Users/sameeramadushan/Documents/final project/Animal-Hospital-Management-System/src/main/resources/asserts/images/wave.jpg"]]></imageExpression>
-			</image>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement x="16" y="10" width="519" height="1" uuid="6082ac5d-0ba6-48ef-b5af-5aeef67dac48"/>
+			</line>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="22" splitType="Stretch"/>
 	</summary>
 </jasperReport>

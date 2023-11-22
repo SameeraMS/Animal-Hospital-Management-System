@@ -15,6 +15,7 @@ import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.dto.MedicineDto;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.MedModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.sql.SQLException;
@@ -144,7 +145,7 @@ public class InfoMedicineFormController {
                     boolean isSaved = MedModel.updateMedicine(dto);
 
                     if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "Medicine updated!").show();
+                        new SystemAlert(Alert.AlertType.CONFIRMATION,"updated","Medicine updated Successfully..",ButtonType.OK).show();
                         setEdit(false);
                         clearall();
                         setAllMedId();
@@ -181,7 +182,7 @@ public class InfoMedicineFormController {
                         boolean isDelete = MedModel.deleteMedicine(id);
 
                         if (isDelete) {
-                            new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"deleted","Medicine Deleted Successfully..",ButtonType.OK).show();
                             setEdit(false);
                             clearall();
                             setAllMedId();

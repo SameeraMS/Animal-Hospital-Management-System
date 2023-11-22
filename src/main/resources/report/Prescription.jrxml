@@ -32,7 +32,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
+		<band height="52" splitType="Stretch">
 			<staticText>
 				<reportElement x="110" y="0" width="310" height="30" uuid="76f35304-9b03-4b8b-be2d-b43c8e652e9a"/>
 				<textElement textAlignment="Center">
@@ -43,58 +43,41 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="46" splitType="Stretch">
+		<band height="90" splitType="Stretch">
 			<textField>
-				<reportElement x="102" y="10" width="100" height="30" uuid="61ee94d9-0bb8-4464-9e39-ace84144690b"/>
+				<reportElement x="102" y="10" width="100" height="18" uuid="61ee94d9-0bb8-4464-9e39-ace84144690b"/>
 				<textFieldExpression><![CDATA[$P{AppointNo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="9" y="10" width="100" height="30" uuid="6c6cec0c-79dd-4e2d-ba67-f9decdd2a571"/>
+				<reportElement x="9" y="10" width="100" height="18" uuid="6c6cec0c-79dd-4e2d-ba67-f9decdd2a571"/>
 				<text><![CDATA[Appointment No :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="311" y="10" width="100" height="30" uuid="05d9bd8a-3d87-414c-99ed-840c9f999455"/>
+				<reportElement x="311" y="10" width="100" height="19" uuid="05d9bd8a-3d87-414c-99ed-840c9f999455"/>
 				<text><![CDATA[Prescription No :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="397" y="10" width="100" height="30" uuid="d615bcf1-07fc-402a-9fe4-44cd3727e647"/>
+				<reportElement x="397" y="10" width="100" height="19" uuid="d615bcf1-07fc-402a-9fe4-44cd3727e647"/>
 				<textFieldExpression><![CDATA[$P{PresId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="38" width="100" height="19" uuid="9b3aff1b-f891-4d69-bed1-acf31686b5d0"/>
+				<text><![CDATA[Description :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="58" width="390" height="31" uuid="923c50bf-80c7-4355-98e8-9b2ddef76e5e"/>
+				<textFieldExpression><![CDATA[$P{description}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
-	<detail>
-		<band height="163" splitType="Stretch">
-			<textField>
-				<reportElement x="40" y="20" width="340" height="130" uuid="923c50bf-80c7-4355-98e8-9b2ddef76e5e"/>
-				<textFieldExpression><![CDATA[$P{description}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="9" y="0" width="100" height="30" uuid="9b3aff1b-f891-4d69-bed1-acf31686b5d0"/>
-				<text><![CDATA[Description :]]></text>
-			</staticText>
-		</band>
-	</detail>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
-			<image>
-				<reportElement x="-20" y="2" width="160" height="50" uuid="af946931-a3e9-465a-9bd6-2a0c190e189c"/>
-				<imageExpression><![CDATA["/Users/sameeramadushan/Documents/final project/Animal-Hospital-Management-System/src/main/resources/asserts/images/wave.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="140" y="2" width="160" height="50" uuid="41693cc2-5232-4e9d-b8dd-c6cdffed82a8"/>
-				<imageExpression><![CDATA["/Users/sameeramadushan/Documents/final project/Animal-Hospital-Management-System/src/main/resources/asserts/images/wave.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="300" y="2" width="160" height="50" uuid="d82f88cb-3703-490d-aa21-65b9409ce361"/>
-				<imageExpression><![CDATA["/Users/sameeramadushan/Documents/final project/Animal-Hospital-Management-System/src/main/resources/asserts/images/wave.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="430" y="2" width="160" height="50" uuid="e406fb2b-b592-4ed4-8ccb-6410d431be36"/>
-				<imageExpression><![CDATA["/Users/sameeramadushan/Documents/final project/Animal-Hospital-Management-System/src/main/resources/asserts/images/wave.jpg"]]></imageExpression>
-			</image>
+		<band height="27" splitType="Stretch">
+			<line>
+				<reportElement x="20" y="10" width="519" height="1" uuid="4f6f849f-745f-4ae1-9efd-1a138ae98386"/>
+			</line>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="33" splitType="Stretch"/>
 	</summary>
 </jasperReport>

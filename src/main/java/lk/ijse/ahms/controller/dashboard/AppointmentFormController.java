@@ -233,7 +233,7 @@ public class AppointmentFormController {
             thread.start();
 
         } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid Email").show();
+            new SystemAlert(Alert.AlertType.ERROR, "Information ", "Invalid Email", ButtonType.OK).show();
         }
     }
 }

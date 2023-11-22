@@ -176,6 +176,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnqr" buttonType="RAISED" layoutX="902.0" layoutY="138.0" onAction="#qrOnAction" prefHeight="36.0" prefWidth="83.0" style="-fx-background-color: blue;" text="Qr Read" />
+      <JFXButton fx:id="btnqr" buttonType="RAISED" layoutX="862.0" layoutY="137.0" onAction="#qrOnAction" prefHeight="36.0" prefWidth="83.0" style="-fx-background-color: blue;" text="Qr Read" />
+      <JFXButton fx:id="btnbarcode" buttonType="RAISED" layoutX="968.0" layoutY="137.0" onAction="#barcodeOnAction" prefHeight="36.0" prefWidth="83.0" style="-fx-background-color: green;" text="Barcode" />
    </children>
 </AnchorPane>

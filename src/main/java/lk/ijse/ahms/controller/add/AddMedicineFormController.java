@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.image.Image;
+import lk.ijse.ahms.barcode.Barcode_genarate;
 import lk.ijse.ahms.controller.dashboard.EmployeeFormController;
 import lk.ijse.ahms.controller.dashboard.MedicineFormcontroller;
 import lk.ijse.ahms.dto.MedicineDto;
@@ -55,7 +57,7 @@ public class AddMedicineFormController {
             medId.setText(payId);
             medId.setEditable(false);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new SystemAlert(Alert.AlertType.ERROR,"Error",e.getMessage(), ButtonType.OK).show();
         }
     }
 
@@ -96,14 +98,19 @@ public class AddMedicineFormController {
                         boolean isSaved = MedModel.saveMedicine(dto);
 
                         if (isSaved) {
-                            //  new Alert(Alert.AlertType.CONFIRMATION, "Medicine saved!").show();
                             new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Medicine saved Successfully..!", ButtonType.OK).show();
+
+                            Barcode_genarate barcodeGenarate = new Barcode_genarate();
+                            barcodeGenarate.createImage(name+".png",id);
+                            Image img = barcodeGenarate.getImg();
+                            System.out.println("barcode save");
+
                             clearFields();
                             medFormController.initialize();
                             initialize();
                         }
                     } catch (SQLException e) {
-                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        new SystemAlert(Alert.AlertType.ERROR,"Error",e.getMessage(), ButtonType.OK).show();
                     }
                 } else {
                     new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();

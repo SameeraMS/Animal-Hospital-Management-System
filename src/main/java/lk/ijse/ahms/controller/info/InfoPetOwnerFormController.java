@@ -14,6 +14,7 @@ import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.dto.PetOwnerDto;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.sql.SQLException;
@@ -67,7 +68,7 @@ public class InfoPetOwnerFormController {
                         boolean isDelete = PetOwnerModel.deletePetOwner(id);
 
                         if (isDelete) {
-                            new Alert(Alert.AlertType.CONFIRMATION, "PetOwner Deleted!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"deleted","PetOwner Deleted Successfully..",ButtonType.OK).show();
                             editAccess(false);
                             clearall();
                             loadAllOwners();
@@ -133,7 +134,7 @@ public class InfoPetOwnerFormController {
                     boolean isSaved = PetOwnerModel.updatePetOwner(dto);
 
                     if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "Employee updated!").show();
+                        new SystemAlert(Alert.AlertType.CONFIRMATION,"updated","PetOwner Updated Successfully..",ButtonType.OK).show();
                         editAccess(false);
                         clearall();
                         loadAllOwners();

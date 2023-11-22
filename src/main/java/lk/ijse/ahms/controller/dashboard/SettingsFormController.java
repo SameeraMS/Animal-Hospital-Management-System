@@ -151,10 +151,10 @@ public class SettingsFormController {
                             thread.start();
                         }
                     } else {
-                        new Alert(Alert.AlertType.ERROR, "Passwords do not match!").show();
+                        new SystemAlert(Alert.AlertType.ERROR,"Error","Passwords do not match!", ButtonType.OK).show();
                     }
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Current password is incorrect!").show();
+                    new SystemAlert(Alert.AlertType.ERROR,"Error","Current password is incorrect!", ButtonType.OK).show();
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -244,7 +244,7 @@ public class SettingsFormController {
                 }
             }
         }else {
-            new Alert(Alert.AlertType.ERROR, "Invalid Username(Email address)!").show();
+            new SystemAlert(Alert.AlertType.ERROR, "Error", "Invalid Username(Email address)!", ButtonType.OK).show();
         }
 
 

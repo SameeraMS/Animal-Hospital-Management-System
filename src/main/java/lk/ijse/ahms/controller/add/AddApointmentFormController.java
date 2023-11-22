@@ -73,7 +73,8 @@ public class AddApointmentFormController {
             appointmentId.setText(appId);
             appointmentId.setEditable(false);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new SystemAlert(Alert.AlertType.ERROR,"Error", e.getMessage(),ButtonType.OK).show();
+
         }
     }
 
@@ -257,7 +258,7 @@ public class AddApointmentFormController {
                 new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
             }
         }else {
-            new Alert(Alert.AlertType.ERROR, "Please enter a valid amount").show();
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please enter a valid amount", ButtonType.OK).show();
         }
 
 

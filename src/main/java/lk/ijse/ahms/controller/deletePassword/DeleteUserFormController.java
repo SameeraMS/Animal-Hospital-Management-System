@@ -10,6 +10,7 @@ import lk.ijse.ahms.controller.dashboard.SettingsFormController;
 import lk.ijse.ahms.dto.UserDto;
 import lk.ijse.ahms.model.UserModel;
 import lk.ijse.ahms.smtp.Mail;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.sql.SQLException;
@@ -44,7 +45,7 @@ public class DeleteUserFormController {
                             boolean isDelete = UserModel.deleteUser(id);
 
                             if (isDelete) {
-                                new Alert(Alert.AlertType.CONFIRMATION, "User Deleted!").show();
+                                new SystemAlert(Alert.AlertType.CONFIRMATION, "Confirmation","User Deleted!",ButtonType.OK).show();
 
                                 String email = id;
                                 String subject = "Animal Hospital System";
@@ -66,10 +67,10 @@ public class DeleteUserFormController {
 
                                 settingsFormController.initialize();
                             } else {
-                                new Alert(Alert.AlertType.ERROR, "Wrong Password").show();
+                                new SystemAlert(Alert.AlertType.ERROR,"Error","Wrong Password!",ButtonType.OK).show();
                             }
                         } else {
-                            new Alert(Alert.AlertType.ERROR, "Wrong Password").show();
+                            new SystemAlert(Alert.AlertType.ERROR,"Error","Wrong Password!",ButtonType.OK).show();
                         }
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);

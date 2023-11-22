@@ -6,12 +6,14 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import lk.ijse.ahms.controller.DashboardControlsController;
 import lk.ijse.ahms.dto.AppointmentDto;
 import lk.ijse.ahms.dto.PrescriptionDto;
 import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.PrescriptionModel;
+import lk.ijse.ahms.util.SystemAlert;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
@@ -90,11 +92,11 @@ public class PrescriptionFormController {
                 boolean isSaved = PrescriptionModel.savePrescription(dto);
 
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Prescription Saved Successfully").show();
+                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Prescription Saved Successfully..!", ButtonType.OK).show();
                     initialize();
                     clearFields();
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Prescription Not Saved").show();
+                    new SystemAlert(Alert.AlertType.ERROR,"Error","Prescription Not Saved..!", ButtonType.OK).show();
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -121,7 +123,7 @@ public class PrescriptionFormController {
             PrescriptionDto dto = PrescriptionModel.searchPrescription(presid);
 
             if (dto == null) {
-                new Alert(Alert.AlertType.ERROR, "Prescription Not Found").show();
+                new SystemAlert(Alert.AlertType.ERROR,"Error","Prescription Not Found..!", ButtonType.OK).show();
             } else {
                 txtDesc.setText(dto.getDescription());
                 txtPresId.setText(dto.getPrescriptionId());
@@ -145,11 +147,11 @@ public class PrescriptionFormController {
                 boolean isUpdate = PrescriptionModel.updatePrescription(dto);
 
                 if (isUpdate) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Prescription Updated Successfully").show();
+                    new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Prescription Updated Successfully..!", ButtonType.OK).show();
                     initialize();
                     clearFields();
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Prescription Not Updated").show();
+                    new SystemAlert(Alert.AlertType.ERROR,"Error","Prescription Not Updated..!", ButtonType.OK).show();
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -164,11 +166,11 @@ public class PrescriptionFormController {
             boolean isDelete = PrescriptionModel.deletePrescription(presid);
 
             if (isDelete) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Prescription Deleted Successfully").show();
+                new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Prescription Deleted Successfully..!", ButtonType.OK).show();
                 initialize();
                 clearFields();
             } else {
-                new Alert(Alert.AlertType.ERROR, "Prescription Not Deleted").show();
+                new SystemAlert(Alert.AlertType.ERROR,"Error","Prescription Not Deleted..!", ButtonType.OK).show();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -206,8 +208,15 @@ public class PrescriptionFormController {
 
             JasperViewer.viewReport(jasperPrint, false);
 
+            String filePath = "/Users/sameeramadushan/Documents/final project/reports/";
+
+            JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + prescriptionId + ".pdf");
+            System.out.println("report done");
+
+            String pdfOutputPath = filePath + prescriptionId + ".pdf";
+
         } else {
-            new Alert(Alert.AlertType.ERROR, "Please Fill All Fields").show();
+            new SystemAlert(Alert.AlertType.ERROR,"Error","Please Fill All Fields..!", ButtonType.OK).show();
         }
 
     }

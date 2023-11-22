@@ -42,7 +42,7 @@ public class AddPetOwnerFormController {
             ownerId.setText(payId);
             ownerId.setEditable(false);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new SystemAlert(Alert.AlertType.ERROR,"Error",e.getMessage(), ButtonType.OK).show();
         }
     }
 
@@ -91,7 +91,6 @@ public class AddPetOwnerFormController {
                             boolean isSaved = PetOwnerModel.savePetOwner(dto);
 
                             if (isSaved) {
-                                //    new Alert(Alert.AlertType.CONFIRMATION, "Pet Owner saved!").show();
                                 new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Pet Owner saved Successfully..!", ButtonType.OK).show();
                                 clearFields();
 
@@ -108,20 +107,19 @@ public class AddPetOwnerFormController {
                                 initialize();
                             }
                         } catch (SQLException e) {
-                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                            new SystemAlert(Alert.AlertType.ERROR,"Error",e.getMessage(), ButtonType.OK).show();
                         }
                     } else {
                         new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
                     }
-
                 }else{
-                    new Alert(Alert.AlertType.ERROR, "Invalid Phone Number!").show();
+                    new SystemAlert(Alert.AlertType.INFORMATION,"Information","Invalid Phone Number!", ButtonType.OK).show();
                 }
             } else {
-                new Alert(Alert.AlertType.ERROR, "Invalid Email!").show();
+                new SystemAlert(Alert.AlertType.INFORMATION,"Information","Invalid Email!", ButtonType.OK).show();
             }
         }else{
-            new Alert(Alert.AlertType.ERROR, "Invalid Name!").show();
+            new SystemAlert(Alert.AlertType.INFORMATION,"Information","Invalid Name!", ButtonType.OK).show();
         }
 
 

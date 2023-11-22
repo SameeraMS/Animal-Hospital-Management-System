@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.UserModel;
+import lk.ijse.ahms.util.SystemAlert;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -42,9 +44,9 @@ public class SigninFormController {
 
 
         if(getun.isEmpty()) {
-            new Alert(Alert.AlertType.INFORMATION, "username required..!!").show();
+            new SystemAlert(Alert.AlertType.INFORMATION, "missing information", "username required..!!", ButtonType.OK).show();
         }else if(getpw.isEmpty()) {
-            new Alert(Alert.AlertType.INFORMATION, "password required..!!").show();
+            new SystemAlert(Alert.AlertType.INFORMATION, "missing information", "password required..!!", ButtonType.OK).show();
         } else {
             try {
                 ResultSet resultSet = usermodel.checkCredentials(getun, getpw);
@@ -94,9 +96,7 @@ public class SigninFormController {
 
 
                          } else {
-                            new Alert(Alert.AlertType.INFORMATION, "username or password incorrect..!").show();
-
-
+                            new SystemAlert(Alert.AlertType.INFORMATION, "Information", "username or password incorrect..!", ButtonType.OK).show();
                             }
                     }
 

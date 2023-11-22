@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,13 +23,20 @@ import lk.ijse.ahms.dto.tm.CartTm;
 import lk.ijse.ahms.model.*;
 import lk.ijse.ahms.qr.QRScanner;
 import lk.ijse.ahms.util.SystemAlert;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -206,6 +215,7 @@ public class PaymentFormController {
 
                         calculateTotal();
                         tblcart.refresh();
+
                         return;
                     }
                 }
@@ -221,7 +231,7 @@ public class PaymentFormController {
             txtqty.clear();
 
         } else {
-            new Alert(Alert.AlertType.ERROR, "Out of stock").show();
+            new SystemAlert(Alert.AlertType.ERROR, "Out of stock", "Out of stock", ButtonType.OK).show();
         }
 
 
@@ -253,7 +263,7 @@ public class PaymentFormController {
         });
     }
 
-    public void placeOrderOnAction(ActionEvent actionEvent) throws SQLException {
+    public void placeOrderOnAction(ActionEvent actionEvent) throws SQLException, JRException, InterruptedException {
         String payId = txtpaymentId.getText();
         String date = lbldate.getText();
         String appointId = cmbAppId.getValue();
@@ -275,10 +285,47 @@ public class PaymentFormController {
                 if (isSuccess) {
                    // new Alert(Alert.AlertType.CONFIRMATION, "Order Successfully Placed!").show();
                     new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Order Placed Successfully..!",ButtonType.OK).show();
+
+                    printBill(payId,total,appointId);
                     clearall();
                 }
 
 
+    }
+
+    private void printBill(String payId, String total, String appointId) throws JRException {
+
+
+        HashMap hashMap = new HashMap();
+        hashMap.put("parameterPaymentId", payId);
+        hashMap.put("appointmentId", appointId);
+
+
+        InputStream resourceAsStream = getClass().getResourceAsStream("/report/Bill.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+
+        /*
+        JRDesignQuery jrDesignQuery = new JRDesignQuery();
+        jrDesignQuery.setText("select\n" +
+                "    p.payment_id,\n" +
+                "    p.med_id,\n" +
+                "    p.med_name,\n" +
+                "    p.qty,\n" +
+                "    p.unit_price,\n" +
+                "    p.amount\n" +
+                "from print p\n" +
+                "         join payment pa\n" +
+                "              on p.payment_id = pa.payment_id\n" +
+                "where p.payment_id ='"+ payId +"'");
+        load.setQuery(jrDesignQuery);
+
+         */
+
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(
+                jasperReport, hashMap, new JREmptyDataSource());
+
+        JasperViewer.viewReport(jasperPrint, false);
     }
 
     private void clearall() {
@@ -350,5 +397,20 @@ public class PaymentFormController {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void barcodeOnAction(ActionEvent actionEvent) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/barcodeReader/BarcodeRead.fxml"));
+        Parent root = fxmlLoader.load();
+
+       // AddApointmentFormController appointment =  fxmlLoader.getController();
+     //   appointment.setAppointmentFormController(this);
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
 }

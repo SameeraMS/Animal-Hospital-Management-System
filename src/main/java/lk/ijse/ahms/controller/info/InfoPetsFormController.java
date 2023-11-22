@@ -22,6 +22,7 @@ import lk.ijse.ahms.dto.PetsDto;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.PetModel;
 import lk.ijse.ahms.model.PetOwnerModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import java.io.IOException;
@@ -76,7 +77,7 @@ public class InfoPetsFormController {
                         boolean isDelete = PetModel.deletePet(id);
 
                         if (isDelete) {
-                            new Alert(Alert.AlertType.CONFIRMATION, "Pet Deleted!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"deleted","Pet Deleted successfully",ButtonType.OK).show();
                             setEdit(false);
                             clearall();
                             loadAllPetId();
@@ -120,7 +121,7 @@ public class InfoPetsFormController {
                     boolean isSaved = PetModel.updatePet(dto);
 
                     if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "Pet updated!").show();
+                        new SystemAlert(Alert.AlertType.CONFIRMATION,"updated","Pet Updated successfully",ButtonType.OK).show();
                         setEdit(false);
                         clearall();
                         loadAllPetId();

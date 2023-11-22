@@ -1,5 +1,6 @@
 package lk.ijse.ahms.qr;
 
+import com.github.eduramiba.webcamcapture.drivers.NativeDriver;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -32,7 +33,8 @@ public class QRScanner implements Runnable, ThreadFactory {
     private void createSwingContent(final SwingNode swingNode) {
         SwingUtilities.invokeLater(() -> {
             /*Swing中的调用摄像头方法*/
-            webcam = Webcam.getDefault();
+            Webcam.setDriver(new NativeDriver());
+
             System.out.println("get webcam");
             webcam.setViewSize(WebcamResolution.VGA.getSize());
             WebcamPanel panel = new WebcamPanel(webcam);
@@ -42,6 +44,8 @@ public class QRScanner implements Runnable, ThreadFactory {
             panel.setMirrored(true);
             executor.execute(this);
             swingNode.setContent(panel);
+            webcam = Webcam.getDefault();
+            webcam.open();
         });
     }
 

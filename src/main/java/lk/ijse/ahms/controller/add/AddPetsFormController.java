@@ -51,7 +51,7 @@ public class AddPetsFormController {
             petId.setText(payId);
             petId.setEditable(false);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new SystemAlert(Alert.AlertType.ERROR,"Error", e.getMessage(), ButtonType.OK).show();
         }
     }
 
@@ -113,7 +113,7 @@ public class AddPetsFormController {
                             initialize();
                         }
                     } catch (SQLException e) {
-                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        new SystemAlert(Alert.AlertType.ERROR,"Error", e.getMessage(), ButtonType.OK).show();
                     }
                 } else {
                     new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();

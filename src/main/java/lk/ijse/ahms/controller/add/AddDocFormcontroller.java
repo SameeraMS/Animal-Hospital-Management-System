@@ -101,6 +101,7 @@ public class AddDocFormcontroller {
                                 }
                             } catch (SQLException e) {
                                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                                new SystemAlert(Alert.AlertType.ERROR,"Information",e.getMessage(), ButtonType.OK).show();
                             }
                         }
                     } else {

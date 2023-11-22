@@ -121,3 +121,16 @@ create table prescription_details(
     constraint foreign key (med_id) references medicine (med_id)
     on delete cascade on update cascade
 );
+
+create table print(
+        payment_id    varchar(10)    not null,
+        med_id      varchar(10)    not null,
+        med_name varchar(30),
+        qty         int(10)        not null,
+        unit_price  decimal(6,2),
+        amount decimal(6,2),
+        constraint foreign key (payment_id) references payment (payment_id)
+        on delete cascade on update cascade,
+        constraint foreign key (med_id) references medicine (med_id)
+        on delete cascade on update cascade
+);

@@ -143,7 +143,7 @@ public class InfoEmployeeFormController {
                     boolean isSaved = EmpModel.updateEmployee(dto);
 
                     if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "Employee updated!").show();
+                        new SystemAlert(Alert.AlertType.CONFIRMATION, "updated","Employee updated!", ButtonType.OK).show();
                         setEdit(false);
                         clearall();
                         setAllEmpId();
@@ -182,7 +182,7 @@ public class InfoEmployeeFormController {
                         boolean isDelete = EmpModel.deleteEmployee(id);
 
                         if (isDelete) {
-                            new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION, "Deleted", "Employee Deleted!", ButtonType.OK).show();
                             setEdit(false);
                             clearall();
                             setAllEmpId();
@@ -192,7 +192,7 @@ public class InfoEmployeeFormController {
                         new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
                     }
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Cannot Delete Admin!").show();
+                    new SystemAlert(Alert.AlertType.WARNING,"Warning","Cannot Delete Admin!", ButtonType.OK).show();
                 }
             }
         });

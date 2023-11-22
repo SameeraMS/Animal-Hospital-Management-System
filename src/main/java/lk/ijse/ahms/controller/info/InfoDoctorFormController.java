@@ -14,6 +14,7 @@ import lk.ijse.ahms.dto.DoctorDto;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.DocModel;
 import lk.ijse.ahms.model.EmpModel;
+import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
 import javax.print.Doc;
@@ -68,7 +69,7 @@ public class InfoDoctorFormController {
                         boolean isDelete = DocModel.deleteDoctor(id);
 
                         if (isDelete) {
-                            new Alert(Alert.AlertType.CONFIRMATION, "Doctor Deleted!").show();
+                            new SystemAlert(Alert.AlertType.CONFIRMATION,"Deleted", "Doctor Deleted!",ButtonType.OK).show();
                             setEdit(false);
                             clearall();
                             setAllDocId();
@@ -103,7 +104,7 @@ public class InfoDoctorFormController {
                     boolean isSaved = DocModel.updateDoctor(dto);
 
                     if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "Doctor updated!").show();
+                        new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Doctor updated Successfully..!", ButtonType.OK).show();
                         setEdit(false);
                         clearall();
                         setAllDocId();

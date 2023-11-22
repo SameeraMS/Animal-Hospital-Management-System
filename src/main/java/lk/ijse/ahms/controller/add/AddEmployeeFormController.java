@@ -114,22 +114,22 @@ public class AddEmployeeFormController {
 
                                 }
                             } catch (SQLException e) {
-                                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                                new SystemAlert(Alert.AlertType.ERROR,"Information",e.getMessage(), ButtonType.OK).show();
                             }
                         } else {
                             new SystemAlert(Alert.AlertType.INFORMATION,"Information","Please Fill All Details..!", ButtonType.OK).show();
                         }
                     }else{
-                        new Alert(Alert.AlertType.ERROR, "Invalid Email").show();
+                        new SystemAlert(Alert.AlertType.ERROR,"Information","Please Enter Valid Email..!", ButtonType.OK).show();
                     }
                 }else{
-                    new Alert(Alert.AlertType.ERROR, "Invalid Mobile").show();
+                    new SystemAlert(Alert.AlertType.ERROR,"Information","Please Enter Valid Mobile..!", ButtonType.OK).show();
                 }
             }else{
-                new Alert(Alert.AlertType.ERROR, "Invalid Address").show();
+                new SystemAlert(Alert.AlertType.ERROR,"Information","Please Enter Valid Address..!", ButtonType.OK).show();
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid Name").show();
+            new SystemAlert(Alert.AlertType.ERROR,"Information","Please Enter Valid Name..!", ButtonType.OK).show();
         }
 
     }
