@@ -236,4 +236,14 @@ public class AppointmentFormController {
             new SystemAlert(Alert.AlertType.ERROR, "Information ", "Invalid Email", ButtonType.OK).show();
         }
     }
+
+    public void clearsearchOnAction(ActionEvent actionEvent) {
+        txtAppointId.clear();
+        txtAppointId.requestFocus();
+    }
+
+    public void clearsendOnAction(ActionEvent actionEvent) {
+        txtrecmail.clear();
+        txtrecmail.requestFocus();
+    }
 }

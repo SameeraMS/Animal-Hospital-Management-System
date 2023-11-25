@@ -6,7 +6,7 @@
 }
 
 .progress-bar .bar {
-    -fx-background-color: linear-gradient(to right, #522b29 0%, #BCA37F 81%);
+    -fx-background-color: linear-gradient(to right, #A6F6FF 0%, #B6FFFA 81%);
     -fx-background-radius: 10px;
     -fx-border-width: 0px;
     -fx-border-color: black;

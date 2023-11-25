@@ -29,6 +29,10 @@ public class SigninFormController {
 
     UserModel usermodel = new UserModel();
 
+    public void initialize(){
+        txtusername.requestFocus();
+    }
+
     public void signinOnAction(ActionEvent actionEvent) throws IOException {
 
        String getun = txtusername.getText();

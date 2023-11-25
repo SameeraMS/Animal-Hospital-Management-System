@@ -155,4 +155,9 @@ public class MedicineFormcontroller {
 
 
     }
+
+    public void clearsearchOnAction(ActionEvent actionEvent) {
+        txtsearchid.clear();
+        txtsearchid.requestFocus();
+    }
 }

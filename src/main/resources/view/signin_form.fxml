@@ -5,11 +5,9 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.SigninFormController">
@@ -19,32 +17,15 @@
             <Image url="@../asserts/images/signin.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="imageview1" blendMode="SCREEN" depthTest="ENABLE" fitHeight="695.0" fitWidth="553.0" layoutX="156.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../asserts/images/signinblur.jpg" />
-         </image>
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color blue="0.722953200340271" green="0.722953200340271" red="0.9078947305679321" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ImageView>
-      <Label layoutX="295.0" layoutY="139.0" prefHeight="112.0" prefWidth="285.0" text="SIGN IN" textFill="WHITE">
+      <JFXButton fx:id="btnsignin" buttonType="RAISED" layoutX="869.0" layoutY="567.0" onAction="#signinOnAction" prefHeight="56.0" prefWidth="496.0" styleClass="login-page-btn" stylesheets="@../styles/signin.css" text="Sign in" textFill="WHITE">
          <font>
-            <Font name="AppleMyungjo Regular" size="67.0" />
-         </font>
-      </Label>
-      <JFXButton fx:id="btnsignin" buttonType="RAISED" layoutX="370.0" layoutY="538.0" onAction="#signinOnAction" prefHeight="52.0" prefWidth="126.0" stylesheets="@../styles/signin.css" text="Sign in" textFill="WHITE">
-         <font>
-            <Font name="Apple SD Gothic Neo Regular" size="26.0" />
+            <Font name="Arial Bold" size="26.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="487.0" layoutY="481.0" onMouseClicked="#forgotPassOnAction" text="Forgot Password..?" textFill="#0e36ff">
+      <Label layoutX="1210.0" layoutY="516.0" onMouseClicked="#forgotPassOnAction" text="Forgot Password..?" textFill="WHITE" underline="true">
          <font>
             <Font size="19.0" />
          </font>
@@ -52,23 +33,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <JFXPasswordField fx:id="txtpassword" layoutX="213.0" layoutY="416.0" onAction="#passOnAction" prefHeight="54.0" prefWidth="434.0" promptText="   Password" stylesheets="@../styles/signin.css">
+      <JFXPasswordField fx:id="txtpassword" layoutX="881.0" layoutY="455.0" onAction="#passOnAction" prefHeight="48.0" prefWidth="470.0" promptText="   Password">
          <font>
             <Font size="22.0" />
          </font></JFXPasswordField>
-      <JFXTextField fx:id="txtusername" layoutX="213.0" layoutY="299.0" onAction="#usernameOnAction" prefHeight="54.0" prefWidth="434.0" promptText="   Username" stylesheets="@../styles/signin.css" unFocusColor="#4d4d4d">
+      <JFXTextField fx:id="txtusername" layoutX="881.0" layoutY="326.0" onAction="#usernameOnAction" prefHeight="48.0" prefWidth="470.0" promptText="   Username" unFocusColor="#4d4d4d">
          <font>
             <Font size="22.0" />
          </font></JFXTextField>
-      <Label layoutX="217.0" layoutY="272.0" text="Username" textFill="#cdca43">
-         <font>
-            <Font name="Arial Black" size="19.0" />
-         </font>
-      </Label>
-      <Label layoutX="220.0" layoutY="391.0" text="Password" textFill="#cdca43">
-         <font>
-            <Font name="Arial Black" size="19.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

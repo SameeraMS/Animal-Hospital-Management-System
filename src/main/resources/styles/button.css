@@ -1,0 +1,112 @@
+.btnAdd{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #738CF2;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
+
+.btnDelete{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #ff5e5e;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+
+}
+
+.btnSearch{
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-background-color: #1AACAC;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
+
+.btnPrint{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #4C5068;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
+
+
+.btnSend{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: orange;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
+
+.btnInfo{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #A9A9A9;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
+
+.btnaddtocart{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #A9A9A9;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
+
+#btnplaceorder{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #70F170CC;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
+
+.btnSave{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #70F170CC;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+
+}
+
+.btnUpdate{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #F3B664;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
+
+.btnClear{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #A9A9A9;
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0 , 0.0 , 0.0 , 10.0);
+
+}
