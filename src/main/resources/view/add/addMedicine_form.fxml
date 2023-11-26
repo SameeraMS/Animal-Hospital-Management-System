@@ -18,6 +18,7 @@
             <Image url="@../../asserts/images/addMedPic.jpg" />
          </image>
       </ImageView>
+      <JFXTextField fx:id="medName" layoutX="252.0" layoutY="111.0" prefHeight="35.0" prefWidth="271.0" />
       <Label layoutX="87.0" layoutY="83.0" text="Medicine Id">
          <font>
             <Font size="20.0" />
@@ -38,10 +39,9 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="medId" layoutX="259.0" layoutY="65.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" />
-      <JFXTextField fx:id="medName" layoutX="259.0" layoutY="110.0" prefHeight="35.0" prefWidth="271.0" />
-      <JFXTextField fx:id="medPrice" layoutX="259.0" layoutY="199.0" onAction="#priceOnAction" prefHeight="35.0" prefWidth="271.0" />
-      <JFXComboBox fx:id="cmbType" layoutX="259.0" layoutY="154.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="medId" layoutX="252.0" layoutY="66.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="medPrice" layoutX="252.0" layoutY="200.0" onAction="#priceOnAction" prefHeight="35.0" prefWidth="271.0" />
+      <JFXComboBox fx:id="cmbType" layoutX="252.0" layoutY="155.0" prefHeight="35.0" prefWidth="271.0" />
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="410.0" layoutY="440.0" onAction="#saveOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
@@ -82,14 +82,14 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="medDesc" layoutX="259.0" layoutY="244.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="medDesc" layoutX="252.0" layoutY="245.0" prefHeight="35.0" prefWidth="271.0" />
       <Label layoutX="87.0" layoutY="348.0" text="Qty On hand">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="medqty" layoutX="259.0" layoutY="340.0" prefHeight="35.0" prefWidth="271.0" />
-      <DatePicker fx:id="medExpDate" layoutX="258.0" layoutY="295.0" prefHeight="35.0" prefWidth="271.0" />
+      <JFXTextField fx:id="medqty" layoutX="252.0" layoutY="341.0" prefHeight="35.0" prefWidth="271.0" />
+      <DatePicker fx:id="medExpDate" layoutX="251.0" layoutY="296.0" prefHeight="35.0" prefWidth="271.0" />
       <Label layoutX="138.0" layoutY="21.0" text="ADD NEW MEDICINE">
          <font>
             <Font name="Arial Black" size="25.0" />

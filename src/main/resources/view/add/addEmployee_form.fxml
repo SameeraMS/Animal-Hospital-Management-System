@@ -17,6 +17,7 @@
             <Image url="@../../asserts/images/addemppic.jpg" />
          </image>
       </ImageView>
+      <JFXTextField fx:id="empName" layoutX="335.0" layoutY="117.0" onAction="#nameOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="441.0" layoutY="361.0" onAction="#saveOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
@@ -47,7 +48,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="empId" layoutX="346.0" layoutY="71.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Id" />
+      <JFXTextField fx:id="empId" layoutX="335.0" layoutY="71.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Id" />
       <Label layoutX="218.0" layoutY="85.0" text="Emp Id">
          <font>
             <Font size="20.0" />
@@ -78,11 +79,10 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="empName" layoutX="346.0" layoutY="117.0" onAction="#nameOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
-      <JFXTextField fx:id="empAddress" layoutX="346.0" layoutY="160.0" onAction="#addressOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Address" />
-      <JFXTextField fx:id="empTel" layoutX="346.0" layoutY="204.0" onAction="#telOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
-      <JFXTextField fx:id="empMail" layoutX="346.0" layoutY="251.0" onAction="#mailOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
-      <JFXComboBox fx:id="cmbEmpType" layoutX="346.0" layoutY="298.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Type">
+      <JFXTextField fx:id="empAddress" layoutX="335.0" layoutY="160.0" onAction="#addressOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Address" />
+      <JFXTextField fx:id="empTel" layoutX="335.0" layoutY="204.0" onAction="#telOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
+      <JFXTextField fx:id="empMail" layoutX="335.0" layoutY="251.0" onAction="#mailOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
+      <JFXComboBox fx:id="cmbEmpType" layoutX="335.0" layoutY="298.0" prefHeight="35.0" prefWidth="271.0" promptText="Select Type">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

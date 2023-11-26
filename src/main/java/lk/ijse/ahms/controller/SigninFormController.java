@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.UserModel;
+import lk.ijse.ahms.smtp.Mail;
 import lk.ijse.ahms.util.SystemAlert;
 
 import java.io.IOException;
@@ -98,8 +99,7 @@ public class SigninFormController {
 
                          */
 
-
-                         } else {
+                        } else {
                             new SystemAlert(Alert.AlertType.INFORMATION, "Information", "username or password incorrect..!", ButtonType.OK).show();
                             }
                     }

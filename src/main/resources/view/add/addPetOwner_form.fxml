@@ -16,6 +16,7 @@
             <Image url="@../../asserts/images/addpetOwnerpic.jpg" />
          </image>
       </ImageView>
+      <JFXTextField fx:id="ownerName" layoutX="29.0" layoutY="178.0" onAction="#nameOnAction" prefHeight="35.0" prefWidth="271.0" />
       <Label layoutX="29.0" layoutY="83.0" text="PetOwner Id">
          <font>
             <Font size="20.0" />
@@ -26,13 +27,12 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <JFXTextField fx:id="ownerId" layoutX="29.0" layoutY="109.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" />
       <Label layoutX="30.0" layoutY="221.0" text="Email">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="ownerId" layoutX="29.0" layoutY="109.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" />
-      <JFXTextField fx:id="ownerName" layoutX="29.0" layoutY="178.0" onAction="#nameOnAction" prefHeight="35.0" prefWidth="271.0" />
       <JFXTextField fx:id="ownerEmail" layoutX="29.0" layoutY="243.0" onAction="#mailOnAction" prefHeight="35.0" prefWidth="271.0" />
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="178.0" layoutY="366.0" onAction="#saveOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
          <font>

@@ -13,9 +13,11 @@
    <children>
       <ImageView fitHeight="485.0" fitWidth="501.0" layoutX="-1.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../asserts/images/addDocpic.jpg" />
+            <Image url="@../../asserts/images/addnewdoc.jpg" />
          </image>
       </ImageView>
+      <JFXTextField fx:id="name" layoutX="184.0" layoutY="175.0" onAction="#nameOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
+      <JFXTextField fx:id="id" layoutX="186.0" layoutY="104.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Id" />
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="337.0" layoutY="402.0" onAction="#saveOnAction" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
@@ -46,7 +48,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="id" layoutX="186.0" layoutY="104.0" onAction="#idOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Id" />
       <Label layoutX="184.0" layoutY="78.0" text="Doctor Id">
          <font>
             <Font size="20.0" />
@@ -67,7 +68,6 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="name" layoutX="184.0" layoutY="175.0" onAction="#nameOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Name" />
       <JFXTextField fx:id="tel" layoutX="184.0" layoutY="252.0" onAction="#telOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Contact No" />
       <JFXTextField fx:id="email" layoutX="186.0" layoutY="334.0" onAction="#emailOnAction" prefHeight="35.0" prefWidth="271.0" promptText="Email" />
       <Label layoutX="111.0" layoutY="14.0" text="ADD NEW DOCTOR">

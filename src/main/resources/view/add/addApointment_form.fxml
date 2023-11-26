@@ -10,15 +10,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="636.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.add.AddApointmentFormController">
+<AnchorPane prefHeight="636.0" prefWidth="558.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.add.AddApointmentFormController">
    <children>
-      <ImageView fitHeight="177.0" fitWidth="560.0" layoutX="-3.0" layoutY="519.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="177.0" fitWidth="560.0" layoutX="-3.0" layoutY="519.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../asserts/images/wave.jpg" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="appointmentId" layoutX="250.0" layoutY="95.0" prefHeight="40.0" prefWidth="185.0" />
       <JFXComboBox fx:id="cmbDocId" layoutX="250.0" layoutY="142.0" onAction="#DocIdOnAction" prefHeight="40.0" prefWidth="185.0" />
+      <JFXTextField fx:id="appointmentId" layoutX="250.0" layoutY="95.0" prefHeight="40.0" prefWidth="185.0" />
       <Label layoutX="356.0" layoutY="24.0" text="Time">
          <font>
             <Font size="18.0" />
@@ -66,6 +66,7 @@
       </Label>
       <JFXTextField fx:id="petOwnerName" layoutX="250.0" layoutY="295.0" prefHeight="40.0" prefWidth="185.0" />
       <JFXComboBox fx:id="cmbPetId" layoutX="250.0" layoutY="345.0" onAction="#cmbPetIdOnAction" prefHeight="40.0" prefWidth="185.0" />
+      <JFXTextField fx:id="docName" layoutX="250.0" layoutY="192.0" prefHeight="40.0" prefWidth="185.0" />
       <Label layoutX="55.0" layoutY="262.0" text="Pet Owner Id">
          <font>
             <Font size="20.0" />
@@ -79,13 +80,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="docName" layoutX="250.0" layoutY="192.0" prefHeight="40.0" prefWidth="185.0" />
       <Label layoutX="55.0" layoutY="159.0" text="Doctor Id">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" graphicTextGap="8.0" layoutX="272.0" layoutY="614.0" onAction="#makeAppointmentOnAction" prefHeight="43.0" prefWidth="225.0" style="-fx-background-color: yellow;" text="Make Appointment">
+      <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" graphicTextGap="8.0" layoutX="272.0" layoutY="614.0" onAction="#makeAppointmentOnAction" prefHeight="43.0" prefWidth="225.0" style="-fx-background-color: #738CF2;" text="Make Appointment">
          <font>
             <Font size="19.0" />
          </font>

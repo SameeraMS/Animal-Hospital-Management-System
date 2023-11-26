@@ -166,6 +166,7 @@ public class PaymentFormController {
                 txtPetOwner.setText(dto.get(0).getPetOwnerName());
                 txtPet.setText(dto.get(0).getPetName());
                 lblappointmentAmount.setText(dto.get(0).getAmount());
+                lbltotal.setText(dto.get(0).getAmount());
 
                 PrescriptionDto presDto = PrescriptionModel.searchPrescriptionbyAppId(AppId);
 
@@ -282,9 +283,10 @@ public class PaymentFormController {
         String date = lbldate.getText();
         String appointId = cmbAppId.getValue();
         String total = lbltotal.getText();
+        String appFee = lblappointmentAmount.getText();
 
 
-                List<CartTm> cartTmList = new ArrayList<>();
+        List<CartTm> cartTmList = new ArrayList<>();
                 for (int i = 0; i < tblcart.getItems().size(); i++) {
                     cartTmList.add((CartTm) tblcart.getItems().get(i));
                 }
@@ -299,7 +301,7 @@ public class PaymentFormController {
                 if (isSuccess) {
                     new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Order Placed Successfully..!",ButtonType.OK).show();
 
-                    String outputPath = printBill(payId, total, appointId);
+                    String outputPath = printBill(payId, total, appointId,appFee);
                     sendBill(appointId,outputPath);
                     clearall();
                 }
@@ -343,13 +345,14 @@ public class PaymentFormController {
 
     }
 
-    private String printBill(String payId, String total, String appointId) throws JRException, SQLException {
+    private String printBill(String payId, String total, String appointId, String appFee) throws JRException, SQLException {
 
 
         HashMap hashMap = new HashMap();
         hashMap.put("parameterPaymentId", payId);
         hashMap.put("appointmentId", appointId);
-
+        hashMap.put("netTotal", total);
+        hashMap.put("appfee", appFee);
 
         InputStream resourceAsStream = getClass().getResourceAsStream("/report/Bill.jrxml");
         JasperDesign load = JRXmlLoader.load(resourceAsStream);

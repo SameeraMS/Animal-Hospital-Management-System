@@ -43,7 +43,7 @@ public class Mail extends Task<Boolean> {
 
     @Override
     protected Boolean call() {
-        String from = "madushansameera499@gmail.com"; //sender's email address
+        String from = "animalhospitalpanadura@gmail.com"; //sender's email address
 
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
@@ -52,7 +52,7 @@ public class Mail extends Task<Boolean> {
         properties.put("mail.smtp.port", 587);
         Session session = Session.getDefaultInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("madushansameera499@gmail.com", "dait ssuo uqln hgap");
+                return new PasswordAuthentication("animalhospitalpanadura@gmail.com", "bwcv okms wptv uyxp");
             }
         });
         updateProgress(25,100);
