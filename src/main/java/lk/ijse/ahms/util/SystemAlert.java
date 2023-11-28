@@ -57,7 +57,6 @@ public class SystemAlert extends Alert {
 
         centerButtons(getDialogPane());
 
-     //   getDialogPane().getStylesheets().add(getClass().getResource("src/main/resources/styles/alert.css").toExternalForm());
         getDialogPane().getStyleClass().add("dialog-pane");
     }
 
