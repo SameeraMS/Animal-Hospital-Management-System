@@ -19,7 +19,6 @@ public class PlaceOrderModel {
         String amount = placeOrderDto.getAmoount();
         String appointId = placeOrderDto.getAppointId();
 
-
         boolean isOk = false;
 
         Connection connection = null;

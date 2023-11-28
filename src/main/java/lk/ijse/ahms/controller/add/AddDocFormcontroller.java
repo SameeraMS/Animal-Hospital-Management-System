@@ -39,8 +39,8 @@ public class AddDocFormcontroller {
 
     private void generateNextId() {
         try {
-            String payId = DocModel.generateNextDocId();
-            id.setText(payId);
+            String docId = DocModel.generateNextDocId();
+            id.setText(docId);
             id.setEditable(false);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
