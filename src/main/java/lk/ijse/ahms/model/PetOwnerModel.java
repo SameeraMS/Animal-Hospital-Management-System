@@ -123,7 +123,11 @@ public class PetOwnerModel {
 
             int id = Integer.parseInt(split[1]); //01
             id++;
-            return "O00" + id;
+            if(id<10) {
+                return "O00" + id;
+            } else {
+                return "O0" + id;
+            }
         } else {
             return "O001";
         }

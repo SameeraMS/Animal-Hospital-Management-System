@@ -135,7 +135,11 @@ public class MedModel {
 
             int id = Integer.parseInt(split[1]); //01
             id++;
-            return "M00" + id;
+            if(id<10) {
+                return "M00" + id;
+            } else {
+                return "M0" + id;
+            }
         } else {
             return "M001";
         }

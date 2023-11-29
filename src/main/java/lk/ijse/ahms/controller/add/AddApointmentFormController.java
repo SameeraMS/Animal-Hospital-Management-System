@@ -4,6 +4,7 @@ import com.google.zxing.WriterException;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTimePicker;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import lk.ijse.ahms.controller.dashboard.AppointmentFormController;
@@ -52,9 +54,12 @@ public class AddApointmentFormController {
     public JFXComboBox<String> cmbPetId;
     public JFXComboBox<String> cmbPetOwnerId;
     public JFXTextField petName;
+
     public JFXTextArea desc;
     public JFXTextField docName;
     public JFXTextField lblAmount;
+    public DatePicker datepik;
+    public JFXTimePicker timepik;
     @Setter
     private AppointmentFormController appointmentFormController;
 
@@ -209,8 +214,8 @@ public class AddApointmentFormController {
             String petownername = petOwnerName.getText();
             String description = desc.getText();
             String amount = lblAmount.getText();
-            String date = lblDate.getText();
-            String time = lblTime.getText();
+            String date = datepik.getValue().toString();
+            String time = timepik.getValue().toString();
             String docid = cmbDocId.getValue();
             String petid = cmbPetId.getValue();
             String petownerid = cmbPetOwnerId.getValue();
@@ -296,6 +301,8 @@ public class AddApointmentFormController {
         cmbPetOwnerId.getSelectionModel().clearSelection();
         cmbDocId.getSelectionModel().clearSelection();
         lblAmount.clear();
+        timepik.setValue(null);
+        datepik.setValue(null);
     }
 
 

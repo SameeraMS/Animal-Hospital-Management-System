@@ -153,7 +153,11 @@ public class PrescriptionModel {
 
             int id = Integer.parseInt(split[1]); //01
             id++;
-            return "PR00" + id;
+            if(id<10) {
+                return "PR00" + id;
+            } else {
+                return "PR0" + id;
+            }
         } else {
             return "PR001";
         }

@@ -132,7 +132,11 @@ public class PetModel {
 
             int id = Integer.parseInt(split[1]); //01
             id++;
-            return "PE00" + id;
+            if(id<10) {
+                return "PE00" + id;
+            } else {
+                return "PE0" + id;
+            }
         } else {
             return "PE001";
         }

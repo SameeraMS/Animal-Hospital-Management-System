@@ -129,7 +129,11 @@ public class AppointmentModel {
 
             int id = Integer.parseInt(split[1]); //01
             id++;
-            return "A00" + id;
+            if(id<10) {
+                return "A00" + id;
+            } else {
+                return "A0" + id;
+            }
         } else {
             return "A001";
         }

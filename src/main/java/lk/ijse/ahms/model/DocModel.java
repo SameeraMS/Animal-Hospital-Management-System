@@ -124,7 +124,11 @@ public class DocModel {
 
             int id = Integer.parseInt(split[1]); //01
             id++;
-            return "D00" + id;
+            if(id<10) {
+                return "D00" + id;
+            } else {
+                return "D0" + id;
+            }
         } else {
             return "D001";
         }
