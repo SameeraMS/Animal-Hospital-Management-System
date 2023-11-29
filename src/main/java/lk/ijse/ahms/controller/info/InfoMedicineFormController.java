@@ -151,7 +151,7 @@ public class InfoMedicineFormController {
                         setAllMedId();
                         medFormController.initialize();
                     }
-                } catch (SQLException a) {
+                } catch (SQLException | ClassNotFoundException a) {
                     new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
                 }
             }
@@ -188,7 +188,7 @@ public class InfoMedicineFormController {
                             setAllMedId();
                             medFormController.initialize();
                         }
-                    } catch (SQLException a) {
+                    } catch (SQLException | ClassNotFoundException a) {
                         new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
                     }
 

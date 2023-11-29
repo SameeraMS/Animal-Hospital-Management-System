@@ -167,7 +167,7 @@ public class AppointmentFormController {
                         tblAppointments.refresh();
                         initialize();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
 

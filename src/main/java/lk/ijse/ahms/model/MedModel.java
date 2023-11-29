@@ -4,6 +4,7 @@ import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.dto.MedicineDto;
 import lk.ijse.ahms.dto.tm.CartTm;
+import lk.ijse.ahms.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MedModel {
-    public static boolean saveMedicine(MedicineDto dto) throws SQLException {
+    public static boolean saveMedicine(MedicineDto dto) throws SQLException, ClassNotFoundException {
+
+        boolean isSaved = CrudUtil.execute("INSERT INTO medicine VALUES(?, ?, ?, ?, ?, ?, ?)",
+                dto.getMedId(),dto.getName(),dto.getType(),dto.getQty(),dto.getPrice(),dto.getDescription(),dto.getExpdate());
+
+        return isSaved;
+
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "INSERT INTO medicine VALUES(?, ?, ?, ?, ?, ?, ?)";
@@ -31,6 +40,8 @@ public class MedModel {
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
+
+         */
     }
 
     public static List<MedicineDto> getAllMedicine() throws SQLException {
@@ -84,7 +95,14 @@ public class MedModel {
             return null;}
     }
 
-    public static boolean updateMedicine(MedicineDto dto) throws SQLException {
+    public static boolean updateMedicine(MedicineDto dto) throws SQLException, ClassNotFoundException {
+
+        boolean isSave = CrudUtil.execute("UPDATE medicine SET name =?, type =?, qty =?, price =?, description =?, exp_date =? WHERE med_id =?",
+                dto.getName(),dto.getType(),dto.getQty(),dto.getPrice(),dto.getDescription(),dto.getExpdate(),dto.getMedId());
+
+        return isSave;
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "UPDATE medicine SET name =?, type =?, qty =?, price =?, description =?, exp_date =? WHERE med_id =?";
@@ -101,9 +119,18 @@ public class MedModel {
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
+
+         */
     }
 
-    public static boolean deleteMedicine(String id) throws SQLException {
+    public static boolean deleteMedicine(String id) throws SQLException, ClassNotFoundException {
+
+        boolean isDelete = CrudUtil.execute("DELETE FROM medicine WHERE med_id =?",
+                id);
+
+        return isDelete;
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM medicine WHERE med_id =?";
@@ -114,6 +141,8 @@ public class MedModel {
         boolean isDelete = pstm.executeUpdate() > 0;
 
         return isDelete;
+
+         */
     }
 
     public static String generateNextMedId() throws SQLException {

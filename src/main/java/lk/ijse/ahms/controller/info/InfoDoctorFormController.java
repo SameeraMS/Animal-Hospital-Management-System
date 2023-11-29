@@ -75,7 +75,7 @@ public class InfoDoctorFormController {
                             setAllDocId();
                             empFormController.initialize();
                         }
-                    } catch (SQLException a) {
+                    } catch (SQLException | ClassNotFoundException a) {
                         new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
                     }
 
@@ -110,7 +110,7 @@ public class InfoDoctorFormController {
                         setAllDocId();
                         empFormController.initialize();
                     }
-                } catch (SQLException a) {
+                } catch (SQLException | ClassNotFoundException a) {
                     new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
                 }
             }

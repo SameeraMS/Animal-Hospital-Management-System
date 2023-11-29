@@ -43,6 +43,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+import static jdk.internal.net.http.common.Utils.close;
+
 
 public class AddApointmentFormController {
 
@@ -269,12 +271,13 @@ public class AddApointmentFormController {
                             thread.start();
 
                             new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Appointment Successfully saved..! \n\n QR code in '"+filepath+"'.", ButtonType.OK).show();
+
                         }
 
                         initialize();
                         clearFields();
                     }
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
             } else {

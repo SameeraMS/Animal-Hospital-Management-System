@@ -2,6 +2,7 @@ package lk.ijse.ahms.model;
 
 import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.dto.AppointmentDto;
+import lk.ijse.ahms.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,7 +43,19 @@ public class AppointmentModel {
         return appointmentDtos;
     }
 
-    public static boolean saveAppointment(AppointmentDto dto) throws SQLException {
+    public static boolean saveAppointment(AppointmentDto dto) throws SQLException, ClassNotFoundException {
+
+        boolean isSaved = CrudUtil.execute("INSERT INTO appointment VALUES(?,?,?,?,?,?,?,?,?,?,?)",
+                dto.getAppointmentId(),dto.getAmount(),dto.getDate(),
+                dto.getTime(),dto.getDescription(),dto.getDoctorId(),
+                dto.getDoctorName(),dto.getPetOwnerId(),dto.getPetOwnerName(),
+                dto.getPetId(),dto.getPetName());
+
+        return isSaved;
+
+
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "INSERT INTO appointment VALUES(?,?,?,?,?,?,?,?,?,?,?)";
@@ -63,6 +76,8 @@ public class AppointmentModel {
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
+
+         */
     }
 
     public static List<AppointmentDto> searchAppointments(String id) throws SQLException {
@@ -97,7 +112,15 @@ public class AppointmentModel {
     }
 
 
-    public static boolean deleteAppoint(String id) throws SQLException {
+    public static boolean deleteAppoint(String id) throws SQLException, ClassNotFoundException {
+
+        boolean isDelete = CrudUtil.execute("DELETE FROM appointment WHERE appointment_id=?",
+                id);
+
+        return isDelete;
+
+        /*
+
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM appointment WHERE appointment_id=?";
@@ -108,6 +131,8 @@ public class AppointmentModel {
         boolean isDeleted = pstm.executeUpdate() > 0;
 
         return isDeleted;
+
+         */
     }
 
     public static String generateNextAppointId() throws SQLException {

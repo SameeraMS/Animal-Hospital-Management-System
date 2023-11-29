@@ -3,6 +3,7 @@ package lk.ijse.ahms.model;
 import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.dto.DoctorDto;
 import lk.ijse.ahms.dto.EmployeeDto;
+import lk.ijse.ahms.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DocModel {
-    public static boolean saveDoctor(DoctorDto dto) throws SQLException {
+    public static boolean saveDoctor(DoctorDto dto) throws SQLException, ClassNotFoundException {
+
+        boolean isSaved = CrudUtil.execute("INSERT INTO doctor VALUES(?, ?, ?, ?)",
+                dto.getDocId(),dto.getName(),dto.getTel(),dto.getEmail());
+
+        return isSaved;
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "INSERT INTO doctor VALUES(?, ?, ?, ?)";
@@ -27,6 +35,8 @@ public class DocModel {
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
+
+         */
 
     }
 
@@ -75,8 +85,15 @@ public class DocModel {
             return null;}
     }
 
-    public static boolean updateDoctor(DoctorDto dto) throws SQLException {
+    public static boolean updateDoctor(DoctorDto dto) throws SQLException, ClassNotFoundException {
 
+        boolean isSaved = CrudUtil.execute("UPDATE doctor SET name =?, email =?, contact_no =? WHERE doc_id =?",
+                dto.getName(),dto.getEmail(),dto.getTel(),dto.getDocId());
+
+        return isSaved;
+
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "UPDATE doctor SET name =?, email =?, contact_no =? WHERE doc_id =?";
@@ -90,9 +107,18 @@ public class DocModel {
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
+
+         */
     }
 
-    public static boolean deleteDoctor(String id) throws SQLException {
+    public static boolean deleteDoctor(String id) throws SQLException, ClassNotFoundException {
+
+        boolean isDelete = CrudUtil.execute("DELETE FROM doctor WHERE doc_id =?",
+                id);
+
+        return isDelete;
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM doctor WHERE doc_id =?";
@@ -103,6 +129,8 @@ public class DocModel {
         boolean isDelete = pstm.executeUpdate() > 0;
 
         return isDelete;
+
+         */
     }
 
     public static String generateNextDocId() throws SQLException {

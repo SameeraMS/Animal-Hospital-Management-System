@@ -22,6 +22,8 @@ import lombok.Setter;
 
 import java.sql.SQLException;
 
+import static jdk.internal.net.http.common.Utils.close;
+
 public class AddMedicineFormController {
 
     public JFXTextField medqty;
@@ -108,8 +110,10 @@ public class AddMedicineFormController {
                             clearFields();
                             medFormController.initialize();
                             initialize();
+
+
                         }
-                    } catch (SQLException e) {
+                    } catch (SQLException | ClassNotFoundException e) {
                         new SystemAlert(Alert.AlertType.ERROR,"Error",e.getMessage(), ButtonType.OK).show();
                     }
                 } else {

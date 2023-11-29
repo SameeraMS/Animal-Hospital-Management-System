@@ -2,6 +2,7 @@ package lk.ijse.ahms.model;
 
 import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.dto.EmployeeDto;
+import lk.ijse.ahms.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +13,15 @@ import java.util.List;
 
 public class EmpModel {
 
-    public static boolean saveEmployee(EmployeeDto dto) throws SQLException {
+    public static boolean saveEmployee(EmployeeDto dto) throws SQLException, ClassNotFoundException {
 
+        boolean isSaved = CrudUtil.execute("INSERT INTO employee VALUES(?, ?, ?, ?, ?, ?)",
+                dto.getId(),dto.getName(),dto.getAddress(),dto.getTel(),dto.getEmail(),dto.getType());
+
+        return isSaved;
+
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "INSERT INTO employee VALUES(?, ?, ?, ?, ?, ?)";
@@ -29,6 +37,8 @@ public class EmpModel {
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
+
+         */
     }
 
     public static List<EmployeeDto> getAllEmployee() throws SQLException {
@@ -83,7 +93,15 @@ public class EmpModel {
             return null;}
     }
 
-    public static boolean updateEmployee(EmployeeDto dto) throws SQLException {
+    public static boolean updateEmployee(EmployeeDto dto) throws SQLException, ClassNotFoundException {
+
+        boolean isSaved = CrudUtil.execute("UPDATE employee SET employee_name =?, employee_address =?, employee_contact_no =?, employee_email =?, employee_type =? WHERE employee_id =?",
+                dto.getName(),dto.getAddress(),dto.getTel(),dto.getEmail(),dto.getType(),dto.getId());
+
+        return isSaved;
+
+        /*
+
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "UPDATE employee SET employee_name =?, employee_address =?, employee_contact_no =?, employee_email =?, employee_type =? WHERE employee_id =?";
@@ -99,9 +117,18 @@ public class EmpModel {
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
+
+         */
     }
 
-    public static boolean deleteEmployee(String id) throws SQLException {
+    public static boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException {
+
+        boolean isDelete = CrudUtil.execute("DELETE FROM employee WHERE employee_id =?",
+                id);
+
+        return isDelete;
+
+        /*
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM employee WHERE employee_id =?";
@@ -112,6 +139,8 @@ public class EmpModel {
         boolean isDelete = pstm.executeUpdate() > 0;
 
         return isDelete;
+
+         */
     }
 
     public static String generateNextempId() throws SQLException {

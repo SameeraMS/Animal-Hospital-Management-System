@@ -149,7 +149,7 @@ public class InfoEmployeeFormController {
                         setAllEmpId();
                         empFormController.initialize();
                     }
-                } catch (SQLException a) {
+                } catch (SQLException | ClassNotFoundException a) {
                     new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
                 }
             }
@@ -188,7 +188,7 @@ public class InfoEmployeeFormController {
                             setAllEmpId();
                             empFormController.initialize();
                         }
-                    } catch (SQLException a) {
+                    } catch (SQLException | ClassNotFoundException a) {
                         new Alert(Alert.AlertType.ERROR, a.getMessage()).show();
                     }
                 } else {

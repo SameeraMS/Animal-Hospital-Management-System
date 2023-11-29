@@ -99,7 +99,7 @@ public class AddDocFormcontroller {
                                     initialize();
                                     empFormController.initialize();
                                 }
-                            } catch (SQLException e) {
+                            } catch (SQLException | ClassNotFoundException e) {
                                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                                 new SystemAlert(Alert.AlertType.ERROR,"Information",e.getMessage(), ButtonType.OK).show();
                             }

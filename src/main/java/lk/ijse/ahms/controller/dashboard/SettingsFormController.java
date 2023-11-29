@@ -165,29 +165,34 @@ public class SettingsFormController {
 
     public void deleteOnAction(ActionEvent actionEvent) {
 
-                focusedIndex = tblUser.getSelectionModel().getSelectedIndex();
-                UserTm selectedItem = (UserTm) tblUser.getSelectionModel().getSelectedItem();
+        focusedIndex = tblUser.getSelectionModel().getSelectedIndex();
+        UserTm selectedItem = (UserTm) tblUser.getSelectionModel().getSelectedItem();
 
-                    id = selectedItem.getUsername();
+        id = selectedItem.getUsername();
 
-                try {
-                    UserDto dto = UserModel.searchByName(id);
+        if (id.equals("sameerams2002@gmail.com")) {
+            new SystemAlert(Alert.AlertType.ERROR, "Error", "You cannot delete Admin!", ButtonType.OK).show();
+        } else{
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/deleteUser/deleteUser_form.fxml"));
-                    Parent root = fxmlLoader.load();
+            try {
+                UserDto dto = UserModel.searchByName(id);
 
-                    DeleteUserFormController deleteform =  fxmlLoader.getController();
-                    deleteform.setSettingsFormController(this);
+                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/deleteUser/deleteUser_form.fxml"));
+                Parent root = fxmlLoader.load();
 
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    stage.centerOnScreen();
-                    stage.show();
+                DeleteUserFormController deleteform = fxmlLoader.getController();
+                deleteform.setSettingsFormController(this);
 
-                } catch (SQLException | IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
+
+            } catch (SQLException | IOException ex) {
+                throw new RuntimeException(ex);
+            }
+    }
 
 
     }

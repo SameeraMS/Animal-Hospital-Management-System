@@ -113,7 +113,7 @@ public class AddEmployeeFormController {
                                     initialize();
 
                                 }
-                            } catch (SQLException e) {
+                            } catch (SQLException | ClassNotFoundException e) {
                                 new SystemAlert(Alert.AlertType.ERROR,"Information",e.getMessage(), ButtonType.OK).show();
                             }
                         } else {
