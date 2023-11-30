@@ -69,7 +69,6 @@ public class AppointmentFormController {
         colDesc.setCellValueFactory(new PropertyValueFactory<>("Description"));
         colDocId.setCellValueFactory(new PropertyValueFactory<>("DocId"));
         colPetOwnerId.setCellValueFactory(new PropertyValueFactory<>("PetOwnerId"));
-
     }
 
     private void loadAllAppointments() {
