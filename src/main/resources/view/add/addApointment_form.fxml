@@ -143,7 +143,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <DatePicker fx:id="datepik" layoutX="250.0" layoutY="146.0" prefHeight="40.0" prefWidth="185.0" />
-      <JFXTimePicker fx:id="timepik" layoutX="250.0" layoutY="197.0" prefHeight="40.0" prefWidth="185.0" />
+      <DatePicker fx:id="datepik" layoutX="250.0" layoutY="146.0" prefHeight="40.0" prefWidth="185.0" stylesheets="@../../styles/combobox.css" />
+      <JFXTimePicker fx:id="timepik" defaultColor="BLACK" layoutX="250.0" layoutY="197.0" prefHeight="40.0" prefWidth="185.0" />
    </children>
 </AnchorPane>
