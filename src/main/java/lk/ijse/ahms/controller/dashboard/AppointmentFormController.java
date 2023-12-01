@@ -20,6 +20,7 @@ import lk.ijse.ahms.dto.tm.AppointmentTm;
 import lk.ijse.ahms.dto.tm.MedicineTm;
 import lk.ijse.ahms.model.AppointmentModel;
 import lk.ijse.ahms.model.MedModel;
+import lk.ijse.ahms.qr.QrScanController;
 import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.smtp.Mail;
 import lk.ijse.ahms.util.SystemAlert;
@@ -245,4 +246,22 @@ public class AppointmentFormController {
         txtrecmail.clear();
         txtrecmail.requestFocus();
     }
+    public void qrOnAction(ActionEvent actionEvent) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/qr/QrScanForm.fxml"));
+        Parent root = fxmlLoader.load();
+
+        QrScanController qr =  fxmlLoader.getController();
+        qr.setAppointmentFormController(this);
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+
+
+    }
+
+
 }

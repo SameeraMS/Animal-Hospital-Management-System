@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lk.ijse.ahms.controller.barcode.BarcodeReadController;
 import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.dto.*;
 import lk.ijse.ahms.dto.tm.CartTm;
@@ -463,8 +464,8 @@ public class PaymentFormController {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/barcodeReader/BarcodeRead.fxml"));
         Parent root = fxmlLoader.load();
 
-       // AddApointmentFormController appointment =  fxmlLoader.getController();
-     //   appointment.setAppointmentFormController(this);
+        BarcodeReadController bc =  fxmlLoader.getController();
+        bc.setPaymentFormController(this);
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();

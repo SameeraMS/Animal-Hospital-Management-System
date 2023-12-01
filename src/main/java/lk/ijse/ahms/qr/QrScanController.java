@@ -25,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import lk.ijse.ahms.controller.dashboard.AppointmentFormController;
 import lk.ijse.ahms.controller.dashboard.PaymentFormController;
 import lombok.Setter;
 
@@ -63,6 +64,9 @@ public class QrScanController {
 
     @Setter
     private PaymentFormController paymentFormController;
+
+    @Setter
+    private AppointmentFormController appointmentFormController;
 
 
 
@@ -134,8 +138,14 @@ public class QrScanController {
                                 String id = result.getText();
                                 System.out.println(id);
 
-                                paymentFormController.cmbAppId.setValue(id);
-                                paymentFormController.appointmentIdOnAction(id);
+                                if(paymentFormController != null) {
+                                    paymentFormController.cmbAppId.setValue(id);
+                                    paymentFormController.appointmentIdOnAction(id);
+                                } else {
+                                    appointmentFormController.txtAppointId.setText(id);
+                                    appointmentFormController.searchOnAction(new ActionEvent());
+
+                                }
 
 
 

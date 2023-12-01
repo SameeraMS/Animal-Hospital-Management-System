@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="332.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.barcode.BarcodeReadController">
+<AnchorPane prefHeight="777.0" prefWidth="786.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ahms.controller.barcode.BarcodeReadController">
    <children>
-      <AnchorPane fx:id="pane" layoutX="9.0" layoutY="11.0" prefHeight="206.0" prefWidth="470.0">
+      <AnchorPane fx:id="minipane" layoutX="71.0" layoutY="37.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15px;">
          <children>
-            <ImageView fx:id="imageView" fitHeight="173.0" fitWidth="437.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageView" fitHeight="432.0" fitWidth="589.0" layoutX="24.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <JFXButton fx:id="btnStart" buttonType="RAISED" layoutX="25.0" layoutY="269.0" onAction="#startBtnOnAction" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: green;" text="Start" />
-      <JFXButton fx:id="btnStop" buttonType="RAISED" layoutX="322.0" layoutY="269.0" onAction="#stopBtnOnAction" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: red;" text="Stop" />
-      <Rectangle fx:id="main" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="9.0" layoutX="95.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="299.0" />
-      <Rectangle fx:id="second" arcHeight="5.0" arcWidth="5.0" fill="#43bfa0" height="9.0" layoutX="95.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="10.0" />
+      <ProgressBar fx:id="progress" layoutX="147.0" layoutY="534.0" prefHeight="23.0" prefWidth="478.0" progress="0.0" />
+      <JFXButton fx:id="btnStop" layoutX="490.0" layoutY="670.0" onAction="#stopBtnOnAction" prefHeight="45.0" prefWidth="125.0" style="-fx-background-color: #00003f; -fx-background-radius: 10px;" text="Stop" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnStart" layoutX="155.0" layoutY="669.0" onAction="#startBtnOnAction" prefHeight="45.0" prefWidth="125.0" style="-fx-background-color: #00003f; -fx-background-radius: 10px;" text="Start" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="197.0" layoutY="595.0" prefHeight="34.0" prefWidth="125.0" text="Appointment Id :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="txtArea" layoutX="343.0" layoutY="586.0" prefHeight="34.0" prefWidth="282.0" />
    </children>
 </AnchorPane>

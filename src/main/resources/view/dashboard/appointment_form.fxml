@@ -114,5 +114,6 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="926.0" layoutY="284.0" onAction="#qrOnAction" prefHeight="52.0" prefWidth="163.0" style="-fx-background-color: yellow;" text="QR" />
     </children>
 </AnchorPane>
