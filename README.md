@@ -20,3 +20,5 @@
 * Create a MySQL database and execute queries in `src/main/java/lk/ijse/ahms/db/sqlQueries` using database client.
 * Setup Database Connection on 13 line of `src/main/java/lk/ijse/ahms/db/DbConnection.java`
 * Reload the `pom.xml` file.
+* To login use username = sameerams2002@gmail.com , password = 1234  .
+* You can add new user through Settings in application.
