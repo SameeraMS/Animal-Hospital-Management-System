@@ -57,11 +57,11 @@ public class BarcodeReadController {
 
             Webcam.setDriver(new NativeDriver());
 
-            Webcam cam = Webcam.getWebcams().get(0);
-            cam = Webcam.getDefault();
+            Webcam cam = Webcam.getDefault();
+
 
             service = new WebcamService(cam);
-            cam.open();
+
 
 
 

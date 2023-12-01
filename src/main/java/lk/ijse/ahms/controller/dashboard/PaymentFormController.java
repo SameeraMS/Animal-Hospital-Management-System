@@ -7,21 +7,17 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import lk.ijse.ahms.db.DbConnection;
 import lk.ijse.ahms.dto.*;
 import lk.ijse.ahms.dto.tm.CartTm;
 import lk.ijse.ahms.model.*;
-import lk.ijse.ahms.qr.QRScanner;
-import lk.ijse.ahms.regex.Regex;
+import lk.ijse.ahms.qr.QrScanController;
 import lk.ijse.ahms.smtp.Mail;
 import lk.ijse.ahms.util.SystemAlert;
 import net.sf.jasperreports.engine.*;
@@ -35,14 +31,12 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class PaymentFormController {
     public Label lbldate;
     public static String scan;
-    static QRScanner qrScanner;
+
     public Label lbltime;
     public JFXComboBox<String> cmbAppId;
     public JFXTextField txtPetOwner;
@@ -414,20 +408,18 @@ public class PaymentFormController {
 
     public void qrOnAction(ActionEvent actionEvent) throws IOException {
 
-        StackPane stackPane = new StackPane();
-        stackPane.getChildren().add(qrScanner.getVideoPanel());
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/qr/QrScanForm.fxml"));
+        Parent root = fxmlLoader.load();
+
+         QrScanController qr =  fxmlLoader.getController();
+         qr.setPaymentFormController(this);
+
+        Scene scene = new Scene(root);
         Stage stage = new Stage();
-
-
-        stage.setScene(new Scene(stackPane, 800, 600));
+        stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                QRScanner.webcam.close();
-                qrScanner.thread.stop();
-            }
-        });
+
 
     }
 
@@ -436,7 +428,7 @@ public class PaymentFormController {
         appointmentIdOnAction(c);
     }
 
-    private void appointmentIdOnAction(String c) {
+    public void appointmentIdOnAction(String c) {
         String AppId = c;
 
         try {
