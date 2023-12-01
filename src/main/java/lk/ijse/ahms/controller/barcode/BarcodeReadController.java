@@ -147,6 +147,10 @@ public class BarcodeReadController {
 
 
 
+
+
+
+
                                 new Alert(Alert.AlertType.INFORMATION, "Data Scanned Successfully!").showAndWait();
                             } else {
                                 new Alert(Alert.AlertType.ERROR, "No Data Found!").showAndWait();
