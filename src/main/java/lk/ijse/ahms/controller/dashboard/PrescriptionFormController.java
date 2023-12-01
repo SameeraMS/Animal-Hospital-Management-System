@@ -10,15 +10,19 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import lk.ijse.ahms.controller.DashboardControlsController;
 import lk.ijse.ahms.dto.AppointmentDto;
+import lk.ijse.ahms.dto.PetOwnerDto;
 import lk.ijse.ahms.dto.PrescriptionDto;
 import lk.ijse.ahms.model.AppointmentModel;
+import lk.ijse.ahms.model.PetOwnerModel;
 import lk.ijse.ahms.model.PrescriptionModel;
+import lk.ijse.ahms.smtp.Mail;
 import lk.ijse.ahms.util.SystemAlert;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.File;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -186,7 +190,7 @@ public class PrescriptionFormController {
         generateNextId();
     }
 
-    public void printOnAction(ActionEvent actionEvent) throws JRException {
+    public void printOnAction(ActionEvent actionEvent) throws JRException, SQLException {
 
         String appointmentId = cmbAppointment.getValue();
         String description = txtDesc.getText();
@@ -214,6 +218,30 @@ public class PrescriptionFormController {
             System.out.println("report done");
 
             String pdfOutputPath = filePath + prescriptionId + ".pdf";
+
+            AppointmentDto dto = AppointmentModel.searchOwnerId(appointmentId);
+            String petOwnerId = dto.getPetOwnerId();
+
+            PetOwnerDto ownerDetails = PetOwnerModel.getOwnerDetails(petOwnerId);
+
+            String email = ownerDetails.getEmail();
+
+            String subject = "Animal Hospital";
+            String message = "Your Prescription is attached here. \n\nRegards,\nAnimal Hospital System";
+
+            Mail nmail = new Mail(email, message, subject, new File(pdfOutputPath));
+            Thread thread = new Thread(nmail);
+
+            nmail.valueProperty().addListener((a, oldValue, newValue) -> {
+                if (newValue) {
+                    new SystemAlert(Alert.AlertType.INFORMATION, "Email", "Mail sent successfully", ButtonType.OK).show();
+                } else {
+                    new SystemAlert(Alert.AlertType.NONE, "Connection Error", "Connection Error!", ButtonType.OK).show();
+                }
+            });
+
+            thread.setDaemon(true);
+            thread.start();
 
         } else {
             new SystemAlert(Alert.AlertType.ERROR,"Error","Please Fill All Fields..!", ButtonType.OK).show();
