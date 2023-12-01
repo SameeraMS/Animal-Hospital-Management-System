@@ -5,8 +5,8 @@
 ## 💻 Features 
 
 * Generating reciepts for,
-            Payment
-            Appointments
+            Payment,
+            Appointments,
             Prescription.
 * Send payment reciept to customer through Gmail.
 * Generate and send QR code for appointment and details to customer through Gmail.
