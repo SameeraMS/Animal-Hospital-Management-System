@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.ahms.smtp.Mail;
+import lk.ijse.ahms.util.SecurityUtil;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -111,17 +112,19 @@ public class ForgotPassword3Contoller implements Initializable {
         String userName = Forgotpass1FormController.userName;
 
         if (password.equalsIgnoreCase(reEnterPassword)) {
+
+            String npass = SecurityUtil.encoder(password);
             try (Connection con = DriverManager.getConnection(URL, props)) {
                 String sql = "UPDATE user SET password = ? WHERE user_name = ?";
 
                 PreparedStatement pstm = con.prepareStatement(sql);
-                pstm.setString(1, password);
+                pstm.setString(1, npass);
                 pstm.setString(2, userName);
 
                 if (pstm.executeUpdate() > 0) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Password Updated!!").show();
 
-                    String email = userName;
+                    String email = SecurityUtil.decoder(userName);
                     String subject = "Animal Hospital System";
                     String message = "Hi..! \n\nYour password has been changed.";
 

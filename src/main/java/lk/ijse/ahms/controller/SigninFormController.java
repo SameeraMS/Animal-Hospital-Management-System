@@ -16,6 +16,7 @@ import lk.ijse.ahms.dto.EmployeeDto;
 import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.UserModel;
 import lk.ijse.ahms.smtp.Mail;
+import lk.ijse.ahms.util.SecurityUtil;
 import lk.ijse.ahms.util.SystemAlert;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class SigninFormController {
     public  TextField txtusername;
     public PasswordField txtpassword;
     public ImageView imageview1;
-
+    public static String newmail;
     UserModel usermodel = new UserModel();
 
     public void initialize(){
@@ -35,6 +36,8 @@ public class SigninFormController {
     }
 
     public void signinOnAction(ActionEvent actionEvent) throws IOException {
+
+        newmail = txtusername.getText();
 
        String getun = txtusername.getText();
        String getpw = txtpassword.getText();
@@ -54,11 +57,13 @@ public class SigninFormController {
             new SystemAlert(Alert.AlertType.INFORMATION, "missing information", "password required..!!", ButtonType.OK).show();
         } else {
             try {
-                ResultSet resultSet = usermodel.checkCredentials(getun, getpw);
+
+                String enun = SecurityUtil.encoder(getun);
+                ResultSet resultSet = usermodel.checkCredentials(enun, getpw);
 
                 if (resultSet.next()) {
-                    String name = resultSet.getString(1);
-                    String password = resultSet.getString(2);
+                    String name = SecurityUtil.decoder(resultSet.getString(1));
+                    String password = SecurityUtil.decoder(resultSet.getString(2));
                     String id = resultSet.getString(3);
 
                         if (password.equals(getpw) & name.equals(getun)) {

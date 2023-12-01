@@ -20,6 +20,7 @@ import javafx.util.Duration;
 import lk.ijse.ahms.dto.UserDto;
 import lk.ijse.ahms.model.UserModel;
 import lk.ijse.ahms.util.JavaMailUtil;
+import lk.ijse.ahms.util.SecurityUtil;
 import lombok.SneakyThrows;
 
 import javax.mail.MessagingException;
@@ -57,13 +58,13 @@ public class Forgotpass1FormController implements Initializable {
     void btnSendOTPOnAction(ActionEvent event) throws MessagingException, IOException {
         Object selectedItem1 = comUserName.getSelectionModel().getSelectedItem();
         String Username = (String) selectedItem1;
-        userName=Username;
+        userName=SecurityUtil.encoder(Username);
         if (Username!=null){
             System.out.println("OK");
             int otp = new Random().nextInt(9000) + 1000;
             comUserName.setStyle("-fx-background-color: null");
             try {
-                UserDto user = UserModel.searchByName(Username);
+                UserDto user = UserModel.searchByName(SecurityUtil.encoder(Username));
                 fillItemFields(user);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -96,7 +97,7 @@ public class Forgotpass1FormController implements Initializable {
     }
 
     private void fillItemFields(UserDto user) {
-        lblEmail.setText(user.getUsername());
+        lblEmail.setText(SecurityUtil.decoder(user.getUsername()));
     }
 
     public void loadUserNames() throws SQLException {
@@ -105,7 +106,7 @@ public class Forgotpass1FormController implements Initializable {
             ObservableList<String> obList = FXCollections.observableArrayList();
 
             for (String un : name){
-                obList.add(un);
+                obList.add(SecurityUtil.decoder(un));
             }
             comUserName.setItems(obList);
         }catch (SQLException e){

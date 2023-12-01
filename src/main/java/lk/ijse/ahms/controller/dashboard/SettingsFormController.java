@@ -23,6 +23,7 @@ import lk.ijse.ahms.model.EmpModel;
 import lk.ijse.ahms.model.UserModel;
 import lk.ijse.ahms.regex.Regex;
 import lk.ijse.ahms.smtp.Mail;
+import lk.ijse.ahms.util.SecurityUtil;
 import lk.ijse.ahms.util.SystemAlert;
 import lombok.Setter;
 
@@ -94,7 +95,7 @@ public class SettingsFormController {
 
                 obList.add(
                         new UserTm(
-                                dto.getUsername(),
+                                SecurityUtil.decoder(dto.getUsername()),
                                 dto.getEmpId()
                         )
                 );
@@ -117,17 +118,17 @@ public class SettingsFormController {
     }
 
     public void changePassOnAction(ActionEvent actionEvent) {
-        String username = signinFormController.txtusername.getText();
+        String username = signinFormController.newmail;
         String password = txtCurPassword.getText();
         String newpassword = txtnewPass1.getText();
         String newpassword2 = txtnewPass2.getText();
 
         if (!password.isEmpty() && !newpassword.isEmpty() && !newpassword2.isEmpty()) {
             try {
-                UserDto dto = UserModel.searchByName(username);
-                if (dto.getPassword().equals(password)) {
+                UserDto dto = UserModel.searchByName(SecurityUtil.encoder(username));
+                if (SecurityUtil.decoder(dto.getPassword()).equals(password)) {
                     if (newpassword.equals(newpassword2)) {
-                        boolean isChanged = UserModel.changePassword(dto.getUsername(), newpassword);
+                        boolean isChanged = UserModel.changePassword(dto.getUsername(), SecurityUtil.encoder(newpassword));
                         if (isChanged) {
                        //     new Alert(Alert.AlertType.CONFIRMATION, "Password changed!").show();
                             new SystemAlert(Alert.AlertType.CONFIRMATION,"Confirmation","Password changed Successfully..!", ButtonType.OK).show();
@@ -212,8 +213,13 @@ public class SettingsFormController {
 
                     if (dto == null) {
                         if (password.equals(password2)) {
-                            UserDto dto2 = new UserDto(username, password, empId);
+
+                            String user = SecurityUtil.encoder(username);
+                            String pass = SecurityUtil.encoder(password);
+
+                            UserDto dto2 = new UserDto(user, pass, empId);
                             boolean isSaved = UserModel.saveUser(dto2);
+
                             if (isSaved) {
                                 //      new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
                                 new SystemAlert(Alert.AlertType.CONFIRMATION, "Confirmation", "User saved Successfully..!", ButtonType.OK).show();
