@@ -49,11 +49,6 @@ create table pets(
     on delete cascade on update cascade
 );
 
-create table suppliers(
-    sup_id      varchar(10)     primary key,
-    name        varchar(20)     not null,
-    contact_no  int(11)         not null
-);
 
 create table medicine(
     med_id      varchar(10)         primary key,
@@ -65,14 +60,6 @@ create table medicine(
     exp_date    date
 );
 
-create table med_sup_details(
-    sup_id      varchar(10)         not null,
-    med_id      varchar(10)         not null,
-    constraint foreign key (sup_id) references suppliers (sup_id)
-    on delete cascade on update cascade,
-    constraint foreign key (med_id) references medicine (med_id)
-    on delete cascade on update cascade
-);
 
 create table appointment(
     appointment_id      varchar(10)     primary key,

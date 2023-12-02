@@ -133,7 +133,21 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnqr" buttonType="RAISED" layoutX="510.0" layoutY="18.0" onAction="#qrOnAction" prefHeight="36.0" prefWidth="83.0" style="-fx-background-color: blue;" text="Qr Read" />
-      <JFXButton fx:id="btnbarcode" buttonType="RAISED" layoutX="614.0" layoutY="19.0" onAction="#barcodeOnAction" prefHeight="36.0" prefWidth="83.0" style="-fx-background-color: green;" text="Barcode" />
+      <JFXButton fx:id="btnqr" buttonType="RAISED" contentDisplay="RIGHT" layoutX="416.0" layoutY="14.0" onAction="#qrOnAction" prefHeight="45.0" prefWidth="145.0" styleClass="btnQR" stylesheets="@../../styles/button.css" text="Qr Read">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/images/qr.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="btnbarcode" buttonType="RAISED" contentDisplay="RIGHT" layoutX="614.0" layoutY="15.0" onAction="#barcodeOnAction" prefHeight="45.0" prefWidth="145.0" styleClass="btnBarcode" stylesheets="@../../styles/button.css" text="Barcode">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/images/barcode.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
    </children>
 </AnchorPane>
