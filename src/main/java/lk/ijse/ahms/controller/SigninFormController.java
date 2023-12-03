@@ -84,7 +84,7 @@ public class SigninFormController {
                             dash.setLblname(dto.getName());
 
 
-                        /*    String email = getun;
+                            String email = getun;
                                 String subject = "Animal Hospital System";
                                 String message = "Hi..! \n\n You have successfully log in to Animal Hospital System. \n\n Thank you..!";
 
@@ -102,7 +102,7 @@ public class SigninFormController {
                                 thread.setDaemon(true);
                                 thread.start();
 
-                         */
+
 
                         } else {
                             new SystemAlert(Alert.AlertType.INFORMATION, "Information", "username or password incorrect..!", ButtonType.OK).show();
